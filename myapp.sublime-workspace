@@ -1,0 +1,506 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mail",
+				"mailOptions"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"log",
+				"logIn"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"ti",
+				"toString"
+			],
+			[
+				"bu",
+				"buff"
+			],
+			[
+				"buff",
+				"Buffer"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "packages/users/public/views/register.html",
+			"settings":
+			{
+				"buffer_size": 3208,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "html {\n    height: 100%;\n}\n\nbody.login, body.register,  body.forgot-password {\nbackground: url(\"/theme/assets/img/bg.png\");\n    height: 100%;\n    position: relative;\n}\n@font-face {\n    font-family: 'futura_bkbook';\n    src: url(\"/theme/assets/fonts/ufonts.com_futura-book.eot\");\n    src: url(\"/theme/assets/fonts/ufonts.com_futura-book.eot?#iefix\") format(\"embedded-opentype\"), url(\"/theme/assets/fonts/ufonts.com_futura-book.woff\") format(\"woff\"), url(\"/theme/assets/fonts/ufonts.com_futura-book.ttf\") format(\"truetype\"), url(\"/theme/assets/fonts/ufonts.com_futura-book.svg#futura_bkbook\") format(\"svg\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'open_sans_hebrewregular';\n    src: url(\"/theme/assets/fonts/opensanshebrew-regular.eot\");\n    src: url(\"/theme/assets/fonts/opensanshebrew-regular.eot?#iefix\") format(\"embedded-opentype\"), url(\"/theme/assets/fonts/opensanshebrew-regular.woff\") format(\"woff\"), url(\"/theme/assets/fonts/opensanshebrew-regular.ttf\") format(\"truetype\"), url(\"/theme/assets/fonts/opensanshebrew-regular.svg#open_sans_hebrewregular\") format(\"svg\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'open_sans_hebrewlight';\n    src: url(\"/theme/assets/fonts/opensanshebrew-light.eot\");\n    src: url(\"/theme/assets/fonts/opensanshebrew-light.eot?#iefix\") format(\"embedded-opentype\"), url(\"/theme/assets/fonts/opensanshebrew-light.woff\") format(\"woff\"), url(\"/theme/assets/fonts/opensanshebrew-light.ttf\") format(\"truetype\"), url(\"/theme/assets/fonts/opensanshebrew-light.svg#open_sans_hebrewlight\") format(\"svg\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'proxima_nova_rgregular';\n    src: url(\"/theme/assets/fonts/mark_simonson_-_proxima_nova_regular.eot\");\n    src: url(\"/theme/assets/fonts/mark_simonson_-_proxima_nova_regular.eot?#iefix\") format(\"embedded-opentype\"), url(\"/theme/assets/fonts/mark_simonson_-_proxima_nova_regular.woff\") format(\"woff\"), url(\"/theme/assets/fonts/mark_simonson_-_proxima_nova_regular.ttf\") format(\"truetype\"), url(\"/theme/assets/fonts/mark_simonson_-_proxima_nova_regular.svg#proxima_nova_rgregular\") format(\"svg\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'proxima_novalight';\n    src: url(\"/theme/assets/fonts/proximanova-light.eot\");\n    src: url(\"/theme/assets/fonts/proximanova-light.eot?#iefix\") format(\"embedded-opentype\"), url(\"/theme/assets/fonts/proximanova-light.woff\") format(\"woff\"), url(\"/theme/assets/fonts/proximanova-light.ttf\") format(\"truetype\"), url(\"/theme/assets/fonts/proximanova-light.svg#proxima_novalight\") format(\"svg\");\n    font-weight: normal;\n    font-style: normal;\n}\n.form {\n    background: #ffffff;\n    box-shadow: 0 1px 3px 1px #003644;\n    margin-top: 35px;\n    left: 50%;\n    position: relative;\n}\n\n.main-form {\n    width: 550px;\n    height: 435px;\n    margin-left: -374px;\n}\n\n.main-form.register-form {\n    height: 630px;\n}\n\n.login-form__left {\n    width: 550px;\n    height: 100%;\n    float: left;\n    padding: 34px 0 0 27px;\n}\n\n.login-form__left h2, .forgot_password_form h2 {\n    font-size: 30px;\n    padding-bottom: 4px;\n    font-family: \"futura_bkbook\";\n    margin: 0;\n    text-transform: uppercase;\n}\n\n.login-form__left p, .forgot_password_form p {\n    font-size: 16px;\n    font-family: 'proxima_nova_rgregular';\n}\n\n.main-form .input-wrapper {\n    position: relative;\n    margin-bottom: 10px;\n}\n\n\n/*.main-form .input-wrapper input {\n    width: 250px;\n    border: 1px solid #d3d3d3;\n    border-radius: 5px;\n    padding: 18px 0 18px 16px;\n    outline: none;\n    font-size: 15px;\n    font-family: 'proxima_nova_rgregular';\n    line-height: 22px;\n}\n*/\n\n.main-form .input-wrapper input {\n    width: 250px;\n    border: 1px solid #d3d3d3;\n    border-radius: 5px;\n    padding: 18px 0 18px 16px;\n    outline: none;\n    font-size: 15px;\n    font-family: 'proxima_nova_rgregular';\n    line-height: 22px;\n}\n\nselect {\n    width: 250px;\n    border: 1px solid #d3d3d3;\n    border-radius: 5px;\n    padding: 18px 0 18px 16px;\n    outline: none;\n    font-size: 15px;\n    font-family: 'proxima_nova_rgregular';\n    line-height: 20px;\n}\n\n\n.main-form .input-wrapper input:invalid {\n    box-shadow: none;\n}\n\n.main-form .input-wrapper input:focus {\n    border-color: #66afe9;\n    outline: 0;\n    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);\n    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);\n}\n\n.pic.email {\n    position: absolute;\n    background: url(\"/theme/assets/img/mail_login.png\") no-repeat;\n    width: 280px;\n    height: 21px;\n    top: 18px;\n    right: 28px;\n}\n\n.pic.password {\n    position: absolute;\n    background: url(\"/theme/assets/img/eye_password.png\") no-repeat 50% 50%;\n    width: 542px;\n    height: 30px;\n    top: 16px;\n    right: 22px;\n    cursor: pointer;\n}\n\n.login-form__left .icon_hide_password {\n    background: url(\"/theme/assets/img/eye_password_disabled.png\") no-repeat 50% 50%;\n    width: 542px;\n    height: 30px;\n    top: 16px;\n    right: 22px;\n}\n\n.login-form__left .hide_text_password {\n    display: none;\n    position: absolute;\n    line-height: 38px;\n    width: 542px;\n    height: 34px;\n    bottom: 39px;\n    right: -40px;\n    background: #0588a0;\n    text-align: center;\n    border-radius: 5px;\n    font-family: \"proxima_nova_rgregular\";\n    color: white;\n}\n\n.login-form__left .hide_text_password:after {\n    content: '';\n    display: block;\n    position: absolute;\n    left: 50%;\n    top: 100%;\n    border-top: 10px solid #0588a0;\n    border-left: 5px solid transparent;\n    border-right: 5px solid transparent;\n    margin-left: -4px;\n}\n\n.pic.password:hover .hide_text_password {\n    display: block;\n}\n\n.icon_hide_password:hover .hide_text_password {\n    display: block;\n}\n\n.error_message {\n    display: none;\n    position: absolute;\n    line-height: 29px;\n    height: auto;\n    bottom: 67px;\n    left: 0;\n    background: blue;\n    text-align: center;\n    border-radius: 3px;\n    min-width: 30px;\n    max-width: 150px;\n}\n\n.error_message:after {\n    content: '';\n    display: block;\n    position: absolute;\n    left: 50%;\n    top: 100%;\n    border-top: 10px solid blue;\n    border-left: 5px solid transparent;\n    border-right: 5px solid transparent;\n    margin-left: -4px;\n}\n\n.login-form__left .forgot_password {\n    margin-top: -5px;\n    margin-left: 8px;\n}\n\n.login-form__left .forgot_password a {\n    font-size: 15px;\n    color: #68a80c;\n    text-decoration: none;\n    font-family: \"open_sans_hebrewregular\";\n}\n\n.login-form__left .button_login {\n    margin-top: 23px;\n}\n\n.submit_button {\n    display: inline-block;\n    border: none;\n    cursor: pointer;\n    background: url(\"/theme/assets/img/button_login.png\") no-repeat 50% 50%;\n    width: 107px;\n    height: 47px;\n    font-size: 21px;\n    color: white;\n    font-family: \"open_sans_hebrewregular\";\n}\n\n.submit_button:hover {\n    background: url(\"/theme/assets/img/button_login_hover.png\") no-repeat 50% 50%;\n}\n\n.submit_button:focus {\n    outline: none;\n}\n\n.button_login p,\n.button_send p,\n.button_register p {\n    display: inline-block;\n    font-size: 15px;\n    margin-left: 15px;\n    font-family: \"open_sans_hebrewregular\";\n    vertical-align: top;\n    padding-top: 11px;\n}\n\n.button_send p {\n    margin-left: 65px;\n}\n\n.button_register {\n    margin-top: 25px;\n}\n\n.button_login a,\n.button_send a,\n.button_register a {\n    display: inline-block;\n    font-size: 15px;\n    color: #68a80c;\n    text-decoration: none;\n    margin-left: 1px;\n    padding-top: 11px;\n    vertical-align: top;\n    font-family: \"open_sans_hebrewregular\";\n}\n\n.login-form__center {\n    height: 100%;\n    float: left;\n    background: url(\"/theme/assets/img/devide_line.png\") no-repeat 50% 30%;\n    padding: 0 10px;\n}\n\n.register-form .login-form__center {\n    margin-top: 38px;\n    background: url(\"/theme/assets/img/devide_line_long.png\") no-repeat 50% 0;\n}\n\n.login-form__center p {\n    margin-top: 155px;\n    font-family: 'proxima_novalight';\n    font-size: 16px;\n}\n\n.register-form .login-form__center p {\n    margin-top: 227px;\n}\n\n.login-form__right {\n    height: 100%;\n    float: left;\n    width: 270px;\n    padding-left: 26px;\n}\n.login-form__right .social_wrap {\n    width: 235px;\n    height: 270px;\n    margin-top: 36px;\n    padding-left: 0;\n    display: block;\n    position:relative;\n}\n\n.register-form .login-form__right .social_wrap {\n    height: 483px;\n}\n\n.login-form__right .bigger {\n    height: 345px;\n    margin-top: 35px;\n}\n\n.login-form__right .bigger .social {\n    top: inherit;\n    -ms-transform: none; /* IE 9 */\n    -webkit-transform: none; /* Chrome, Safari, Opera */\n    transform: none;\n}\n\n.login-form__right .social {\n    margin: 0;\n    padding-left: 0;\n    display: block;\n    list-style:none;\n    position:absolute;\n    top:50%;\n    left:0;\n    right:0;\n    -ms-transform: translate(0, -50%); /* IE 9 */\n    -webkit-transform: translate(0, -50%); /* Chrome, Safari, Opera */\n    transform: translate(0, -50%);\n}\n\n.login-form__right .social_icon {\n    width: 230px;\n    height: 60px;\n    border: 1px solid #e1e1e0;\n    border-radius: 5px;\n    margin-bottom: 10px;\n    list-style-type: none;\n    vertical-align: middle;\n    display: inline-block;\n}\n\n.login-form__right .social_icon:hover {\n    background: #f1f1f1;\n}\n\n.login-form__right .social_icon .button {\n    display: block;\n    text-decoration: none;\n    padding: 22px 0 22px 60px;\n    line-height: 1;\n    color: #959595;\n    position: relative;\n}\n\n.login-form__right .social_icon .button:active {\n    color: #959595;\n}\n\n.login-form__right .social_icon .button span {\n    font-size: 15px;\n    font-family: 'open_sans_hebrewlight';\n}\n\n.login-form__right .social_icon .button span:visited {\n    color: #959595;\n}\n\n.login-form__right .social_icon_in .button:before {\n    content: '';\n    position: absolute;\n    background: url(\"/theme/assets/img/social_in.png\") no-repeat 50% 50%;\n    width: 50px;\n    height: 47px;\n    top: 10px;\n    left: 0;\n}\n\n.login-form__right .social_icon_fb .button:before {\n    content: '';\n    position: absolute;\n    background: url(\"/theme/assets/img/social_fb.png\") no-repeat 50% 50%;\n    width: 41px;\n    height: 40px;\n    top: 10px;\n    left: 8px;\n}\n\n.login-form__right .social_icon_gh .button:before {\n    content: '';\n    position: absolute;\n    background: url(\"/theme/assets/img/social_github.png\") no-repeat 50% 50%;\n    width: 40px;\n    height: 40px;\n    top: 10px;\n    left: 8px;\n}\n\n.login-form__right .social_icon_tw .button:before {\n    content: '';\n    position: absolute;\n    background: url(\"/theme/assets/img/social_tw.png\") no-repeat 50% 50%;\n    width: 40px;\n    height: 41px;\n    top: 10px;\n    left: 8px;\n}\n\n.login-form__right .social_icon_google .button:before {\n    content: '';\n    position: absolute;\n    background: url(\"/theme/assets/img/social_g+.png\") no-repeat 50% 50%;\n    width: 40px;\n    height: 41px;\n    top: 10px;\n    left: 8px;\n}\n\n.woman_ninja_bottom {\n    position: absolute;\n    left: 21%;\n    pointer-events: none;\n}\n\n.woman_ninja_left {\n    position: absolute;\n    top: 75px;\n    left: -410px;\n    pointer-events: none;\n}\n\n.registration_form {\n    width: 440px;\n    float: left;\n    margin-right: 10px;\n}\n\n.forgot_password_form {\n    padding: 34px 27px;\n    min-height: 280px;\n    height: auto;\n    width: 465px;\n    margin-left: -232px;\n}\n",
+			"file": "packages/theme/public/assets/css/loginForms.css",
+			"file_size": 11089,
+			"file_write_time": 130618894913649408,
+			"settings":
+			{
+				"buffer_size": 11340,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "packages/users/README.md",
+			"settings":
+			{
+				"buffer_size": 17,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "packages/users/app.js",
+			"settings":
+			{
+				"buffer_size": 1375,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "packages/users/public/views/index.html",
+			"settings":
+			{
+				"buffer_size": 1848,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "packages/users/public/controllers/meanUser.js",
+			"settings":
+			{
+				"buffer_size": 7543,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/priyank/MyApp",
+		"/home/priyank/MyApp/packages/access/server",
+		"/home/priyank/MyApp/packages/access/server/config",
+		"/home/priyank/MyApp/packages/articles/public/views",
+		"/home/priyank/MyApp/packages/system",
+		"/home/priyank/MyApp/packages/system/public",
+		"/home/priyank/MyApp/packages/system/public/views",
+		"/home/priyank/MyApp/packages/system/server/views",
+		"/home/priyank/MyApp/packages/system/server/views/layouts",
+		"/home/priyank/MyApp/packages/theme",
+		"/home/priyank/MyApp/packages/theme/public",
+		"/home/priyank/MyApp/packages/theme/public/assets",
+		"/home/priyank/MyApp/packages/theme/public/assets/css",
+		"/home/priyank/MyApp/packages/theme/public/controllers",
+		"/home/priyank/MyApp/packages/users",
+		"/home/priyank/MyApp/packages/users/public",
+		"/home/priyank/MyApp/packages/users/public/controllers",
+		"/home/priyank/MyApp/packages/users/public/routes",
+		"/home/priyank/MyApp/packages/users/public/services",
+		"/home/priyank/MyApp/packages/users/public/views",
+		"/home/priyank/MyApp/packages/users/server/controllers",
+		"/home/priyank/MyApp/packages/users/server/models",
+		"/home/priyank/MyApp/packages/users/server/routes"
+	],
+	"file_history":
+	[
+		"/home/priyank/MyApp/packages/users/public/views/index.html",
+		"/home/priyank/MyApp/packages/users/server/template.js",
+		"/home/priyank/MyApp/packages/users/server/controllers/users.js",
+		"/home/priyank/MyApp/packages/system/server/views/layouts/default.html",
+		"/home/priyank/MyApp/packages/users/public/views/login.html",
+		"/home/priyank/MyApp/packages/users/public/views/register.html",
+		"/home/priyank/MyApp/packages/theme/public/assets/css/loginForms.css",
+		"/home/priyank/MyApp/packages/users/public/controllers/meanUser.js",
+		"/home/priyank/MyApp/packages/users/public/routes/auth.js",
+		"/home/priyank/MyApp/packages/users/server/models/user.js",
+		"/home/priyank/MyApp/packages/users/public/tests/auth.spec.js",
+		"/home/priyank/MyApp/node_modules/meanio/lib/mean.js",
+		"/home/priyank/MyApp/server.js",
+		"/home/priyank/MyApp/config/env/development.js",
+		"/home/priyank/MyApp/node_modules/meanio/index.js",
+		"/home/priyank/MyApp/packages/users/server/routes/users.js",
+		"/home/priyank/MyApp/packages/access/server/config/authorization.js",
+		"/home/priyank/MyApp/packages/access/server/config/passport.js",
+		"/home/priyank/MyApp/packages/system/app.js",
+		"/home/priyank/MyApp/config/assets.json",
+		"/home/priyank/MyApp/Gruntfile.js",
+		"/home/priyank/MyApp/bower.json",
+		"/home/priyank/MyApp/package.json",
+		"/home/priyank/Desktop/NodeJS_example/No_Of_Newlines_Callback.js",
+		"/home/priyank/Desktop/NodeJS_example/Files_in_directory.js",
+		"/home/priyank/mongo_install.bash",
+		"/home/priyank/Desktop/NodeJS_example/No_Of_Newlines.js",
+		"/home/priyank/Desktop/NodeJS_example/program.js",
+		"/home/priyank/Desktop/NodeJS_example/Hello_World.js",
+		"/home/priyank/Desktop/NodeJS_example/file.txt",
+		"/home/priyank/Desktop/NodeJS_example/HelloWorld_Server.js",
+		"/home/priyank/Desktop/NodeJS_example/learnyounode_sum.js",
+		"/home/priyank/Desktop/NodeJS_example/HelloWord_Server.js",
+		"/home/priyank/Desktop/NodeJS_example/console.log(\"Hello World\");"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 115.0,
+		"where_history":
+		[
+			"",
+			"/home/priyank/MyApp/packages/users",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"meanuser",
+			"pass",
+			"Hi",
+			"<section class=\"content\">",
+			"home",
+			"validation",
+			"validationError",
+			"validationErrors",
+			"log",
+			"config",
+			"for",
+			"forg",
+			"forget",
+			"mail",
+			"main",
+			"aggregated.css",
+			".input-wrapper",
+			"main",
+			"select",
+			"req",
+			"logIn",
+			"next",
+			"logIn",
+			"validationErrors",
+			"/register",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "packages/users/public/views/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1336,
+								1336
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "packages/theme/public/assets/css/loginForms.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11340,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3737,
+								3737
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2512.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "packages/users/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "packages/users/app.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								419,
+								419
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "packages/users/public/views/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1848,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								213,
+								213
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "packages/users/public/controllers/meanUser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6125,
+								6125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2142.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 112.0
+	},
+	"project": "myapp.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/testnow/test1/test1.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

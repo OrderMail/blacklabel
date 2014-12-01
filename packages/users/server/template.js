@@ -12,5 +12,21 @@ module.exports = {
     ].join('\n\n');
     mailOptions.subject = 'Resetting the password';
     return mailOptions;
+  },
+
+
+  user_registration_email: function(user, req, mailOptions) {
+    console.log('************user_registration_email template******');
+    mailOptions.html = [
+      'Hi,',
+      'We have received a user registration request to approve/reject of ' + user.name +'.',
+      'User has following details:',
+      'Name: '+user.name,
+      'Age: '+user.age,
+      'Email address: '+user.email,
+      'Company: '+user.Company,
+    ].join('\n\n');
+    mailOptions.subject = 'User Registration';
+    return mailOptions;
   }
 };

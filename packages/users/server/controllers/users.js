@@ -44,6 +44,17 @@ exports.session = function(req, res) {
 };
 
 /**
+ * Send reset password email
+ */
+function sendMail(mailOptions) {
+  var transport = nodemailer.createTransport(config.mailer);
+  transport.sendMail(mailOptions, function(err, response) {
+    if (err) return err;
+    return response;
+  });
+}
+
+/**
  * Create user
  */
 exports.create = function(req, res, next) {
@@ -52,11 +63,16 @@ exports.create = function(req, res, next) {
   user.provider = 'local';
 
   // because we set our user.provider to local our models/user.js validation will always be true
-  req.assert('name', 'You must enter a name').notEmpty();
+  console.log('First name: '+user.firstname);
+  console.log('Last name: '+user.lastname);
+  console.log('Email: '+user.email);
+  console.log('Business name: '+user.businessname);
+  
+  req.assert('firstname', 'You must enter a firstname').notEmpty();
   req.assert('email', 'You must enter a valid email address').isEmail();
-  req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);
-  req.assert('username', 'Username cannot be more than 20 characters').len(1, 20);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);  
+  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);  
+  req.assert('businessname', 'You must enter a business name').notEmpty();
 
   var errors = req.validationErrors();
   if (errors) {
@@ -66,13 +82,14 @@ exports.create = function(req, res, next) {
   // Hard coded for now. Will address this with the user permissions system in v0.3.5
   user.roles = ['authenticated'];
   user.save(function(err) {
+  
     if (err) {
       switch (err.code) {
         case 11000:
         case 11001:
           res.status(400).send([{
-            msg: 'Username already taken',
-            param: 'username'
+            msg: 'Business name already taken',
+            param: 'businessname'
           }]);
           break;
         default:
@@ -94,13 +111,31 @@ exports.create = function(req, res, next) {
 
       return res.status(400);
     }
-    req.logIn(user, function(err) {
+  /*
+   var mailOptions = {
+        to: 'priyank.shukla@jktech.com',
+        from: config.emailFrom
+      };
+      mailOptions = templates.user_registration_email(user, req, mailOptions);
+      sendMail(mailOptions);
+      
+      console.log('User Name: '+user.name);
+      console.log('User Email: '+user.email);
+      console.log('Mail options: '+ mailOptions);
+
+      return res.status(400).send('Your registration is pending with BL, we\'re requesting this organization\'s administrator to approve your registration request');
+      //return res.redirect('/auth.register');
+*/
+
+ /*   req.logIn(user, function(err) {
       if (err) return next(err);
-      return res.redirect('/');
-    });
+      return res.redirect('/');        
+    });*/
     res.status(200);
   });
 };
+
+
 /**
  * Send User
  */
@@ -168,13 +203,13 @@ exports.resetpassword = function(req, res, next) {
 /**
  * Send reset password email
  */
-function sendMail(mailOptions) {
+/*function sendMail(mailOptions) {
   var transport = nodemailer.createTransport(config.mailer);
   transport.sendMail(mailOptions, function(err, response) {
     if (err) return err;
     return response;
   });
-}
+}*/
 
 /**
  * Callback for forgot password link

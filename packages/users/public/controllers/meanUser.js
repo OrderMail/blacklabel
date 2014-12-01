@@ -71,6 +71,7 @@ angular.module('mean.users')
       };
     }
   ])
+  
   .controller('RegisterCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
     function($scope, $rootScope, $http, $location, Global) {
       $scope.user = {};
@@ -98,27 +99,40 @@ angular.module('mean.users')
         $scope.input.tooltipTextConfirmPass = $scope.input.tooltipTextConfirmPass === 'Show password' ? 'Hide password' : 'Show password';
       };
 
+      /*$scope.companies = ['JK Technosoft','Ticketmaster', 'Specsavers'];*/
+     
+      $scope.filterCondition={
+        operator: 'eq'
+      };
+
+      $scope.operators = [
+        {value: 'eq', displayName: 'equals'},
+        {value: 'neq', displayName: 'not equal'}
+      ];
+
       $scope.register = function() {
-        $scope.usernameError = null;
+        $scope.businessnameError = null;
         $scope.registerError = null;
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
           confirmPassword: $scope.user.confirmPassword,
-          username: $scope.user.username,
-          name: $scope.user.name
+          firstname: $scope.user.firstname,
+          lastname: $scope.user.lastname,
+          businessname: $scope.user.businessname
         })
-          .success(function() {
+
+        .success(function() {
             // authentication OK
             $scope.registerError = 0;
             $rootScope.user = $scope.user;
-            $rootScope.$emit('loggedin');
-            $location.url('/');
+           /* $rootScope.$emit('loggedin');
+            $location.url('/');*/
           })
           .error(function(error) {
             // Error: authentication failed
-            if (error === 'Username already taken') {
-              $scope.usernameError = error;
+            if (error === 'Business name already taken') {
+              $scope.businessnameError = error;
             } else if (error === 'Email already taken') {
               $scope.emailError = error;
             } else $scope.registerError = error;

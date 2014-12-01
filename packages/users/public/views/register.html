@@ -8,27 +8,31 @@
         <h2>Sign Up</h2>
 
         <div class="input-wrapper">
-            <input required id="name" type="text" name="name" placeholder="Full Name"
-                   ng-model="user.name">
+            
+            <span>
+            <input required id="firstname" type="text" name="firstname" placeholder="First Name"
+                   ng-model="user.firstname">
 
             <div class="error_message">Please enter a correct info #</div>
-            <span class="pic user"></span>
+            </span>
+            <!-- <span class="pic user"></span> -->
+        <!-- </div>
+
+        <div class="input-wrapper"> -->
+        <span>
+            <input id="lastname" type="text" name="lastname" placeholder="Last Name"
+                   ng-model="user.lastname">
+            
+            </span>
+            <!-- <span class="pic user"></span> -->
         </div>
 
         <div class="input-wrapper">
-            <input required id="email_block" type="email" name="email" placeholder="Email Address"
+            <input required id="email" type="email" name="email" placeholder="Email Address"
                    ng-model="user.email">
 
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic email"></span>
-        </div>
-
-        <div class="input-wrapper">
-            <input required id="username" type="text" name="username" placeholder="Username"
-                   ng-model="user.username">
-
-            <div class="error_message">Please enter a correct info #</div>
-            <span class="pic username"></span>
         </div>
 
         <div class="input-wrapper">
@@ -52,15 +56,24 @@
                   {{input.tooltipTextConfirmPass}}
               </div>
         </span>
+        </div>   
+
+        <div class="input-wrapper">
+            <input required id="businessname" type="text" name="businessname" placeholder="Business Name"
+                   ng-model="user.businessname">
+
+            <div class="error_message">Please enter a correct info #</div>            
         </div>
 
+       <!--  <div>
+        <select ng-model="user.company" placeholder="Company">
+            <option ng-repeat="x in companies">  {{ x }}</option>
+        </select>            
+        </div> -->
+
+
         <div class="button_register">
-            <button type="submit" class="submit_button">Sign up</button>
-            <p>Already have an account?</p>
-            <a ui-sref='auth.login'>Log in</a>
-        </div>
-        <div class="woman_ninja_bottom">
-            <img src="/theme/assets/img/woman_ninja.png" alt="#">
-        </div>
+            <button type="submit" class="submit_button">Sign up</button>          
+        </div>        
     </form>
 </div>

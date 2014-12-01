@@ -55,17 +55,17 @@ background: url("/theme/assets/img/bg.png");
 }
 
 .main-form {
-    width: 748px;
+    width: 550px;
     height: 435px;
     margin-left: -374px;
 }
 
 .main-form.register-form {
-    height: 622px;
+    height: 630px;
 }
 
 .login-form__left {
-    width: 440px;
+    width: 550px;
     height: 100%;
     float: left;
     padding: 34px 0 0 27px;
@@ -89,8 +89,9 @@ background: url("/theme/assets/img/bg.png");
     margin-bottom: 10px;
 }
 
+
 .main-form .input-wrapper input {
-    width: 401px;
+    width: 250px;
     border: 1px solid #d3d3d3;
     border-radius: 5px;
     padding: 18px 0 18px 16px;
@@ -99,6 +100,19 @@ background: url("/theme/assets/img/bg.png");
     font-family: 'proxima_nova_rgregular';
     line-height: 22px;
 }
+
+
+select {
+    width: 250px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    padding: 18px 0 18px 16px;
+    outline: none;
+    font-size: 15px;
+    font-family: 'proxima_nova_rgregular';
+    line-height: 20px;
+}
+
 
 .main-form .input-wrapper input:invalid {
     box-shadow: none;
@@ -114,7 +128,7 @@ background: url("/theme/assets/img/bg.png");
 .pic.email {
     position: absolute;
     background: url("/theme/assets/img/mail_login.png") no-repeat;
-    width: 30px;
+    width: 280px;
     height: 21px;
     top: 18px;
     right: 28px;
@@ -123,7 +137,7 @@ background: url("/theme/assets/img/bg.png");
 .pic.password {
     position: absolute;
     background: url("/theme/assets/img/eye_password.png") no-repeat 50% 50%;
-    width: 40px;
+    width: 542px;
     height: 30px;
     top: 16px;
     right: 22px;
@@ -132,7 +146,7 @@ background: url("/theme/assets/img/bg.png");
 
 .login-form__left .icon_hide_password {
     background: url("/theme/assets/img/eye_password_disabled.png") no-repeat 50% 50%;
-    width: 40px;
+    width: 542px;
     height: 30px;
     top: 16px;
     right: 22px;
@@ -142,7 +156,7 @@ background: url("/theme/assets/img/bg.png");
     display: none;
     position: absolute;
     line-height: 38px;
-    width: 125px;
+    width: 542px;
     height: 34px;
     bottom: 39px;
     right: -40px;
