@@ -61,11 +61,11 @@ background: url("/theme/assets/img/bg.png");
 }
 
 .main-form.register-form {
-    height: 500px;
+    height: 580px;
 }
 
 .login-form__left {
-    width: 550px;
+    width: 535px;
     height: 100%;
     float: left;
     padding: 34px 0 0 27px;
@@ -128,19 +128,19 @@ select {
 .pic.email {
     position: absolute;
     background: url("/theme/assets/img/mail_login.png") no-repeat;
-    width: 280px;
+    width: 35px;
     height: 21px;
     top: 18px;
-    right: 28px;
+    right: 275px;
 }
 
 .pic.password {
     position: absolute;
     background: url("/theme/assets/img/eye_password.png") no-repeat 50% 50%;
-    width: 542px;
+    width: 35px;
     height: 30px;
     top: 16px;
-    right: 22px;
+    right: 275px;
     cursor: pointer;
 }
 

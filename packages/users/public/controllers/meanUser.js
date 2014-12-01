@@ -113,6 +113,7 @@ angular.module('mean.users')
       $scope.register = function() {
         $scope.businessnameError = null;
         $scope.registerError = null;
+        $scope.successSignUpMessage = null;
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
@@ -126,11 +127,13 @@ angular.module('mean.users')
             // authentication OK
             $scope.registerError = 0;
             $rootScope.user = $scope.user;
+            $scope.successSignUpMessage='You have successfully signed up. Please check your email to activate your account.';
            /* $rootScope.$emit('loggedin');
             $location.url('/');*/
           })
           .error(function(error) {
             // Error: authentication failed
+            $scope.successSignUpMessage=0;
             if (error === 'Business name already taken') {
               $scope.businessnameError = error;
             } else if (error === 'Email already taken') {

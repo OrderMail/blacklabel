@@ -107,26 +107,11 @@ exports.create = function(req, res, next) {
 
       return res.status(400);
     }
-  /*
-   var mailOptions = {
-        to: 'priyank.shukla@jktech.com',
-        from: config.emailFrom
-      };
-      mailOptions = templates.user_registration_email(user, req, mailOptions);
-      sendMail(mailOptions);
-      
-      console.log('User Name: '+user.name);
-      console.log('User Email: '+user.email);
-      console.log('Mail options: '+ mailOptions);
 
-      return res.status(400).send('Your registration is pending with BL, we\'re requesting this organization\'s administrator to approve your registration request');
-      //return res.redirect('/auth.register');
-*/
-
- /*   req.logIn(user, function(err) {
+    req.logIn(user, function(err) {
       if (err) return next(err);
       return res.redirect('/');        
-    });*/
+    });    
     res.status(200);
   });
 };
