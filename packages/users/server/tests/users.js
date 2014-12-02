@@ -32,26 +32,7 @@ var user1, user2;
 describe('<Unit Test>', function() {
   describe('Model User:', function() {
 
-    /*before(function(done) {
-      user1 = {
-        name: 'Full name',
-        email: 'test' + getRandomString() + '@test.com',
-        username: getRandomString(),
-        password: 'password',
-        provider: 'local'
-      };
-
-      user2 = {
-        name: 'Full name',
-        email: 'test' + getRandomString() + '@test.com',
-        username: getRandomString(),
-        password: 'password',
-        provider: 'local'
-      };
-
-      done();
-    });*/
-before(function(done) {
+  before(function(done) {
       user1 = {
         firstname: 'Firstname',
         lastname: 'Lastname',
