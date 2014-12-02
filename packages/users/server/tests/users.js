@@ -32,7 +32,7 @@ var user1, user2;
 describe('<Unit Test>', function() {
   describe('Model User:', function() {
 
-    before(function(done) {
+    /*before(function(done) {
       user1 = {
         name: 'Full name',
         email: 'test' + getRandomString() + '@test.com',
@@ -45,6 +45,27 @@ describe('<Unit Test>', function() {
         name: 'Full name',
         email: 'test' + getRandomString() + '@test.com',
         username: getRandomString(),
+        password: 'password',
+        provider: 'local'
+      };
+
+      done();
+    });*/
+before(function(done) {
+      user1 = {
+        firstname: 'Firstname',
+        lastname: 'Lastname',
+        email: 'test' + getRandomString() + '@test.com',
+        businessname: getRandomString(),
+        password: 'password',
+        provider: 'local'
+      };
+
+      user2 = {
+         firstname: 'Firstname',
+        lastname: 'Lastname',
+        email: 'test' + getRandomString() + '@test.com',
+        businessname: getRandomString(),
         password: 'password',
         provider: 'local'
       };
@@ -157,10 +178,10 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should show an error when try to save without name', function(done) {
+      it('should show an error when try to save without firstname', function(done) {
 
         var _user = new User(user1);
-        _user.name = '';
+        _user.firstname = '';
 
         return _user.save(function(err) {
           should.exist(err);
@@ -168,10 +189,10 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should show an error when try to save without username', function(done) {
+      it('should show an error when try to save without businessname', function(done) {
 
         var _user = new User(user1);
-        _user.username = '';
+        _user.businessname = '';
 
         return _user.save(function(err) {
           should.exist(err);
@@ -191,7 +212,8 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should be able to to save without password and provider set to twitter', function(done) {
+  /* PS: disabled the user registration process via twitter account*/
+     /* it('should be able to to save without password and provider set to twitter', function(done) {
 
         var _user = new User(user1);
 
@@ -206,7 +228,7 @@ describe('<Unit Test>', function() {
             done();
           });
         });
-      });
+      });*/
 
     });
 

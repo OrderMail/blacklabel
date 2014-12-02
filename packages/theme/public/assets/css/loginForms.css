@@ -61,11 +61,11 @@ background: url("/theme/assets/img/bg.png");
 }
 
 .main-form.register-form {
-    height: 580px;
+    height: 560px;
 }
 
 .login-form__left {
-    width: 535px;
+    width: 545px;
     height: 100%;
     float: left;
     padding: 34px 0 0 27px;
