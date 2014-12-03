@@ -31,9 +31,9 @@ nb-configuration.xml
 # --------------------
 # Node Files
 # --------------------
-.nodemonignore
-npm-debug.log
-node_modules/
+#.nodemonignore
+#npm-debug.log
+#node_modules/
 
 # --------------------
 # SASS Files
@@ -43,13 +43,13 @@ node_modules/
 # --------------------
 # Bower Files
 # --------------------
-.bower-*/
-bower_components
+#.bower-*/
+#bower_components
 
 # --------------------
 # App Files
 # --------------------
-test/coverage/
-modules/public/
-modules/views/
-/public/build/
+#test/coverage/
+#modules/public/
+#modules/views/
+#/public/build/
