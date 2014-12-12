@@ -241,6 +241,18 @@ select {
     font-family: "open_sans_hebrewregular";
 }
 
+/*.login_submit_button {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: url("/theme/assets/img/button_login.png") no-repeat 50% 50%;
+    width: 75px;
+    height: 30px;
+    font-size: 16px;
+    color: white;
+    font-family: "open_sans_hebrewregular";
+}*/
+
 .submit_button:hover {
     background: url("/theme/assets/img/button_login_hover.png") no-repeat 50% 50%;
 }

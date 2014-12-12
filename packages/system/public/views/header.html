@@ -16,26 +16,31 @@
       <div class="pull-right" data-ng-show="global.authenticated" mean-token-editable></div>
       <div class="pull-right" data-ng-show="global.authenticated" mean-translate></div>
     </div>
-     <ul class="navbar-nav nav" data-ng-hide="global.authenticated">
-      <li><a ui-sref='auth.register'>Sign Up</a>
-      </li>
  <!-- PS: disabling Login for now..  -->
- <!-- 
+    <!-- <ul class="navbar-nav nav" data-ng-hide="global.authenticated">
+      <li><a ui-sref='auth.register'>Sign Up</a></li> 
       <li class="divider-vertical"></li>
-      <li><a ui-sref='auth.login'>Log In</a>
-      </li>
-   -->
+      <li><a ui-sref='auth.login'>Log In</a></li>  
+    </ul>  -->
+
+    <!-- <div ng-include="'/users/views/login.html'"></div> -->
+    
+    <ul class="navbar-nav nav"  ng-show="!global.authenticated">     
+        <li><span ng-include="'/users/views/login.html'"></span></li>
+        <li><a ui-sref='auth.register'>Sign Up</a></li>
     </ul> 
-    <ul class="navbar-nav nav" data-ng-show="global.authenticated">
+ 
+    <ul class="navbar-nav nav" ng-show="global.authenticated">     
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          {{global.user.name}} <b class="caret"></b>
+          {{global.user.firstname}} {{global.user.lastname}} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
           <li><a href="/logout">Log Out</a>
           </li>
         </ul>
-      </li>
-    </ul>
+      </li>           
+    </ul> 
+
   </div>
 </div>

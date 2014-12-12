@@ -54,7 +54,7 @@ angular.module('mean.users')
             $scope.loginError = 0;
             $rootScope.user = response.user;
             $rootScope.$emit('loggedin');
-            if (response.redirect) {
+            /*if (response.redirect) {
               if (window.location.href === response.redirect) {
                 //This is so an admin user will get full admin page
                 window.location.reload();
@@ -63,7 +63,8 @@ angular.module('mean.users')
               }
             } else {
               $location.url('/');
-            }
+            }*/
+            $location.url('/dashboard');
           })
           .error(function() {
             $scope.loginerror = 'Authentication failed.';
