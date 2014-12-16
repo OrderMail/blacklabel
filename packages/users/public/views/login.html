@@ -1,5 +1,6 @@
 <div data-ng-controller="LoginCtrl">
 
+<div class="alert_login alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div>
     <form id="login_form" ng-submit="login()">
         <div class="input-wrapper">
             <span>
@@ -17,7 +18,7 @@
                 </span> -->
             </span>            
             <span>
-                <button type="submit" class="submit_button">Login</button>
+                <button type="submit" class="login_submit_button button_login">Login</button>
                 <!-- <p>Don't have an account?</p>
                 <a ui-sref='auth.register' >Sign up</a> -->
             </span>
