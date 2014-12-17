@@ -6,7 +6,7 @@
             <span>
                 <input required id="email_block" type="email" name="email" placeholder="Email Address" ng-model="user.email">
                 <div class="error_message">Please enter a correct info #</div>
-                <!-- <span class="pic email"></span>         -->
+                <span class="pic login_email email_image"></span>         
             </span>
             <span>
                 <input required id="password_block" name="password" type="{{input.type}}" placeholder="{{input.placeholder}}" ng-model="user.password">
@@ -22,9 +22,9 @@
                 <!-- <p>Don't have an account?</p>
                 <a ui-sref='auth.register' >Sign up</a> -->
             </span>
-            <!-- <div class="forgot_password">
+             <div class="forgot_password">
                 <a ui-sref='forgot-password'>Forgot your password?</a>
-            </div>      -->
+            </div>
         </div>
           
     </form>

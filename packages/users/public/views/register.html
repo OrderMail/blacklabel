@@ -2,7 +2,7 @@
     <div ng-repeat="error in registerError">
         <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
     </div>
-    <div class="alert alert-danger animated fadeIn" ng-show="usernameError">{{usernameError}}</div>
+    <div class="alert alert-danger animated fadeIn" ng-show="businessnameError">{{businessnameError}}</div>
     <div class="alert alert-danger animated fadeIn" ng-show="emailError">{{emailError}}</div>
 
     <div class="alert alert-danger animated fadeIn" ng-show="successSignUpMessage">{{successSignUpMessage}}</div>
@@ -35,7 +35,7 @@
                    ng-model="user.email">
 
             <div class="error_message">Please enter a correct info #</div>
-            <span class="pic email"></span>
+            <span class="pic email email_image"></span>
         </div>
 
         <div class="input-wrapper">
