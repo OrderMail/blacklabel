@@ -275,7 +275,7 @@ exports.forgotpassword = function(req, res, next) {
         status: 'success'
       };
       if (err) {
-        response.message = 'User does not exist';
+        response.message = 'Email does not exist';
         response.status = 'danger';
       }
       res.json(response);
