@@ -45,6 +45,7 @@ angular.module('mean.users')
 
       // Register the login() function
       $scope.login = function() {
+        $scope.loginerror = null;
         $http.post('/login', {
           email: $scope.user.email,
           password: $scope.user.password
@@ -66,8 +67,9 @@ angular.module('mean.users')
             }*/
             $location.url('/dashboard');
           })
-          .error(function() {
+          .error(function() {             
             $scope.loginerror = 'Authentication failed.';
+            $location.url('/');
           });
       };
     }
@@ -78,6 +80,9 @@ angular.module('mean.users')
       $scope.user = {};
       $scope.global = Global;
       $scope.global.registerForm = true;
+      $scope.businessnameError = null;
+      $scope.registerError = null;
+      $scope.successSignUpMessage = null;
       $scope.input = {
         type: 'password',
         placeholder: 'Password',
@@ -111,10 +116,7 @@ angular.module('mean.users')
         {value: 'neq', displayName: 'not equal'}
       ];
 
-      $scope.register = function() {
-        $scope.businessnameError = null;
-        $scope.registerError = null;
-        $scope.successSignUpMessage = null;
+      $scope.register = function() {        
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
