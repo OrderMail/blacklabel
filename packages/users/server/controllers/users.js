@@ -11,6 +11,18 @@ var mongoose = require('mongoose'),
   nodemailer = require('nodemailer'),
   templates = require('../template');
 
+
+// Naveen code for email, 16/12/2014
+  var nodemailer = require('nodemailer');
+  var smtpTransport = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+      user: 'er.naveen1601@gmail.com',
+      pass: 'ankur842113'
+      },
+
+});
+
 /**
  * Auth callback
  */
@@ -85,7 +97,7 @@ exports.create = function(req, res, next) {
         case 11001:
           res.status(400).send([{
             msg: 'Business name already taken',
-            param: 'businessname'
+            param: 'businessname'       
           }]);
           break;
         default:
@@ -104,14 +116,38 @@ exports.create = function(req, res, next) {
             res.status(400).send(modelErrors);
           }
       }
-
+      console.log('checkpoint 1');
       return res.status(400);
     }
-
+    console.log('checkpoint 2');
     req.logIn(user, function(err) {
       if (err) return next(err);
       return res.redirect('/');        
-    });    
+    });
+
+                // Naveen code for email, 16/12/2014
+                console.log('checkpoint 3');
+                var mail_text = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
+
+                var mailOptions={
+                from : 'er.naveen1601@gmail.com',
+                to : user.email,
+                subject : 'Omail Verification Mail',
+                generateTextFromHTML: true,
+                text : mail_text
+                };
+                console.log(mailOptions);
+                smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                console.log('mail not sent : '+error);
+                res.end('error');
+                }else{
+                console.log('Message sent: ' + response.message);
+                res.end('sent');
+                }
+                });
+
+
     res.status(200);
   });
 };
