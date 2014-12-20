@@ -17,8 +17,8 @@ var mongoose = require('mongoose'),
   var smtpTransport = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-      user: 'er.naveen1601@gmail.com',
-      pass: 'ankur842113'
+      user: 'omailblacklabel@gmail.com',
+      pass: 'Support123'
       },
 
 });
