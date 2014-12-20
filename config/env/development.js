@@ -36,10 +36,10 @@ module.exports = {
   },
   emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
   mailer: {
-    service: 'SERVICE_PROVIDER', // Gmail, SMTP
+    service: 'Gmail', // Gmail, SMTP
     auth: {
-      user: 'EMAIL_ID',
-      pass: 'PASSWORD'
+      user: 'omailblacklabel@gmail.com',
+      pass: 'Support123'
     }
   }
 };

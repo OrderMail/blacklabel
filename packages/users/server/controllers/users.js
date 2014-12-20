@@ -14,14 +14,7 @@ var mongoose = require('mongoose'),
 
 // Naveen code for email, 16/12/2014
   var nodemailer = require('nodemailer');
-  var smtpTransport = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-      user: 'omailblacklabel@gmail.com',
-      pass: 'Support123'
-      },
-
-});
+  var smtpTransport = nodemailer.createTransport(config.mailer);
 
 /**
  * Auth callback
@@ -128,13 +121,15 @@ exports.create = function(req, res, next) {
                 // Naveen code for email, 16/12/2014
                 console.log('checkpoint 3');
                 var mail_text = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
+                 var mail_html = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
 
                 var mailOptions={
-                from : 'er.naveen1601@gmail.com',
+                from : config.mailer.emailFrom,
                 to : user.email,
-                subject : 'Omail Verification Mail',
-                generateTextFromHTML: true,
-                text : mail_text
+                subject : 'Omail Activation Mail',
+                generateTextFromHTML: false,
+                text : mail_text,
+                html: mail_html
                 };
                 console.log(mailOptions);
                 smtpTransport.sendMail(mailOptions, function(error, response){
