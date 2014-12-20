@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  forgot_password_email: function(user, req, token, mailOptions) {
+  /*forgot_password_email: function(user, req, token, mailOptions) {
     mailOptions.html = [
       'Hi ' + user.name + ',',
       'We have received a request to reset the password for your account.',
@@ -12,5 +12,13 @@ module.exports = {
     ].join('\n\n');
     mailOptions.subject = 'Resetting the password';
     return mailOptions;
+  }*/
+  forgot_password_email: function(user,mailOptions) {
+      mailOptions.html = [
+        'Hi ' + user.name + ',<br>We have received a request to reset the password for your account.\n naveen'
+      ].join('\n\n');
+      mailOptions.subject = 'Omail Password Reset Request';
+      return mailOptions;
   }
+
 };
