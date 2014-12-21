@@ -147,16 +147,28 @@ exports.create = function(req, res, next) {
   });
 };
 
-exports.activate = function(req,res, emailaddress) {
-  User.findOne ( {email: emailaddress} )
-  .exec (function(err,user){ 
-    if(!user) return  (new Error ('this user was not found'));
-    if(user.activated) return (new Error ('This user is already activated'));
+exports.activate = function(req,res) {
+  var emailaddress=req.params.r_emailaddress;
+  console.log('----------emailaddress is: '+emailaddress);
+  User.findOne ( {email: emailaddress}, 
+    function(err,user){ 
+    console.log('User is:'+user);
+    if(!user||err)     
+    res.send('There was an error, User has not been activated');
+    else if (user.isactive==true)
+      res.send ('User was already active, cannot re-activate this user');
+  else 
+    { user.isactive=true;
+      user.save();
+      res.send ('User has been activated');
+    }
+
+    });
+  
+    /*if(user.activated) return (new Error ('This user is already activated'));
     user.activated = true;
-
-  });
-
-};
+*/
+  };
 
 /**
  * Send User

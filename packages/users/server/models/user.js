@@ -43,6 +43,11 @@ var UserSchema = new Schema({
     type: String,
     required: false
   },
+  isactive: {
+    type:Boolean,
+    default: false
+  },
+
   email: {
     type: String,
     required: true,
