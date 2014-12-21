@@ -147,6 +147,16 @@ exports.create = function(req, res, next) {
   });
 };
 
+exports.activate = function(req,res, emailaddress) {
+  User.findOne ( {email: emailaddress} )
+  .exec (function(err,user){ 
+    if(!user) return  (new Error ('this user was not found'));
+    if(user.activated) return (new Error ('This user is already activated'));
+    user.activated = true;
+
+  });
+
+};
 
 /**
  * Send User
