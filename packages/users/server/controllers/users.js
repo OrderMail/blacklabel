@@ -135,24 +135,11 @@ exports.create = function(req, res, next) {
 
                 // Naveen code for email, 16/12/2014
                 console.log('checkpoint 3');
-                var mail_text = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
-
                 var mailOptions={
-                to : user.email,
-                subject : 'Omail Verification Mail',
-                generateTextFromHTML: true,
-                text : mail_text
+                to : user.email
                 };
-                console.log(mailOptions);
-                smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                console.log('mail not sent : '+error);
-                res.end('error');
-                }else{
-                console.log('Message sent: ' + response.message);
-                res.end('sent');
-                }
-                });
+                mailOptions = templates.signup_email(user,mailOptions);
+                sendMail(req, res, mailOptions);
 
 
     res.status(200);
