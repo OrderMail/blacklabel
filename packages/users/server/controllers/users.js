@@ -87,7 +87,9 @@ exports.create = function(req, res, next) {
   if (errors) {
     return res.status(400).send(errors);
   }
-
+  var randomNumber= crypto.randomBytes(8).toString('hex');
+  console.log('random string is '+randomNumber);
+  user.activationtoken = randomNumber;
   // Hard coded for now. Will address this with the user permissions system in v0.3.5
   user.roles = ['authenticated'];
   user.save(function(err) {
@@ -125,18 +127,20 @@ exports.create = function(req, res, next) {
       if (err) return next(err);
       return res.redirect('/');        
     });
+    
+    
 
                 // Naveen code for email, 16/12/2014
+          //var createActivationLink = function (user) {
                 console.log('checkpoint 3');
-<<<<<<< HEAD
-=======
-
->>>>>>> 196d33ec52d2c05a43a21f65d69a2d51fed901d6
                 var mailOptions={
                 to : user.email
                 };
                 mailOptions = templates.signup_email(user,mailOptions);
                 sendMail(req, res, mailOptions);
+           //   }
+
+                
 
 
     res.status(200);
@@ -144,14 +148,14 @@ exports.create = function(req, res, next) {
 };
 
 exports.activate = function(req,res) {
-  var emailaddress=req.params.r_emailaddress;
-  console.log('----------emailaddress is: '+emailaddress);
-  User.findOne ( {email: emailaddress}, 
+  var token=req.params.activationtoken;
+  console.log('----------ActivationToken is: '+token);
+  User.findOne ( {activationtoken: token}, 
     function(err,user){ 
     console.log('User is:'+user);
     if(!user||err)     
     res.send('There was an error, User has not been activated');
-    else if (user.isactive==true)
+    else if (user.isactive === true)
       res.send ('User was already active, cannot re-activate this user');
   else 
     { user.isactive=true;

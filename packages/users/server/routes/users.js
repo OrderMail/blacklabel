@@ -23,7 +23,7 @@ module.exports = function(MeanUser, app, auth, database, passport) {
       res.send(users.activate? 'activation done!': '0')     ; 
     });
 */
-  app.route('/activate/:r_emailaddress')
+  app.route('/activate/:activationtoken')
     .get(function(req,res){
             users.activate(req,res);
 

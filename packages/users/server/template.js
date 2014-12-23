@@ -23,7 +23,7 @@ module.exports = {
 
   signup_email: function(user,mailOptions) {
       mailOptions.html = [
-        'Hi ' + user.firstname + ',<br><br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br><br>Simplified Communications..!!<br>Team Omail'
+        'Hi ' + user.firstname + ',<br><br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br><a href = "http://localhost:3000/activate/'+user.activationtoken+'">Activate Account</a><br><br>Simplified Communications..!!<br>Team Omail'
       ].join('\n\n');
       mailOptions.subject = 'Omail Activation Mail';
       return mailOptions;

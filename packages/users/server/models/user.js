@@ -48,6 +48,11 @@ var UserSchema = new Schema({
     default: false
   },
 
+  activationtoken : {
+    type: String,
+    unique: true,
+    required: true
+  },
   email: {
     type: String,
     required: true,
