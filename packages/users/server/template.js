@@ -25,7 +25,7 @@ module.exports = {
       mailOptions.html = [
         'Hi ' + user.firstname + ',<br><br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br><br>Simplified Communications..!!<br>Team Omail'
       ].join('\n\n');
-      mailOptions.subject = 'Omail Verification Mail';
+      mailOptions.subject = 'Omail Activation Mail';
       return mailOptions;
   }
 };

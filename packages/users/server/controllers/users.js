@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
   User = mongoose.model('User'),
   async = require('async'),
-  //config = require('meanio').loadConfig(),
+  config = require('meanio').loadConfig(),
   crypto = require('crypto'),
   nodemailer = require('nodemailer'),
   templates = require('../template');
@@ -14,11 +14,7 @@ var mongoose = require('mongoose'),
 
 // Naveen code for email, 16/12/2014
   var nodemailer = require('nodemailer');
-
   var smtpTransport = nodemailer.createTransport(config.mailer);
-
-});
-
 
 
 /**
@@ -132,6 +128,10 @@ exports.create = function(req, res, next) {
 
                 // Naveen code for email, 16/12/2014
                 console.log('checkpoint 3');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 196d33ec52d2c05a43a21f65d69a2d51fed901d6
                 var mailOptions={
                 to : user.email
                 };
