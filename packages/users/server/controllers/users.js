@@ -16,6 +16,23 @@ var mongoose = require('mongoose'),
   var nodemailer = require('nodemailer');
   var smtpTransport = nodemailer.createTransport(config.mailer);
 
+
+/**
+ * Sending email
+ */
+function sendMail(req, res, mailOptions) {
+  smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                console.log('mail not sent : '+error);
+                res.end('error');
+                }else{
+                console.log('Message sent: ' + response.message);
+                res.end('sent');
+                }
+                });
+}
+
+
 /**
  * Auth callback
  */
@@ -48,16 +65,7 @@ exports.session = function(req, res) {
   res.redirect('/');
 };
 
-/**
- * Send reset password email
- */
-function sendMail(mailOptions) {
-  var transport = nodemailer.createTransport(config.mailer);
-  transport.sendMail(mailOptions, function(err, response) {
-    if (err) return err;
-    return response;
-  });
-}
+
 
 /**
  * Create user
@@ -79,7 +87,9 @@ exports.create = function(req, res, next) {
   if (errors) {
     return res.status(400).send(errors);
   }
-
+  var randomNumber= crypto.randomBytes(8).toString('hex');
+  console.log('random string is '+randomNumber);
+  user.activationtoken = randomNumber;
   // Hard coded for now. Will address this with the user permissions system in v0.3.5
   user.roles = ['authenticated'];
   user.save(function(err) {
@@ -117,36 +127,48 @@ exports.create = function(req, res, next) {
       if (err) return next(err);
       return res.redirect('/');        
     });
+    
+    
 
                 // Naveen code for email, 16/12/2014
+          //var createActivationLink = function (user) {
                 console.log('checkpoint 3');
-                var mail_text = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
-                 var mail_html = 'Hi '+ user.firstname +',<br>Thank you for signing up for a Omail Trial Account. You are just one step away from using your account.<br>Simplified Communications..!!<br>Team Omail';
-
                 var mailOptions={
-                from : config.mailer.emailFrom,
-                to : user.email,
-                subject : 'Omail Activation Mail',
-                generateTextFromHTML: false,
-                text : mail_text,
-                html: mail_html
+                to : user.email
                 };
-                console.log(mailOptions);
-                smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                console.log('mail not sent : '+error);
-                res.end('error');
-                }else{
-                console.log('Message sent: ' + response.message);
-                res.end('sent');
-                }
-                });
+                mailOptions = templates.signup_email(user,mailOptions);
+                sendMail(req, res, mailOptions);
+           //   }
+
+                
 
 
     res.status(200);
   });
 };
 
+exports.activate = function(req,res) {
+  var token=req.params.activationtoken;
+  console.log('----------ActivationToken is: '+token);
+  User.findOne ( {activationtoken: token}, 
+    function(err,user){ 
+    console.log('User is:'+user);
+    if(!user||err)     
+    res.send('There was an error, User has not been activated');
+    else if (user.isactive === true)
+      res.send ('User was already active, cannot re-activate this user');
+  else 
+    { user.isactive=true;
+      user.save();
+      res.send ('User has been activated');
+    }
+
+    });
+  
+    /*if(user.activated) return (new Error ('This user is already activated'));
+    user.activated = true;
+*/
+  };
 
 /**
  * Send User
@@ -212,16 +234,6 @@ exports.resetpassword = function(req, res, next) {
   });
 };
 
-/**
- * Send reset password email
- */
-/*function sendMail(mailOptions) {
-  var transport = nodemailer.createTransport(config.mailer);
-  transport.sendMail(mailOptions, function(err, response) {
-    if (err) return err;
-    return response;
-  });
-}*/
 
 /**
  * Callback for forgot password link
@@ -232,6 +244,7 @@ exports.forgotpassword = function(req, res, next) {
       function(done) {
         crypto.randomBytes(20, function(err, buf) {
           var token = buf.toString('hex');
+          console.log('check 1');
           done(err, token);
         });
       },
@@ -247,7 +260,18 @@ exports.forgotpassword = function(req, res, next) {
           done(err, user, token);
         });
       },
-      function(user, token, done) {
+
+      function(token, user, done) {
+        var mailOptions = {
+          to: req.body.text
+        };
+        mailOptions = templates.forgot_password_email(user, mailOptions);
+        sendMail(req, res, mailOptions);
+        done(null, true);         // Why it is here ?
+        
+      }
+
+      /*function(user, token, done) {
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         user.save(function(err) {
@@ -262,7 +286,7 @@ exports.forgotpassword = function(req, res, next) {
         mailOptions = templates.forgot_password_email(user, req, token, mailOptions);
         sendMail(mailOptions);
         done(null, true);
-      }
+      }*/
     ],
     function(err, status) {
       var response = {

@@ -18,6 +18,22 @@ module.exports = function(MeanUser, app, auth, database, passport) {
   app.route('/forgot-password')
     .post(users.forgotpassword);
 
+  /*app.route('/activate/:r_emailaddress')
+    .get(function(req,res){
+      res.send(users.activate? 'activation done!': '0')     ; 
+    });
+*/
+  app.route('/activate/:activationtoken')
+    .get(function(req,res){
+            users.activate(req,res);
+
+    });
+  
+
+
+
+
+
   app.route('/reset/:token')
     .post(users.resetpassword);
 

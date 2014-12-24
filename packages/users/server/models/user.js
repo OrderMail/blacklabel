@@ -43,6 +43,16 @@ var UserSchema = new Schema({
     type: String,
     required: false
   },
+  isactive: {
+    type:Boolean,
+    default: false
+  },
+
+  activationtoken : {
+    type: String,
+    unique: true,
+    required: true
+  },
   email: {
     type: String,
     required: true,
