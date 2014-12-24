@@ -42,7 +42,7 @@ cd ~/node-latest-install
 curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
 ./configure --prefix=~/local
 make install # ok, fine, this step probably takes more than 30 seconds...
-curl https://www.npmjs.org/install.sh | sh
+curl -k -L https://www.npmjs.org/install.sh | bash
 #For more details- https://gist.github.com/isaacs/579814
 
 #Install Grunt
@@ -50,7 +50,7 @@ npm install -g grunt-cli
 
 #Set up project
 cd ~
-Git clone https://github.com/OrderMail/blacklabel.git
+git clone https://github.com/OrderMail/blacklabel.git
 cd blacklabel
 npm install
 bower install
