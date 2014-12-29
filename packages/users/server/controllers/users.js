@@ -199,39 +199,47 @@ exports.user = function(req, res, next, id) {
 
 exports.resetpassword = function(req, res, next) {
   User.findOne({
-    resetPasswordToken: req.params.token,
-    resetPasswordExpires: {
-      $gt: Date.now()
-    }
+    email: req.params.token,
+    resetPasswordRequested : true
   }, function(err, user) {
-    if (err) {
-      return res.status(400).json({
-        msg: err
-      });
-    }
-    if (!user) {
-      return res.status(400).json({
-        msg: 'Token invalid or expired'
-      });
-    }
-    req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);
-    req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-    var errors = req.validationErrors();
-    if (errors) {
-      return res.status(400).send(errors);
-    }
-    user.password = req.body.password;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpires = undefined;
-    user.save(function(err) {
-      req.logIn(user, function(err) {
-        if (err) return next(err);
-        return res.send({
-          user: user,
-        });
-      });
-    });
-  });
+              var response = {
+                  message: 'Invalid Request',
+                  status: 'danger'
+                };
+
+              if (err) {
+                console.log('error resetpassword 1');
+                return res.json(response);
+              }
+              if (!user) {
+                console.log('error resetpassword 2');
+                return res.json(response);
+              }
+              req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);
+              req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+              var errors = req.validationErrors();
+              if (errors) {
+                console.log(errors);
+                response.status = 'danger';
+                response.message = 'Password must be between 8-20 characters long';
+
+                return res.json(response);
+              }
+              user.password = req.body.password;
+              user.resetPasswordToken = undefined;
+              user.resetPasswordExpires = undefined;
+              user.resetPasswordRequested = false;
+              user.save(function(err) {
+                  if (err)
+                  { 
+                    response.message = 'Password reset failed';
+                    return res.json(response);
+                  }
+                  response.status = 'success';
+                  response.message = 'Password successfully changed';
+                  return res.json(response);
+              });
+            });
 };
 
 
@@ -249,15 +257,17 @@ exports.forgotpassword = function(req, res, next) {
         });
       },
       function(token, done) {
-        User.findOne({
+        User.findOne( {
           $or: [{
             email: req.body.text
           }, {
             username: req.body.text
           }]
-        }, function(err, user) {
-          if (err || !user) return done(true);
-          done(err, user, token);
+        }, function(err, User) {
+          if (err || !User) return done(true);
+          User.resetPasswordRequested = true;
+          User.save();
+          done(err, User, token);
         });
       },
 
@@ -265,28 +275,18 @@ exports.forgotpassword = function(req, res, next) {
         var mailOptions = {
           to: req.body.text
         };
+
+        
+
         mailOptions = templates.forgot_password_email(user, mailOptions);
-        sendMail(req, res, mailOptions);
+        sendMail(req, res, mailOptions); for temp, no net
         done(null, true);         // Why it is here ?
+
+
+
         
       }
 
-      /*function(user, token, done) {
-        user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-        user.save(function(err) {
-          done(err, token, user);
-        });
-      },
-      function(token, user, done) {
-        var mailOptions = {
-          to: user.email,
-          from: config.emailFrom
-        };
-        mailOptions = templates.forgot_password_email(user, req, token, mailOptions);
-        sendMail(mailOptions);
-        done(null, true);
-      }*/
     ],
     function(err, status) {
       var response = {

@@ -175,7 +175,10 @@ angular.module('mean.users')
           confirmPassword: $scope.user.confirmPassword
         })
           .success(function(response) {
-            $rootScope.user = response.user;
+            console.log('reset pass success '+response.message);
+            $scope.response = response;
+            
+            /*$rootScope.user = response.user;
             $rootScope.$emit('loggedin');
             if (response.redirect) {
               if (window.location.href === response.redirect) {
@@ -186,13 +189,18 @@ angular.module('mean.users')
               }
             } else {
               $location.url('/');
-            }
+            }*/
           })
           .error(function(error) {
-            if (error.msg === 'Token invalid or expired')
-              $scope.resetpassworderror = 'Could not update password as token is invalid or may have expired';
+            console.log('reset pass sFails'+error.message);
+            $scope.response = error;
+            
+            /*if (error.msg === '2')
+              $scope.response = response;
+            else if (error.msg === '1')
+              $scope.validationError = 'User Not Found';
             else
-              $scope.validationError = error;
+              $scope.resetpassworderror = 'General Error';*/
           });
       };
     }
