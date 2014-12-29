@@ -15,7 +15,7 @@ module.exports = {
   }*/
   forgot_password_email: function(user,mailOptions) {
       mailOptions.html = [
-        'Hi,<br><br>We have received a request to reset the password for your account.<br><br>Simplified Communications..!!<br>Team Omail'
+        'Hi,<br><br>We have received a request to reset the password for your account.<br><a href = "http://localhost:3000/#!/reset/'+user.email+'">Reset Password</a><br><br>Simplified Communications..!!<br>Team Omail'
       ].join('\n\n');
       mailOptions.subject = 'Omail Password Reset Request';
       return mailOptions;

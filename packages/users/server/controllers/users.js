@@ -271,20 +271,18 @@ exports.forgotpassword = function(req, res, next) {
         });
       },
 
-      function(token, user, done) {
+      function(user, token, done) {
         var mailOptions = {
           to: req.body.text
         };
 
-        
-
+        //user.email = req.body.text;
+        console.log('user mail is '+user);
+        console.log('done  is '+token);
         mailOptions = templates.forgot_password_email(user, mailOptions);
         sendMail(req, res, mailOptions);
         done(null, true);         // Why it is here ?
 
-
-
-        
       }
 
     ],
