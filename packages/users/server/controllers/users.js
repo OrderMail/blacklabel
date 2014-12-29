@@ -279,7 +279,7 @@ exports.forgotpassword = function(req, res, next) {
         
 
         mailOptions = templates.forgot_password_email(user, mailOptions);
-        sendMail(req, res, mailOptions); for temp, no net
+        sendMail(req, res, mailOptions);
         done(null, true);         // Why it is here ?
 
 
