@@ -164,6 +164,26 @@ angular.module('mean.users')
       };
     }
   ])
+
+  /*Controller to handle new business registration #7*/
+  .controller('BusinessRegistrationCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
+    function($scope, $rootScope, $http, $location, Global) {
+      $scope.user = {};
+      $scope.global = Global;
+      $scope.global.registerForm = false;
+      $scope.businessregistration = function() {
+       $http.post('/businessregistration', {
+          text: $scope.user.email
+        })
+          .success(function(response) {
+            $scope.response = response;
+          })
+          .error(function(error) {
+            $scope.response = error;
+          });
+      };
+    }
+  ])
   .controller('ResetPasswordCtrl', ['$scope', '$rootScope', '$http', '$location', '$stateParams', 'Global',
     function($scope, $rootScope, $http, $location, $stateParams, Global) {
       $scope.user = {};
