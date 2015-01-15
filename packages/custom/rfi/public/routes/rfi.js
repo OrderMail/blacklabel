@@ -6,5 +6,12 @@ angular.module('mean.rfi').config(['$stateProvider',
       url: '/rfi/example',
       templateUrl: 'rfi/views/index.html'
     });
+
+    $stateProvider
+	    .state('newrfi', {
+	        url: '/rfi/newrfi',
+	        templateUrl: 'rfi/views/newrfi.html',        
+	      });
+
   }
-]);
+]);																																																																																																																																																																																																																																																																																																																																																																																																																																																														

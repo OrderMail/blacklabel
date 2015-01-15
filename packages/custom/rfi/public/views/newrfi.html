@@ -1,0 +1,26 @@
+<div class="" data-ng-controller="RfiController" data-ng-init="createrfi">
+	<h3> Naveen Test Page </h3>
+	<form id="register_form" ng-submit="register()" >
+        <h2>Create New RFI</h2>
+
+        <div class="input-group" >
+        	<span class="input-group-addon">To</span>
+            <input required id="to" class="form-control" type="text" name="to" placeholder="Recipient's email address" ng-model="user.firstname" aria-label="to email">
+            <span class="input-group-addon" >@example.com</span>
+        </div>
+		<br/>
+        <div class="input-group" >
+        	<span class="input-group-addon">Subject</span>
+            <input required id="subject" class="form-control" type="text" name="subject" placeholder="Request For Information" ng-model="user.firstname" >
+        </div>
+        <br/>
+		<div class="input-group" >
+            <textarea required id="body" class="form-control" rows="1" name="body" placeholder="Main Content" ng-model="user.firstname">
+        </div>
+        <br/>
+        <div class="button_register">
+            <button type="submit" class="submit_button button_login">Sign up</button>          
+        </div>          
+    </form>
+
+</div>
