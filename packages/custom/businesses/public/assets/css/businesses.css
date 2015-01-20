@@ -1,0 +1,90 @@
+.businesses-example h1 {
+  background-color: purple
+}
+
+html {
+    height: 100%;
+}
+
+.form {
+    background: #ffffff;
+    box-shadow: 0 1px 3px 1px #003644;
+    margin-top: 35px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.businessregistration_form {
+    width: 80%;
+    height: 655px;
+}
+
+.main-form.businessregistration_form {
+    height: 750px;   
+}
+
+.main-form .input-wrapper input {
+    width: 250px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    padding: 18px 0 18px 4px;
+    outline: none;
+    font-size: 15px;
+    font-family: 'proxima_nova_rgregular';
+    line-height: 22px;
+}
+
+
+select {
+    width: 250px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    padding: 18px 0 18px 16px;
+    outline: none;
+    font-size: 15px;
+    font-family: 'proxima_nova_rgregular';
+    line-height: 20px;
+}
+
+.pic.email {
+    position: absolute;    
+    width: 35px;
+    height: 21px;
+    top: 18px;    
+    left: 215px;
+}
+
+.error_message {
+    display: none;
+    position: absolute;
+    line-height: 29px;
+    height: auto;
+    bottom: 67px;
+    left: 0;
+    background: blue;
+    text-align: center;
+    border-radius: 3px;
+    min-width: 30px;
+    max-width: 150px;
+}
+
+
+.button_login {
+    background: url("/theme/assets/img/button_login.png") no-repeat 50% 50%;
+}
+
+.submit_button {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    /*background: url("/theme/assets/img/button_login.png") no-repeat 50% 50%;*/
+    width: 107px;
+    height: 47px;
+    font-size: 21px;
+    color: white;
+    font-family: "open_sans_hebrewregular";
+}
+
+.button_register {
+    margin-top: 25px;
+}
