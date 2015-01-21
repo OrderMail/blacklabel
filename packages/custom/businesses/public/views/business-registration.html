@@ -6,88 +6,72 @@
     <div class="alert alert-danger animated fadeIn" ng-show="websiteError">{{websiteError}}</div>
     <div class="alert alert-danger animated fadeIn" ng-show="successRegistrationMessage">{{successRegistrationMessage}}</div>
     
-    <form id="businessregistration_form"  ng-submit="businessregistration()">
+    <form id="businessregistration_form"  class="businessregistration_form" ng-submit="businessregistration()">
         <h2>Business Registration</h2>
 
-        <div class="input-wrapper">
-          <span>
-            <label type="text" name="businessname">Business Name</label>
-          </span>            
-          <span>
-            <input required id="businessname" type="text" name="businessname" placeholder="Business Name"
-                   ng-model="user.businessname">
-            <div class="error_message">Please enter a correct info #</div>
-          </span>    
-        </div>
+    <div>
+      <div>
+      <div class="left">
+        <div><label type="text" name="businessname">Business Name</label></div>
+        <div><label type="text" name="Address">Address</label></div>
+        <div></div>
+        <div></div>
+        <div> <label type="text" name="natureofbusiness">Nature Of Business</label></div>
+        <div><label type="text" name="website">Website Address</label></div>
 
-         <div class="input-wrapper">
-          <span>
-            <label type="text" name="Address">Address</label>
-          </span>            
-          <span>
-            <input required id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" 
-            ng-model="user.addressline1">
-            <div class="error_message">Please enter a correct info #</div>          
-          </span>    
+      </div>
+      <div class="right">
+        <div>
+          <input required class="long_input" id="businessname" type="text" name="businessname" placeholder="Business Name"
+             ng-model="user.businessname">
+          <div class="error_message">Please enter a correct info #</div>
         </div>
-
-        <div class="input-wrapper">                   
-          <span>
-            <input id="addressline2" type="text" name="addressline2" placeholder="Address Line 2" 
+        <div>
+          <input required class="long_input" id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" 
+          ng-model="user.addressline1">
+          <div class="error_message">Please enter a correct info #</div>          
+        </div>
+        <div>
+          <input class="long_input" id="addressline2" type="text" name="addressline2" placeholder="Address Line 2" 
             ng-model="user.addressline2">                       
-          </span>    
         </div>
-        
-        <div class="input-wrapper">                   
+        <div>
           <span>
-            <input required id="city" type="text" name="city" placeholder="City" 
-            ng-model="user.city"> 
-            <div class="error_message">Please enter a correct info #</div>           
-          </span>                        
+            <input required class="short_input" id="city" type="text" name="city" placeholder="City" ng-model="user.city"> 
+            <div class="error_message">Please enter a correct info #</div> 
+          </span>
           <span>
-            <input required id="pincode" type="text" name="pincode" placeholder="Pincode" 
-            ng-model="user.pincode">  
-            <div class="error_message">Please enter a correct info #</div>          
-          </span>    
+            <input required class="short_input" id="pincode" type="text" name="pincode" placeholder="Pincode" 
+              ng-model="user.pincode">  
+            <div class="error_message">Please enter a correct info #</div> 
+          </span>
         </div>
-
-       <div class="input-wrapper">                   
-          <span>
-            <input required id="state" type="text" name="state" placeholder="State" 
-            ng-model="user.state">   
-            <div class="error_message">Please enter a correct info #</div>         
-          </span>                        
-          <span>
-            <input required id="country" type="text" name="country" placeholder="Country" 
-            ng-model="user.country">     
-            <div class="error_message">Please enter a correct info #</div>       
-          </span>    
+        <div>
+           <span>
+              <input required class="short_input" id="state" type="text" name="state" placeholder="State"   ng-model="user.state">  
+              <div class="error_message">Please enter a correct info #</div>         
+           </span>                        
+           <span>
+              <input required class="short_input" id="country" type="text" name="country" placeholder="Country" 
+                  ng-model="user.country">     
+              <div class="error_message">Please enter a correct info #</div>       
+           </span>    
         </div>
-
-        <div class="input-wrapper">                   
-         <span>
-            <label type="text" name="natureofbusiness">Nature Of Business</label>
-          </span> 
-          <span>
-            <input required id="category" type="text" name="category" placeholder="Category" 
-            ng-model="user.category">      
-            <div class="error_message">Please enter a correct info #</div>      
-          </span>    
+        <div>
+          <input required class="long_input"  id="category" type="text" name="category" 
+            placeholder="Category" ng-model="user.category">      
+          <div class="error_message">Please enter a correct info #</div>      
         </div>
-
-        <div class="input-wrapper">                   
-         <span>
-            <label type="text" name="website">Website Address</label>
-          </span> 
-          <span>
-            <input required id="website" type="text" name="website" placeholder="Website" 
-            ng-model="user.website">       
-            <div class="error_message">Please enter a correct info #</div>     
-          </span>    
+        <div>
+          <input required class="long_input" id="website" type="text" name="website" placeholder="Website"
+              ng-model="user.website">       
+          <div class="error_message">Please enter a correct info #</div> 
         </div>
-
-        <div class="button_register">
-            <button type="submit" class="submit_button button_login">Register</button>          
-        </div>        
-    </form>
+      </div>   
+      </div>   
+      <div style="clear: both;">
+          <button type="submit" class="submit_button">Register</button>          
+      </div>       
+    </div> 
+  </form>
 </div>
