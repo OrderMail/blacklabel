@@ -1,26 +1,25 @@
 'use strict';
 
-// The Package is past automatically as first parameter
-module.exports = function(Rfi, app, auth, database) {
+var rfi = require('../controllers/rfi');
 
-  app.get('/rfi/example/anyone', function(req, res, next) {
-    res.send('Anyone can access this');
-  });
+// Article authorization helpers
+/*var hasAuthorization = function(req, res, next) {
+  if (!req.user.isAdmin && req.rfi.user.id !== req.user.id) {
+    return res.send(401, 'User is not authorized');
+  }
+  next();
+};*/
 
-  app.get('/rfi/example/auth', auth.requiresLogin, function(req, res, next) {
-    res.send('Only authenticated users can access this');
-  });
+module.exports = function(Articles, app, auth) {
 
-  app.get('/rfi/example/admin', auth.requiresAdmin, function(req, res, next) {
-    res.send('Only users with Admin role can access this');
-  });
+  app.route('/rfi')
+    /*.get(articles.all)*/
+    .post(rfi.create);
+  /*app.route('/articles/:articleId')
+    .get(articles.show)
+    .put(auth.requiresLogin, hasAuthorization, articles.update)
+    .delete(auth.requiresLogin, hasAuthorization, articles.destroy);*/
 
-  app.get('/rfi/example/render', function(req, res, next) {
-    Rfi.render('index', {
-      package: 'rfi'
-    }, function(err, html) {
-      //Rendering a view from the Package server/views
-      res.send(html);
-    });
-  });
+  // Finish with setting up the articleId param
+  /*app.param('articleId', articles.article);*/
 };
