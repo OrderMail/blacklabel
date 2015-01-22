@@ -2,7 +2,7 @@
 	<h3> Naveen Test Page </h3>
 	<form id="register_form" ng-submit="createrfi()" >
         <h2>Create New RFI</h2>
-        <div> {{succ}}</div>
+        <div class="alert alert-danger animated fadeIn" ng-show="succ"> {{succ}}</div>
         <div class="input-group" >
         	<span class="input-group-addon">To</span>
             <input required id="to" class="form-control" type="text" name="to" placeholder="Recipient's email address" ng-model="to" aria-label="to email">

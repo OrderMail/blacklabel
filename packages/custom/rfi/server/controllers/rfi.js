@@ -15,20 +15,23 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
   console.log('came in servr cont');
   var rfi = new Rfi(req.body);
-  console.log('run 1  '+rfi);
   rfi.user = req.user;
-  console.log('run 2');
-  /*rfi.save(function(err) {
+  var response = {
+        msg: 'Data Saved Successfully',
+        status: 'success'
+      };
+  rfi.save(function(err) {
     if (err) {
       console.log('problem '+err);
-      return res.json(500, {
-        error: 'Cannot save RFi'
-      });
+      response.msg = 'Problem Occured While Saving RFI';
+      response.status = 'error';
+      return res.json(response);
     }
     console.log('run 4');
-    res.json(rfi);
 
-  });*/
+     res.json(response);
+
+  });
 };
 
 

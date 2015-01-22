@@ -11,22 +11,22 @@ var mongoose = require('mongoose'),
  * Article Schema
  */
 var RfiSchema = new Schema({
-  created: {
+  /*created: {
     type: Date,
     default: Date.now
-  },
-  To:{
+  },*/
+  to:{
     type: String,
     required: true,
     trim: true
   },
-  Subject: {
+  subject: {
     type: String,
     required: true,
     default: 'Request For Info',
     trim: true
   },
-  Body: {
+  body: {
     type: String,
     required: true,
     trim: true

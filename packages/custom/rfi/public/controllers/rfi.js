@@ -24,10 +24,10 @@ subject: this.subject,
 body: this.body,
 
 });
-alert('hello   '+rfi.to);
+alert('to   '+rfi.to+'  sub '+rfi.subject+'   body '+rfi.body);
 rfi.$save(function(response) {
  // $location.path('products/' + response._id);
-$scope.succ = response;
+$scope.succ = response.msg;
 });
 
 
