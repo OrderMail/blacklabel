@@ -1,23 +1,26 @@
 <div data-ng-controller="BusinessRegistrationCtrl" ng-init="businessregistration">
     <div ng-repeat="error in businessError">
         <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
-    </div> 
-    <div class="alert alert-danger animated fadeIn" ng-show="businessnameError">{{businessnameError}}</div>
-    <div class="alert alert-danger animated fadeIn" ng-show="websiteError">{{websiteError}}</div>
+    </div>
+   <!--  <div class="alert alert-danger animated fadeIn" ng-show="businessnameError">{{businessnameError}}</div>
+    <div class="alert alert-danger animated fadeIn" ng-show="websiteError">{{websiteError}}</div> -->
     <div class="alert alert-danger animated fadeIn" ng-show="successRegistrationMessage">{{successRegistrationMessage}}</div>
     
     <form id="businessregistration_form"  class="businessregistration_form" ng-submit="businessregistration()">
         <h2>Business Registration</h2>
 
     <div>
+
       <div>
       <div class="left">
-        <div><label type="text" name="businessname">Business Name</label></div>
-        <div><label type="text" name="Address">Address</label></div>
-        <div></div>
-        <div></div>
-        <div> <label type="text" name="natureofbusiness">Nature Of Business</label></div>
-        <div><label type="text" name="website">Website Address</label></div>
+        <div class="l_business"><label type="text" name="businessname">Business Name</label></div>
+        <div class="l_business"><label type="text" name="Address">Address</label></div>
+        <div class="l_business"><label type="text" name=""></label></div>
+        <div class="l_business"><label type="text" name=""></label></div>
+        <div class="l_business"><label type="text" name=""></label></div>
+        <div class="l_business"> <label type="text" name="natureofbusiness">Nature Of Business</label>
+        </div>
+        <div class="l_business"><label type="text" name="website">Website Address</label></div>
 
       </div>
       <div class="right">
@@ -69,9 +72,9 @@
         </div>
       </div>   
       </div>   
-      <div style="clear: both;">
+      <div style="clear: both;margin-left: 200px">
           <button type="submit" class="submit_button">Register</button>          
-      </div>       
+      </div> 
     </div> 
   </form>
 </div>
