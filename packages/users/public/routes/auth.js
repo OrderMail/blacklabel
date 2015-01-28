@@ -22,7 +22,24 @@ angular.module('mean.users').config(['$stateProvider',
 
       return deferred.promise;
     };
+    var checkLoggedin = function($q, $timeout, $http, $location) {
+      // Initialize a new promise
+      var deferred = $q.defer();
 
+      // Make an AJAX call to check if the user is logged in
+      $http.get('/loggedin').success(function(user) {
+        // Authenticated
+        if (user !== '0') $timeout(deferred.resolve);
+
+        // Not Authenticated
+        else {
+          $timeout(deferred.reject);
+          $location.url('/');
+        }
+      });
+
+      return deferred.promise;
+    };
 
     // states for my app
     $stateProvider
@@ -60,7 +77,10 @@ angular.module('mean.users').config(['$stateProvider',
       })
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: 'users/views/dashboard.html',        
+        templateUrl: 'users/views/dashboard.html',    
+        resolve: {
+          loggedin: checkLoggedin
+        }    
       });
   }
 ]);
