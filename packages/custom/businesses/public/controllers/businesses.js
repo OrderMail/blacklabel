@@ -29,8 +29,8 @@ angular.module('mean.businesses')
         $scope.websiteError = null;
         $scope.businessError = null;
         $scope.successRegistrationMessage = null;
-
-        var business = new Businesses({                
+             
+        var business = new Businesses({   
           category: $scope.business.category,
           website: $scope.business.website,
           businessname: $scope.business.businessname,
@@ -43,24 +43,16 @@ angular.module('mean.businesses')
             country: $scope.business.country
            }]          
           });
-       
-         business.$save({}, function(response) {
-          $scope.businessError = 0;
-          $scope.successRegistrationMessage=$scope.business.businessname+' has been sucessfully registered on Blacklabel!';      
-            //   $location.path('products/' + response._id);
-          }, function(error) {
-            //$scope.errorSavingData = true;
-            $scope.successRegistrationMessage=0;               
-           console.log('error '+error);
-            console.log('error.log '+error.log);
-            console.log('error.msg '+error.msg);
-            console.log('error.param '+error.param);
-            if (error === 'Business name already taken') {
-              $scope.businessnameError = error;
-            } else if (error === 'Website already taken') {
-              $scope.websiteError = error;
-            } else $scope.businessError = error;
-          });
+
+         business.$save(function(response) {
+            $scope.successRegistrationMessage = 0;
+            $scope.errorMessage = 0;
+          if (response.status === 'successfull') {
+            $scope.successRegistrationMessage=response.msg;
+          } else if (response.status === 'failure') {
+            $scope.errorMessage = response.msg;  
+          }        
+        });
         };
       }
   ]);

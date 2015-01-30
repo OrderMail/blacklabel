@@ -1,10 +1,6 @@
 <div data-ng-controller="BusinessRegistrationCtrl" ng-init="businessregistration">
-<!--     <div ng-repeat="error in businessError">
-        <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
-    </div> -->
-   <div class="alert alert-danger animated fadeIn" ng-show="businessnameError">{{businessnameError}}
-   </div>
-    <div class="alert alert-danger animated fadeIn" ng-show="websiteError">{{websiteError}}</div>
+   <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">{{errorMessage}}
+   </div>    
     <div class="alert alert-danger animated fadeIn" ng-show="successRegistrationMessage">{{successRegistrationMessage}}</div>
     
     <form id="businessregistration_form"  class="businessregistration_form" ng-submit="businessregistration()">
@@ -66,7 +62,7 @@
           <div class="error_message">Please enter a correct info #</div>      
         </div>
         <div>
-          <input required class="long_input" id="website" type="text" name="website" placeholder="Website"
+          <input class="long_input" id="website" type="text" name="website" placeholder="Website"
               ng-model="business.website">       
           <div class="error_message">Please enter a correct info #</div> 
         </div>
