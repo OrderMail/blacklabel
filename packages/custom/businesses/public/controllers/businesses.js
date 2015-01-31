@@ -26,38 +26,33 @@ angular.module('mean.businesses')
       $scope.businessregistration = function() {
         $scope.global.registerForm = false;
         $scope.businessnameError = null;
+        $scope.websiteError = null;
         $scope.businessError = null;
         $scope.successRegistrationMessage = null;
-
-        var business = new Businesses({
-         //email: $scope.user.email, 
-          category: $scope.user.category,
-          website: $scope.user.website,
-          businessname: $scope.user.businessname,
+             
+        var business = new Businesses({   
+          category: $scope.business.category,
+          website: $scope.business.website,
+          businessname: $scope.business.businessname,
 
          addresses: [{
-            addressline1: $scope.user.addressline1,
-            addressline2: $scope.user.addressline2,
-            city: $scope.user.city,
-            state: $scope.user.state,
-            country: $scope.user.country
+            addressline1: $scope.business.addressline1,
+            addressline2: $scope.business.addressline2,
+            city: $scope.business.city,
+            state: $scope.business.state,
+            country: $scope.business.country
            }]          
           });
-       
-         business.$save({}, function(response) {
-          $scope.businessError = 0;
-          $scope.successRegistrationMessage='Your company XXX has sucessfully registered on Blacklabel!'; 
-            //   $location.path('products/' + response._id);
-          }, function(error) {
-           /* //$scope.errorSavingData = true;
-            $scope.successRegistrationMessage=0;
-            if (error.param === 'businessname') {
-              $scope.businessnameError = error.msg;
-            } else if (error === 'Website already taken') {
-              $scope.websiteError = error;
-            } else 
-              $scope.businessError = error;*/
-          });
+
+         business.$save(function(response) {
+            $scope.successRegistrationMessage = 0;
+            $scope.errorMessage = 0;
+          if (response.status === 'successfull') {
+            $scope.successRegistrationMessage=response.msg;
+          } else if (response.status === 'failure') {
+            $scope.errorMessage = response.msg;  
+          }        
+        });
         };
       }
   ]);

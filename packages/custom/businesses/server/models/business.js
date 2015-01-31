@@ -6,6 +6,24 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+/**
+* Check uniqueness of website
+*/
+/*var validateUniqueBusinessname = function(value, callback) {
+  console.log('value : '+ value);  
+  var Business = mongoose.model('Business');
+  Business.find({
+    $and: [{
+      website: value
+    }, {
+      _id: {
+        $ne: this._id
+      }
+    }]
+  }, function(err, business) {
+    callback(err || business.length === 0);
+  });
+};*/
 
 /**
  * Business Schema
@@ -16,42 +34,20 @@ var BusinessSchema = new Schema({
     type: String,
     unique: true,
     required: true
+    /*validate: [validateUniqueBusinessname, 'Business name already taken']*/
   },
  
- addresses : {
-  type: Array
- },
- 
- /* addresses: {
-    addressline1:  {
-      type: String,
-      required: true
-    },
-    addressline2:  {
-      type: String,
-    },
-    city:  {
-      type: String,    
-      required: true
-    },
-    state:  {
-      type: String,
-      required: true
-    },
-    country:  {
-      type: String,
-      required: true
-    }    
+  addresses : {
+    type: Array
   },
-*/
+ 
   category: {
     type: String,
     required: true
   },
   
   website: {
-    type: String,
-    required: true
+    type: String    
   }
 });
 
