@@ -11,7 +11,7 @@
 angular.module('mean.businesses').factory('Businesses', ['$resource',
   function($resource) {
     return $resource('businesses/:businessId', {
-      articleId: '@_id'
+      businessId: '@_id'
     }, {
       update: {
         method: 'PUT'
