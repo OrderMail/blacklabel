@@ -5,18 +5,15 @@
  */
 var mongoose = require('mongoose'),
   Business = mongoose.model('Business');
-  //_ = require('lodash');
-
 
 exports.create = function(req, res) {
   var business = new Business(req.body);
   business.user = req.user;
   console.log('Business Name : '+business.businessname);  
-  console.log('User Name : '+business.user);  
 
   var response  = {  
     msg: business.businessname+' has been sucessfully registered on Blacklabel!',
-    status: 'successfull'
+    status: 'success'
   };
   business.save(function(err) {    
     if (err) {
@@ -24,7 +21,7 @@ exports.create = function(req, res) {
         case 11000:
         case 11001:
         {
-          response.msg= 'Business name already taken';
+          response.msg= 'Business name has already registered';
           response.status= 'failure';
         }
         break;

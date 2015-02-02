@@ -2,42 +2,27 @@
 
 angular.module('mean.businesses')
 
-	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
+/*	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
 	  function($scope, Global, Businesses) {
 	    $scope.global = Global;
 	    $scope.package = {
 	      name: 'businesses'
-	    
-
       };
-  /*    $scope.findBusinesses= function() {
-        $http.get('/businesses')
-        .success(function(result){
-          $scope.businesses=result;
-        });
-          
-
-        };*/
 	  }
-	])
+	])*/
 
- /*Controller to handle new business registration #7*/
+ /*Controller to handle the business registration #7*/
   .controller('BusinessRegistrationCtrl', ['$scope', 'Global', 'Businesses',
     function($scope, Global, Businesses) {
       $scope.user = {};
       $scope.global = Global;
-      $scope.global.registerForm = false;      
-      $scope.businessnameError = null;
-      $scope.registerError = null;      
-      $scope.emailError = null;
+      $scope.global.registerForm = false; 
       $scope.successRegistrationMessage = null;
 
 
       $scope.businessregistration = function() {
-        $scope.global.registerForm = false;
-        $scope.businessnameError = null;
-        $scope.websiteError = null;
-        $scope.businessError = null;
+//        $scope.global.registerForm = false;        
+        $scope.errorMessage = null;
         $scope.successRegistrationMessage = null;
              
         var business = new Businesses({   
@@ -57,14 +42,12 @@ angular.module('mean.businesses')
          business.$save(function(response) {
             $scope.successRegistrationMessage = 0;
             $scope.errorMessage = 0;
-          if (response.status === 'successfull') {
+          if (response.status === 'success') {
             $scope.successRegistrationMessage=response.msg;
           } else if (response.status === 'failure') {
             $scope.errorMessage = response.msg;  
           }        
         });
-        };
-
-     
+        };    
       }
   ]);
