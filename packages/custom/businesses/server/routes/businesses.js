@@ -1,6 +1,11 @@
 'use strict';
 
 var businesses = require('../controllers/businesses');
+/*var hasAuthorization = function(req, res, next) {
+    Not implementing the authorization logic, but creating placeholder in case it become required in future
+   next();
+};*/
+
 
 // The Package is past automatically as first parameter
 module.exports = function(Businesses, app, auth, database) {
@@ -25,9 +30,15 @@ module.exports = function(Businesses, app, auth, database) {
       res.send(html);
     });
   });
+app.route('/businesslist')
+    .get(function(req,res){
+            res.send('my name is khan');
+          });
 
   app.route('/businesses')
-    /*.get(businesses.all)*/
+    .get(businesses.all)
     .post(businesses.create);
+  /*app.route('/businesses/:businessId')
+    .get(auth.requiresLogin, hasAuthorization, businesses.show);*/
 
 };

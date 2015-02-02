@@ -75,8 +75,8 @@ angular.module('mean.users')
     }
   ])
   
-  .controller('RegisterCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
-    function($scope, $rootScope, $http, $location, Global) {
+  .controller('RegisterCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global','Businesses',
+    function($scope, $rootScope, $http, $location, Global, Businesses) {
       $scope.user = {};
       $scope.global = Global;
       $scope.global.registerForm = true;
@@ -91,6 +91,12 @@ angular.module('mean.users')
         tooltipText: 'Show password',
         tooltipTextConfirmPass: 'Show password'
       };
+      console.log ('#################');
+    var businesses = Businesses.query(function() {
+    $scope.businesses=businesses;
+    console.log(businesses);
+      }); //query() returns all the entries
+ 
 
       $scope.togglePasswordVisible = function() {
         $scope.input.type = $scope.input.type === 'text' ? 'password' : 'text';
@@ -123,7 +129,7 @@ angular.module('mean.users')
           confirmPassword: $scope.user.confirmPassword,
           firstname: $scope.user.firstname,
           lastname: $scope.user.lastname,
-          businessname: $scope.user.businessname
+          business_id: $scope.user.business_id
         })
 
         .success(function() {

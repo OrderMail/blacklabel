@@ -38,4 +38,19 @@ exports.create = function(req, res) {
     }
     res.json(response);
   });
+
+};
+exports.all = function(req, res) {
+  /*var currentuser = {
+     user: req.user
+  };*/
+ // res.json('It is wrong');
+  Business.find().exec(function(err, businesses) {
+    if (err) {
+      return res.json(500, {
+        error: 'Cannot list the businesses'
+      });
+    }
+    res.json(businesses);
+  });
 };

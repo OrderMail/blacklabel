@@ -7,7 +7,17 @@ angular.module('mean.businesses')
 	    $scope.global = Global;
 	    $scope.package = {
 	      name: 'businesses'
-	    };
+	    
+
+      };
+  /*    $scope.findBusinesses= function() {
+        $http.get('/businesses')
+        .success(function(result){
+          $scope.businesses=result;
+        });
+          
+
+        };*/
 	  }
 	])
 
@@ -54,5 +64,7 @@ angular.module('mean.businesses')
           }        
         });
         };
+
+     
       }
   ]);

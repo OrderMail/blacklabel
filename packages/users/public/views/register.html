@@ -60,14 +60,16 @@
               </div>
         </span>
         </div>   
-
-        <div class="input-wrapper">
-            <input required id="businessname" type="text" name="businessname" placeholder="Business Name"
-                   ng-model="user.businessname">
-
-            <div class="error_message">Please enter a correct info #</div>            
+        <div class ="input-wrapper" data-ng-controller="BusinessesController" data-ng-init="">
+        <select id="business_id" name="business_id" data-ng-model="user.business_id">
+                <option value="">-- Choose Business --</option>
+                <option ng-repeat="business in businesses" value = "{{business._id}}">
+                  {{business.businessname}} <italic>[{{business.addresses[0].city}}]</italic>
+                </option>
+              </select>
         </div>
-        <div><a ui-sref='auth.businessregistration'>New Business Registration</a></div>
+
+        
 
        <!--  <div>
         <select ng-model="user.company" placeholder="Company">
