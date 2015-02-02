@@ -9,19 +9,19 @@
     <div>
       <div>
       <div class="left">
-        <div class="l_business"><label type="text" name="businessname">Business Name</label></div>
-        <div class="l_business"><label type="text" name="Address">Address</label></div>
+        <div class="l_business required"><label type="text" name="businessname">Business Name</label></div>
+        <div class="l_business required"><label type="text" name="Address">Address</label></div>
         <div class="l_business"><label type="text" name=""></label></div>
         <div class="l_business"><label type="text" name=""></label></div>
         <div class="l_business"><label type="text" name=""></label></div>
-        <div class="l_business"> <label type="text" name="natureofbusiness">Nature Of Business</label>
+        <div class="l_business required"> <label type="text" name="natureofbusiness">Nature Of Business</label>
         </div>
         <div class="l_business"><label type="text" name="website">Website Address</label></div>
 
       </div>
       <div class="right">
         <div>
-          <input required class="long_input" id="businessname" type="text" name="businessname" placeholder="Business Name"
+          <input required="true" class="long_input" id="businessname" type="text" name="businessname" placeholder="Business Name"
              ng-model="business.businessname">
           <div class="error_message">Please enter a correct info #</div>
         </div>
@@ -69,7 +69,7 @@
       </div>   
       </div>   
       <div style="clear: both;margin-left: 200px">
-          <button type="submit" class="submit_button">Register</button>          
+          <button type="submit" class="submit_button button_login">Register</button>          
       </div> 
     </div> 
   </form>

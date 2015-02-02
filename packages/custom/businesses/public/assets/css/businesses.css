@@ -60,3 +60,9 @@ html {
 	line-height: 22px;
 	margin-bottom: 10px;
 }
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
