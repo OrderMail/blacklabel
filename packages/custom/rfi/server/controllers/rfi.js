@@ -17,7 +17,7 @@ exports.create = function(req, res) {
   var rfi = new Rfi(req.body);
   rfi.user = req.user;
   var response = {
-        msg: 'Data Saved Successfully',
+        msg: 'RFI has been successfully sent',
         status: 'success'
       };
   rfi.save(function(err) {
@@ -28,7 +28,6 @@ exports.create = function(req, res) {
       return res.json(response);
     }
     console.log('run 4');
-
      res.json(response);
 
   });

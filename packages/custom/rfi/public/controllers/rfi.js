@@ -7,6 +7,7 @@ angular.module('mean.rfi').controller('RfiController', ['$scope', 'Global', 'Rfi
 	    $scope.package = {
 	      name: 'rfi'
     	};
+    $scope.done = 'true'; 
     
 
 
@@ -26,8 +27,9 @@ body: this.body,
 });
 alert('to   '+rfi.to+'  sub '+rfi.subject+'   body '+rfi.body);
 rfi.$save(function(response) {
- // $location.path('products/' + response._id);
-$scope.succ = response.msg;
+	$scope.succ = response.msg;
+	if(response.status === 'success')
+		$scope.done = '';
 });
 
 
