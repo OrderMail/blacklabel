@@ -10,7 +10,7 @@ var businesses = require('../controllers/businesses');
 // The Package is past automatically as first parameter
 module.exports = function(Businesses, app, auth, database) {
 
-  app.get('/businesses/example/anyone', function(req, res, next) {
+/*  app.get('/businesses/example/anyone', function(req, res, next) {
     res.send('Anyone can access this');
   });
 
@@ -29,7 +29,7 @@ module.exports = function(Businesses, app, auth, database) {
       //Rendering a view from the Package server/views
       res.send(html);
     });
-  });
+  });*/
 app.route('/businesslist')
     .get(function(req,res){
             res.send('my name is khan');

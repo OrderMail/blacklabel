@@ -2,28 +2,40 @@
 
 angular.module('mean.businesses')
 
-/*	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
+	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
 	  function($scope, Global, Businesses) {
 	    $scope.global = Global;
 	    $scope.package = {
-	      name: 'businesses'
-      };
-	  }
-	])*/
+	      name: 'businesses'      };
+  /*    $scope.findBusinesses= function() {
+        $http.get('/businesses')
+        .success(function(result){
+          $scope.businesses=result;
+        });
+          
 
- /*Controller to handle the business registration #7*/
+        };*/
+	  }
+	])
+
+ /*Controller to handle new business registration #7*/
   .controller('BusinessRegistrationCtrl', ['$scope', 'Global', 'Businesses',
     function($scope, Global, Businesses) {
       $scope.user = {};
       $scope.global = Global;
-      $scope.global.registerForm = false; 
-      $scope.successRegistrationMessage = null;
+      $scope.global.registerForm = false;      
+      $scope.businessnameError = null;
+      $scope.registerError = null;   
+      $scope.successRegistrationMessage = 0;
 
 
-      $scope.businessregistration = function() {
-//        $scope.global.registerForm = false;        
-        $scope.errorMessage = null;
-        $scope.successRegistrationMessage = null;
+      $scope.businessregistration = function() {       
+
+        $scope.global.registerForm = false;
+        $scope.businessnameError = null;
+        $scope.websiteError = null;
+        $scope.businessError = null;
+        $scope.successRegistrationMessage = 0;
              
         var business = new Businesses({   
           category: $scope.business.category,
@@ -48,6 +60,6 @@ angular.module('mean.businesses')
             $scope.errorMessage = response.msg;  
           }        
         });
-        };    
+        };     
       }
   ]);

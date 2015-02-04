@@ -15,13 +15,15 @@ exports.create = function(req, res) {
     msg: business.businessname+' has been sucessfully registered on Blacklabel!',
     status: 'success'
   };
+
   business.save(function(err) {    
     if (err) {
+      console.log('Error at Node : '+err);
       switch (err.code) {
         case 11000:
         case 11001:
         {
-          response.msg= 'Business name has already registered';
+          response.msg= 'Business name has already registered.';
           response.status= 'failure';
         }
         break;
