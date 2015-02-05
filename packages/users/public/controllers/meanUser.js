@@ -97,6 +97,14 @@ angular.module('mean.users')
     console.log(businesses);
       }); //query() returns all the entries
  
+      $scope.formatLabel=function(model) {
+        console.log('###In formatLabel');
+        for (var count=0; count< $scope.businesses.length; count=count+1) {
+      if (model === $scope.businesses[count]._id) {
+        return $scope.businesses[count].businessname;
+      }
+    }
+      };
 
       $scope.togglePasswordVisible = function() {
         $scope.input.type = $scope.input.type === 'text' ? 'password' : 'text';
@@ -122,7 +130,18 @@ angular.module('mean.users')
         {value: 'neq', displayName: 'not equal'}
       ];
 
+     /* $scope.setBusinessToUser = function(business)
+      {
+        console.log ('business id received: '+business._id);
+        console.log ('business name received: '+business.businessname);
+        
+        $scope.user.business_id=business;
+        alert('business: '+business +'has been set');
+      };
+*/
+
       $scope.register = function() {        
+
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
