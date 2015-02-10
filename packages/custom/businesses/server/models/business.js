@@ -48,7 +48,23 @@ var BusinessSchema = new Schema({
   
   website: {
     type: String    
+  },
+
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  
+  updated: {
+    type: Date,
+    default: Date.now
+  },
+
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
   }
+ 
 });
 
 mongoose.model('Business', BusinessSchema);

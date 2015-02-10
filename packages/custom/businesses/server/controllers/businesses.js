@@ -11,6 +11,9 @@ exports.create = function(req, res) {
   business.user = req.user;
   console.log('Business Name : '+business.businessname);  
 
+  console.log('User : '+business.user);  
+  console.log('User ID : '+business.user.id);  
+
   var response  = {  
     msg: business.businessname+' has been sucessfully registered on Blacklabel!',
     status: 'success'
