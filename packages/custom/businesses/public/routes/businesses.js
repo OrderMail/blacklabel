@@ -19,6 +19,7 @@ angular.module('mean.businesses').config(['$stateProvider',
 
         // Not Authenticated
         else {
+          console.log('Redirecting to home page (login page)');
           $timeout(deferred.reject);
           $location.url('/');
         }

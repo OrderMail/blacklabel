@@ -3,45 +3,64 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose'), 
   Business = mongoose.model('Business');
 
-exports.create = function(req, res) {
-  var business = new Business(req.body);
-  business.user = req.user;
-  console.log('Business Name : '+business.businessname);  
+  exports.create = function(req, res) {
+    var business = new Business(req.body);    
 
-  console.log('User : '+business.user);  
-  console.log('User ID : '+business.user.id);  
+    business.user = req.user;
+    console.log('Business Name : '+business.businessname);  
 
-  var response  = {  
-    msg: business.businessname+' has been sucessfully registered on Blacklabel!',
-    status: 'success'
-  };
+    console.log('User : '+business.user);    
 
-  business.save(function(err) {    
-    if (err) {
-      console.log('Error at Node : '+err);
-      switch (err.code) {
-        case 11000:
-        case 11001:
-        {
-          response.msg= 'Business name has already registered.';
+    var response  = {  
+      msg: business.businessname+' has been sucessfully registered on Blacklabel!',
+      status: 'success'
+    };
+
+    business.save(function(err) {    
+      if (err) {
+        console.log('Error at Node : '+err);
+        switch (err.code) {
+          case 11000:
+          case 11001:
+          {
+            response.msg= 'Business name has already registered.';
+            response.status= 'failure';
+          }
+          break;
+          default:            
+          {
+            response.msg= 'Unable to save business';
+            response.status= 'failure';
+          }       
+        }  
+        return res.json(response);      
+      }    
+
+      console.log('Outside of error check block after saving');
+      console.log('Recently created business   ------- '+business);  
+      console.log('Recently created business ID------- '+business._id);
+      
+
+      /*Business.findOne({ user: business.user }, function(err, business) {
+        if (err) {
+          console.error(err);
+          response.msg= 'Unable to load business after saving';
           response.status= 'failure';
         }
-        break;
-        default:            
-        {
-          response.msg= 'Unable to save business';
-          response.status= 'failure';
-        }
-        return res.json(response);
-      }   
-    }
-    res.json(response);
-  });
-
+        console.log('Recently created business ID------- '+business);      
+        console.log('Recently created business name------- '+business.businessname);
+        console.log('Recently created business ID------- '+business._id);      
+      });
+      */
+     
+      return res.json(response);    
+    });
 };
+
+
 exports.all = function(req, res) {
   /*var currentuser = {
      user: req.user

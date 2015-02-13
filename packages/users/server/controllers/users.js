@@ -82,7 +82,9 @@ exports.create = function(req, res, next) {
   req.assert('email', 'You must enter a valid email address').isEmail();
   req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);  
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);  
-  req.assert('business_id', 'You must select a business to get associated with').notEmpty();
+  
+  // Commeting below code as business is no more required while user registration
+  /*req.assert('business_id', 'You must select a business to get associated with').notEmpty();*/
 
   var errors = req.validationErrors();
   if (errors) {

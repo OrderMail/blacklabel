@@ -50,12 +50,12 @@ var BusinessSchema = new Schema({
     type: String    
   },
 
-  created: {
+  createdOn: {
     type: Date,
     default: Date.now
   },
   
-  updated: {
+  updatedOn: {
     type: Date,
     default: Date.now
   },
