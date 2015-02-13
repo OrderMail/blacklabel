@@ -24,8 +24,10 @@ to: this.to,
 subject: this.subject,
 body: this.body,
 
+
 });
-alert('to   '+rfi.to+'  sub '+rfi.subject+'   body '+rfi.body);
+//alert('to   '+rfi.to+'  sub '+rfi.subject+'   body '+rfi.body+'  attachment '+rfi.attachment);
+//console.log('attachment '+rfi.attachment);
 rfi.$save(function(response) {
 	$scope.succ = response.msg;
 	if(response.status === 'success')

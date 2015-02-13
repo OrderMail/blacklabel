@@ -14,8 +14,12 @@
                 <input required id="subject" class="form-control" type="text" name="subject" placeholder="Request For Information" ng-model="subject" >
             </div>
             <br/>
-    		<div class="input-group" >
-                <textarea required id="body" class="form-control" rows="10" name="body" placeholder="Main Content" ng-model="body" style="width: 1138px; height: 225px;"></textarea>
+            <div class="input-group">
+                <input ng-model="attach" type="file" value="Attach File" />
+            </div>
+            <br/>
+    		<div class="input-textarea" >
+                <textarea required id="body" class="form-control" rows="10" name="body" placeholder="Main Content" ng-model="body" ></textarea>
             </div>
             <br/>
             <div class="button_register">
