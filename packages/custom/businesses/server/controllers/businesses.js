@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'), 
-  Business = mongoose.model('Business');
+  Business = mongoose.model('Business'),
+  User = mongoose.model('User');
 
   exports.create = function(req, res) {
     var business = new Business(req.body);    
@@ -38,24 +39,21 @@ var mongoose = require('mongoose'),
         }  
         return res.json(response);      
       }    
-
-      console.log('Outside of error check block after saving');
+    
       console.log('Recently created business   ------- '+business);  
-      console.log('Recently created business ID------- '+business._id);
-      
 
-      /*Business.findOne({ user: business.user }, function(err, business) {
-        if (err) {
-          console.error(err);
-          response.msg= 'Unable to load business after saving';
-          response.status= 'failure';
-        }
-        console.log('Recently created business ID------- '+business);      
-        console.log('Recently created business name------- '+business.businessname);
-        console.log('Recently created business ID------- '+business._id);      
+      User.findOne({ '_id': business.user}, function (err, user){
+        if(err) {
+            console.log('Unable to update user table while registering business');
+            response.msg= 'Unable to update user table while registering business';
+            response.status= 'failure';
+        } else {          
+          user.business_id = business._id;        
+          user.save();
+          console.log('User object after update  -- '+user);  
+        }        
       });
-      */
-     
+
       return res.json(response);    
     });
 };

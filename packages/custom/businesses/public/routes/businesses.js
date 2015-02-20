@@ -13,10 +13,11 @@ angular.module('mean.businesses').config(['$stateProvider',
       // Make an AJAX call to check if the user is logged in
       $http.get('/loggedin').success(function(user) {
         // Authenticated
-        console.log('User logged in : '+user);
-        
-        if (user !== '0') $timeout(deferred.resolve);
-
+        if (user !== '0'/* && user.business_id !== ''*/) {
+          console.log('User logged in............');          
+          console.log(user);           
+          $timeout(deferred.resolve);
+        } 
         // Not Authenticated
         else {
           console.log('Redirecting to home page (login page)');
