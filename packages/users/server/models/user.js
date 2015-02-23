@@ -63,8 +63,7 @@ var UserSchema = new Schema({
   },
   business_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Business',
-    unique: false
+    ref: 'Business'
   },
   roles: {
     type: Array,
