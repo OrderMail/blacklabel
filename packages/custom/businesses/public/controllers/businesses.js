@@ -26,10 +26,7 @@ angular.module('mean.businesses')
       $scope.global.registerForm = false;      
       $scope.businessnameError = null;
       $scope.registerError = null;   
-      $scope.successRegistrationMessage = 0;
-
-      console.log('User----- > '+$scope.global.user);
-      console.log('User----- > '+$scope.global.user._id);
+      $scope.successRegistrationMessage = 0;    
 
       $scope.businessregistration = function() {  
         $scope.global.registerForm = false;
