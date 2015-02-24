@@ -73,6 +73,7 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
   var user = new User(req.body);
   console.log('Business id is: '+req.body.business_id);
+  if(req.body.business_id!=null)
   user.business_id=mongoose.Types.ObjectId(req.body.business_id);
   user.provider = 'local';
 

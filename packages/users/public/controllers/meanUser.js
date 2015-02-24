@@ -141,7 +141,7 @@ angular.module('mean.users')
 */
 
       $scope.register = function() {        
-
+        console.log('@@@@@@@@@@@@@@@ Business id selected is: '+$scope.user.business_id);
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
