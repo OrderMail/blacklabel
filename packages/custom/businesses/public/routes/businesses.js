@@ -17,7 +17,8 @@ angular.module('mean.businesses').config(['$stateProvider',
         console.log(user.business_id);        
       
         // Authenticated  
-        if((user !== '0') && (typeof user.business_id === 'undefined')) {
+        if((user !== '0') && (user.business_id === null)) {
+        /*if((user !== '0') && (typeof user.business_id === 'undefined')) {*/
           console.log('User logged in............');   
           $timeout(deferred.resolve);
         } 

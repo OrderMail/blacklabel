@@ -44,7 +44,7 @@ var mongoose = require('mongoose'),
 
       User.findOne({ '_id': business.user}, function (err, user){
         if(err) {
-            response.msg= 'Unable to update user table while registering business';
+            response.msg= 'Unable to update user while registering business';
             response.status= 'failure';
         } else {          
           user.business_id = business._id;        
