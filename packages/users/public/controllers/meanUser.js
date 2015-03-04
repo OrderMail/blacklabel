@@ -65,7 +65,8 @@ angular.module('mean.users')
             } else {
               $location.url('/');
             }*/
-            $location.url('/dashboard');
+        //    $location.url('/dashboard');
+            $location.url('/businessregistration');
           })
           .error(function() {             
             $scope.loginerror = 'Authentication failed.';

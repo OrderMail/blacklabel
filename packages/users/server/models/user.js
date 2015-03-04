@@ -65,6 +65,10 @@ var UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Business'
   },
+  isAdmin : {
+    type: String,
+    default: 'N'
+  },
   roles: {
     type: Array,
     default: ['authenticated']
@@ -135,10 +139,12 @@ UserSchema.methods = {
    * @return {Boolean}
    * @api public
    */
-  isAdmin: function() {
+
+   // Disabled admin check rule for now
+ /* isAdmin: function() {
     return this.roles.indexOf('admin') !== -1;
   },
-
+*/
   /**
    * Authenticate - check if the passwords are the same
    *

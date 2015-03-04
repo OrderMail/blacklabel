@@ -48,6 +48,7 @@ var mongoose = require('mongoose'),
             response.status= 'failure';
         } else {          
           user.business_id = business._id;        
+          user.isAdmin = 'Y';
           user.save();
           console.log('User object after update  -- '+user);  
         }        

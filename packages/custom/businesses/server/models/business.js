@@ -60,7 +60,7 @@ var BusinessSchema = new Schema({
     default: Date.now
   },
 
-  user: {
+  createdBy: {
     type: Schema.ObjectId,
     ref: 'User'
   }
