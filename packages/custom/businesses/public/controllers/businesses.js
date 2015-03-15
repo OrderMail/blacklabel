@@ -46,7 +46,8 @@ angular.module('mean.businesses')
             city: $scope.business.city,
             state: $scope.business.state,
             country: $scope.business.country
-           }]          
+           }],
+           contacts: $scope.contacts    
           });
 
          business.$save(function(response) {
