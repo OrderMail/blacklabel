@@ -14,8 +14,23 @@
                 <input required id="subject" class="form-control" type="text" name="subject" placeholder="Request For Information" ng-model="subject" >
             </div>
             <br/>
-            <div class="input-group">
-                <input ng-model="attach" type="file" value="Attach File" />
+            <!-- <div class="input-group">
+                <input ng-model="attach" type="file" value="Attach File" /> -->
+           <div class="outer-box">
+                <label mean-token="'Image'" for="image" class="label-sty">Image</label>
+                <div class="col-md-6">
+                   <div class="input-sty">
+                  <mean-upload file-dest="'/photos/'" upload-callback="uploadProductFinished(files)" upload-file-callback="uploadFileCallback(file)" ></mean-upload>
+                        {{errorMessages}}
+
+                   <div data-ng-repeat="img in images">
+                    <img data-ng-src="{{img.src}}" class="img-responsive img-thumbnail" alt="">
+                    <a class="btn" data-ng-click="deleteImage();">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                   </div>
+                   </div>
+                  </div>
             </div>
             <br/>
     		<div class="input-textarea" >
