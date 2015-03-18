@@ -49,6 +49,7 @@ angular.module('mean.businesses')
            }],
            contacts: $scope.contacts    
           });
+        alert('scope contacts'+ $scope.contacts);
 
          business.$save(function(response) {
             $scope.successRegistrationMessage = 0;
