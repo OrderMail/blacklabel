@@ -51,7 +51,7 @@ var UserSchema = new Schema({
   activationtoken : {
     type: String,
     unique: true,
-    required: true
+  
   },
   email: {
     type: String,
@@ -61,10 +61,13 @@ var UserSchema = new Schema({
     match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email'],
     validate: [validateUniqueEmail, 'E-mail address is already in-use']
   },
-  businessname: {
+  business_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Business'
+  },
+  isAdmin : {
     type: String,
-    unique: true,
-    required: true
+    default: 'N'
   },
   roles: {
     type: Array,
@@ -136,10 +139,12 @@ UserSchema.methods = {
    * @return {Boolean}
    * @api public
    */
-  isAdmin: function() {
+
+   // Disabled admin check rule for now
+ /* isAdmin: function() {
     return this.roles.indexOf('admin') !== -1;
   },
-
+*/
   /**
    * Authenticate - check if the passwords are the same
    *

@@ -65,7 +65,8 @@ angular.module('mean.users')
             } else {
               $location.url('/');
             }*/
-            $location.url('/dashboard');
+        //    $location.url('/dashboard');
+            $location.url('/businessregistration');
           })
           .error(function() {             
             $scope.loginerror = 'Authentication failed.';
@@ -75,8 +76,8 @@ angular.module('mean.users')
     }
   ])
   
-  .controller('RegisterCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
-    function($scope, $rootScope, $http, $location, Global) {
+  .controller('RegisterCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global','Businesses',
+    function($scope, $rootScope, $http, $location, Global, Businesses) {
       $scope.user = {};
       $scope.global = Global;
       $scope.global.registerForm = true;
@@ -90,6 +91,20 @@ angular.module('mean.users')
         iconClassConfirmPass: '',
         tooltipText: 'Show password',
         tooltipTextConfirmPass: 'Show password'
+      };
+      console.log ('#################');
+    var businesses = Businesses.query(function() {
+    $scope.businesses=businesses;
+    console.log(businesses);
+      }); //query() returns all the entries
+ 
+      $scope.formatLabel=function(model) {
+        console.log('###In formatLabel');
+        for (var count=0; count< $scope.businesses.length; count=count+1) {
+      if (model === $scope.businesses[count]._id) {
+        return $scope.businesses[count].businessname;
+      }
+    }
       };
 
       $scope.togglePasswordVisible = function() {
@@ -116,14 +131,25 @@ angular.module('mean.users')
         {value: 'neq', displayName: 'not equal'}
       ];
 
+     /* $scope.setBusinessToUser = function(business)
+      {
+        console.log ('business id received: '+business._id);
+        console.log ('business name received: '+business.businessname);
+        
+        $scope.user.business_id=business;
+        alert('business: '+business +'has been set');
+      };
+*/
+
       $scope.register = function() {        
+        console.log('@@@@@@@@@@@@@@@ Business id selected is: '+$scope.user.business_id);
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
           confirmPassword: $scope.user.confirmPassword,
           firstname: $scope.user.firstname,
           lastname: $scope.user.lastname,
-          businessname: $scope.user.businessname
+          business_id: $scope.user.business_id
         })
 
         .success(function() {
@@ -153,6 +179,26 @@ angular.module('mean.users')
       $scope.global.registerForm = false;
       $scope.forgotpassword = function() {
         $http.post('/forgot-password', {
+          text: $scope.user.email
+        })
+          .success(function(response) {
+            $scope.response = response;
+          })
+          .error(function(error) {
+            $scope.response = error;
+          });
+      };
+    }
+  ])
+
+  /*Controller to handle new business registration #7*/
+  .controller('BusinessRegistrationCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
+    function($scope, $rootScope, $http, $location, Global) {
+      $scope.user = {};
+      $scope.global = Global;
+      $scope.global.registerForm = false;
+      $scope.businessregistration = function() {
+       $http.post('/businessregistration', {
           text: $scope.user.email
         })
           .success(function(response) {

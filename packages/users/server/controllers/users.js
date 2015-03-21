@@ -72,7 +72,9 @@ exports.session = function(req, res) {
  */
 exports.create = function(req, res, next) {
   var user = new User(req.body);
-
+  console.log('Business id is: '+req.body.business_id);
+  if(req.body.business_id!==null)
+  user.business_id=mongoose.Types.ObjectId(req.body.business_id);
   user.provider = 'local';
 
   // because we set our user.provider to local our models/user.js validation will always be true
@@ -81,15 +83,18 @@ exports.create = function(req, res, next) {
   req.assert('email', 'You must enter a valid email address').isEmail();
   req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);  
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);  
-  req.assert('businessname', 'You must enter a business name').notEmpty();
+  
+  // Commeting below code as business is no more required while user registration
+  /*req.assert('business_id', 'You must select a business to get associated with').notEmpty();*/
 
   var errors = req.validationErrors();
   if (errors) {
     return res.status(400).send(errors);
   }
   var randomNumber= crypto.randomBytes(8).toString('hex');
-  console.log('random string is '+randomNumber);
+ 
   user.activationtoken = randomNumber;
+   console.log('User is: '+user);
   // Hard coded for now. Will address this with the user permissions system in v0.3.5
   user.roles = ['authenticated'];
   user.save(function(err) {
@@ -100,7 +105,7 @@ exports.create = function(req, res, next) {
         case 11001:
           res.status(400).send([{
             msg: 'Business name already taken',
-            param: 'businessname'       
+            param: 'business_id'       
           }]);
           break;
         default:

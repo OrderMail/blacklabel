@@ -15,6 +15,10 @@ module.exports = function(MeanUser, app, auth, database, passport) {
   app.route('/register')
     .post(users.create);
 
+  /* TODO: routing for new business registration controller */
+/*  app.route('/businessregistration')
+    .post(users.businessregistration);*/
+
   app.route('/forgot-password')
     .post(users.forgotpassword);
 
@@ -53,7 +57,7 @@ module.exports = function(MeanUser, app, auth, database, passport) {
     }), function(req, res) {
       res.send({
         user: req.user,
-        redirect: (req.user.roles.indexOf('admin') !== -1) ? req.get('referer') : false
+        redirect: (req.user.roles.indexOf('admin') !== -1) ? /*req.get('referer')*/'/dashboard' : false
       });
     });
 
