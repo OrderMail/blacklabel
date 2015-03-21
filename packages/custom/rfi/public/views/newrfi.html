@@ -1,30 +1,49 @@
 <div class="" data-ng-controller="RfiController" >
-	<h3> Naveen Test Page </h3>
-	<form id="register_form" ng-submit="createrfi()" >
+	<form id="register_form" ng-submit="createrfi()">
         <h2>Create New RFI</h2>
         <div class="alert alert-danger animated fadeIn" ng-show="succ"> {{succ}}</div>
-        <div class="input-group" >
-        	<span class="input-group-addon">To</span>
-            <input required id="to" class="form-control" type="text" name="to" placeholder="Recipient's email address" ng-model="to" aria-label="to email">
-            <span class="input-group-addon" >@example.com</span>
-        </div>
-		<br/>
-        <div class="input-group" >
-        	<span class="input-group-addon">Subject</span>
-            <input required id="subject" class="form-control" type="text" name="subject" placeholder="Request For Information" ng-model="subject" >
-        </div>
-        <br/>
-		<div class="input-group" >
-            <textarea required id="body" class="form-control" rows="1" name="body" placeholder="Main Content" ng-model="body"></textarea>
-        </div>
-        <br/>
-        <div class="button_register">
-            <button type="submit" class="submit_button button_login">Send</button>  
-            <span>
-            	<button type="submit" class="submit_button button_login">Draft</button>  
-            <span>
-            </span>        
-        </div>          
+        <div ng-show="done">
+            <div class="input-group" >
+            	<span class="input-group-addon">To</span>
+                <input required id="to" class="form-control" type="text" name="to" placeholder="Recipient's email address" ng-model="to" aria-label="to email">
+                <span class="input-group-addon" >@example.com</span>
+            </div>
+    		<br/>
+            <div class="input-group" >
+            	<span class="input-group-addon">Subject</span>
+                <input required id="subject" class="form-control" type="text" name="subject" placeholder="Request For Information" ng-model="subject" >
+            </div>
+            <br/>
+            <!-- <div class="input-group">
+                <input ng-model="attach" type="file" value="Attach File" /> -->
+           <div class="outer-box">
+                <label mean-token="'Image'" for="image" class="label-sty">Image</label>
+                <div class="col-md-6">
+                   <div class="input-sty">
+                  <mean-upload file-dest="'/photos/'" upload-callback="uploadProductFinished(files)" upload-file-callback="uploadFileCallback(file)" ></mean-upload>
+                        {{errorMessages}}
+
+                   <div data-ng-repeat="img in images">
+                    <img data-ng-src="{{img.src}}" class="img-responsive img-thumbnail" alt="">
+                    <a class="btn" data-ng-click="deleteImage();">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                   </div>
+                   </div>
+                  </div>
+            </div>
+            <br/>
+    		<div class="input-textarea" >
+                <textarea required id="body" class="form-control" rows="10" name="body" placeholder="Main Content" ng-model="body" ></textarea>
+            </div>
+            <br/>
+            <div class="button_register">
+                <button type="submit" class="submit_button button_login" rendered="false">Send</button>  
+                <span>
+                	<button type="submit" class="submit_button button_login">Draft</button>  
+                <span></span>        
+            </div> 
+        </div>      
     </form>
 
 </div>

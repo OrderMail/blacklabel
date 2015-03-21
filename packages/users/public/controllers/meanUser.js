@@ -213,6 +213,8 @@ angular.module('mean.users')
   .controller('ResetPasswordCtrl', ['$scope', '$rootScope', '$http', '$location', '$stateParams', 'Global',
     function($scope, $rootScope, $http, $location, $stateParams, Global) {
       $scope.user = {};
+      $scope.loginPage = '';
+      $scope.access = 'true';
       $scope.global = Global;
       $scope.global.registerForm = false;
       $scope.resetpassword = function() {
@@ -223,6 +225,8 @@ angular.module('mean.users')
           .success(function(response) {
             console.log('reset pass success '+response.message);
             $scope.response = response;
+            $scope.loginPage = 'true';
+            $scope.access = '';
             
             /*$rootScope.user = response.user;
             $rootScope.$emit('loggedin');
@@ -240,6 +244,8 @@ angular.module('mean.users')
           .error(function(error) {
             console.log('reset pass sFails'+error.message);
             $scope.response = error;
+            $scope.loginPage = '';
+            $scope.access = 'true';
             
             /*if (error.msg === '2')
               $scope.response = response;
