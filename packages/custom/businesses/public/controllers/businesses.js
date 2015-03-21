@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mean.businesses')
-
+/*
 	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
 	  function($scope, Global, Businesses) {
 	    $scope.global = Global;
@@ -14,13 +14,13 @@ angular.module('mean.businesses')
         });
           
 
-        };*/
+        };
 	  }
 	])
-
+*/
  /*Controller to handle new business registration #7*/
-  .controller('BusinessRegistrationCtrl', ['$scope', 'Global', 'Businesses',
-    function($scope, Global, Businesses) {
+  .controller('BusinessRegistrationCtrl', ['$scope', 'Global', '$rootScope', 'Businesses',
+    function($scope, Global, $rootScope, Businesses) {
       $scope.user = {};
       $scope.global = Global;
       $scope.global.registerForm = false;      
@@ -29,36 +29,7 @@ angular.module('mean.businesses')
       $scope.successRegistrationMessage = 0;   
       $scope.existingBusinessFlag = false;           
 
-      $scope.businessList = function() {
-        console.log($scope.existingBusinessSelected);
-
-        if($scope.existingBusinessSelected) {
-          console.log('Selected ---------------------');
-          
-          console.log('fetching businesses');
-          var businesses = Businesses.query(function() {
-            $scope.businesses=businesses;
-            console.log(businesses);
-          }); //query() returns all the entries
-     
-          $scope.formatLabel=function(model) {
-            console.log('###In formatLabel');
-            for (var count=0; count< $scope.businesses.length; count=count+1) {
-              if (model === $scope.businesses[count]._id) {
-                return $scope.businesses[count].businessname;
-                }
-              }
-            };
-
-            // Set the existing business selected flag
-           $scope.existingBusinessFlag = true; 
-          } else {
-            console.log('Unselected ---------------------');
-            // Disable the existing business selected flag
-            $scope.existingBusinessFlag = false;
-          }
-        };  
-
+  
       $scope.businessregistration = function() {  
         $scope.global.registerForm = false;
         $scope.businessnameError = null;
@@ -66,6 +37,7 @@ angular.module('mean.businesses')
         $scope.businessError = null;
         $scope.successRegistrationMessage = 0;           
 
+        console.log('Contacts: '+ $scope.contacts[0]);
         var business = new Businesses({   
           category: $scope.business.category,
           website: $scope.business.website,
@@ -77,8 +49,14 @@ angular.module('mean.businesses')
             city: $scope.business.city,
             state: $scope.business.state,
             country: $scope.business.country
-           }]          
-          });         
+
+           }],
+           
+           contacts: $rootScope.contacts    
+          });
+        alert($rootScope.contacts);
+           /*}]          
+          });*/         
 
          business.$save(function(response) {
             $scope.successRegistrationMessage = 0;
@@ -94,3 +72,18 @@ angular.module('mean.businesses')
         };     
       }
   ]);
+angular.module('mean.businesses').controller('ContactsController', ['$scope','$rootScope', function($scope,$rootScope) {
+    $scope.contacts = [
+        {title:'General', email:'info@jkt.com', phone: '1233'}];
+    $rootScope.contacts=$scope.contacts;
+
+    $scope.addContact = function() {
+        $rootScope.contacts.push({title:$scope.contact.title, email:$scope.contact.email, phone: $scope.contact.phone});
+      $scope.contact = '';
+    };
+    }]);
+
+
+
+
+

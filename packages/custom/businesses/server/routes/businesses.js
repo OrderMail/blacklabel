@@ -30,10 +30,6 @@ module.exports = function(Businesses, app, auth, database) {
       res.send(html);
     });
   });*/
-app.route('/businesslist')
-    .get(function(req,res){
-            res.send('my name is khan');
-          });
 
   app.route('/businesses')
     .get(businesses.all)
