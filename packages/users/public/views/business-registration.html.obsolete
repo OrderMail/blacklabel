@@ -1,0 +1,88 @@
+<div data-ng-controller="BusinessRegistrationCtrl">
+    <div ng-repeat="error in registerError">
+        <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
+    </div>
+    <div class="alert alert-danger animated fadeIn" ng-show="businessnameError">{{businessnameError}}</div>
+    <div class="alert alert-danger animated fadeIn" ng-show="emailError">{{emailError}}</div>
+
+    <div class="alert alert-danger animated fadeIn" ng-show="successMessage">{{successMessage}}</div>
+    
+    <form  ng-submit="businessregistration()">
+        <h2>Business Registration</h2>
+
+        <div class="input-wrapper">
+          <span>
+            <label type="text" name="businessname">Business Name</label>
+          </span>            
+          <span>
+            <input required id="businessname" type="text" name="businessname" placeholder="Business Name"
+                   ng-model="user.businessname">
+            <div class="error_message">Please enter a correct info #</div>
+          </span>    
+        </div>
+
+
+         <div class="input-wrapper">
+          <span>
+            <label type="text" name="Address">Address</label>
+          </span>            
+          <span>
+            <input required id="address" type="text" name="address" placeholder="Street Address" 
+            ng-model="user.address">          
+          </span>    
+        </div>
+
+        <div class="input-wrapper">                   
+          <span>
+            <input required id="landmark" type="text" name="landmark" placeholder="Landmark" 
+            ng-model="user.landmark">            
+          </span>    
+        </div>
+        
+        <div class="input-wrapper">                   
+          <span>
+            <input required id="city" type="text" name="city" placeholder="City" 
+            ng-model="user.city">            
+          </span>                        
+          <span>
+            <input required id="pincode" type="text" name="pincode" placeholder="Pincode" 
+            ng-model="user.pincode">            
+          </span>    
+        </div>
+
+       <div class="input-wrapper">                   
+          <span>
+            <input required id="state" type="text" name="state" placeholder="State" 
+            ng-model="user.state">            
+          </span>                        
+          <span>
+            <input required id="country" type="text" name="country" placeholder="Country" 
+            ng-model="user.country">            
+          </span>    
+        </div>
+
+        <div class="input-wrapper">                   
+         <span>
+            <label type="text" name="natureofbusiness">Nature Of Business</label>
+          </span> 
+          <span>
+            <input required id="category" type="text" name="category" placeholder="Category" 
+            ng-model="user.category">            
+          </span>    
+        </div>
+
+        <div class="input-wrapper">                   
+         <span>
+            <label type="text" name="website">Website Address</label>
+          </span> 
+          <span>
+            <input required id="website" type="text" name="website" placeholder="Website" 
+            ng-model="user.website">            
+          </span>    
+        </div>
+
+        <div class="button_register">
+            <button type="submit" class="submit_button button_login">Register</button>          
+        </div>        
+    </form>
+</div>

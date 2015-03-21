@@ -1,4 +1,4 @@
-<div data-ng-controller="BusinessRegistrationCtrl" ng-init="businessregistration">
+<div ng-controller="BusinessRegistrationCtrl">
    <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">{{errorMessage}}
    </div>    
     <div class="alert alert-danger animated fadeIn" ng-show="successRegistrationMessage">{{successRegistrationMessage}}</div>
@@ -6,24 +6,25 @@
     <form id="businessregistration_form"  class="businessregistration_form" ng-submit="businessregistration()" ng-hide="successRegistrationMessage">
         <h2>Business Registration</h2>
 
+
     <div ng-form="businessregistration_form" class="container-fluid">
-      <div class="row">
-        <label type="text" name="businessname" class="col-lg-3 col-sm-4 col-xs-6">Business Name</label>
+            <div class="row">
+              <label type="text" name="businessname" class="col-lg-3 col-sm-4 col-xs-6">Business Name</label>
 
 
-        <div class="col-lg-3 col-sm-4 col-xs-6">
-          
-          <input required="" class="long_input" id="businessname" type="text" name="businessname" placeholder="Business Name"
-             ng-model="business.businessname">
-          <!-- <div class="error_message">Business name is required.</div> -->
-          <div class="error_message"
-             ng-show="businessregistration_form.businessname.$error.required">
-            Business name cannot be empty.
-        </div>
-        
+              <div class="col-lg-3 col-sm-4 col-xs-6">
+                
+                <input required="" class="long_input" id="businessname" type="text" name="businessname" placeholder="Business Name"
+                   ng-model="business.businessname">
+                <!-- <div class="error_message">Business name is required.</div> -->
+                <div class="error_message"
+                   ng-show="businessregistration_form.businessname.$error.required">
+                  Business name cannot be empty.
+              </div>
+              
 
-        </div>
-      </div>
+              </div>
+            </div>
 
        <div class="row">
         <label type="text" name="Address" class="col-lg-3 col-sm-4 col-xs-6">Address</label>
@@ -58,39 +59,35 @@
              ng-show="businessregistration_form.website.$error.required">Address Line 1 cannot be empty.</div>   
 
         </div>
+
       </div>
-      <div  ng-controller="ContactsController" class="container">
-    
-      <div class="row" ng-repeat="contact in contacts">
+       <div  ng-controller="ContactsController" class="container">
+        <div class="row" ng-repeat="contact in contacts">
             <span class="glyphicon glyphicon-user col-sm-4"> <strong> {{contact.title}} </strong></span>
             <span class="glyphicon glyphicon-envelope col-sm-4">  {{contact.email}}</span>
             <span class="glyphicon glyphicon-phone-alt col-sm-4"> {{contact.phone}}</span>
-      </div>
-    <div class="row">
-      <input type="text" ng-model="contact.title" class="col-sm-4" size="30"
+        </div>
+        <div class="row">
+          <input type="text" ng-model="contact.title" class="col-sm-4" size="30"
              placeholder="Contact Title">
-      <input type="email" ng-model="contact.email" class="col-sm-4" size="30"
+          <input type="email" ng-model="contact.email" class="col-sm-4" size="30"
              placeholder="Email Address">
-    <input type="text" ng-model="contact.phone" class="col-sm-4" size="30"
+          <input type="text" ng-model="contact.phone" class="col-sm-4" size="30"
              placeholder="Phone Number">                               
-      <input class="btn-primary" type="button" class="col-sm-4" value="Add" ng-click="addContact()">
-  </div> 
+          <input class="btn-primary" type="button" class="col-sm-4" value="Add" ng-click="addContact()">
+        </div> 
 
-      </div>   
-      </div>   
-      
+      </div>
+      <button type="submit" class="submit_button button_login">Register</button>    
+    </div>
+        
+    </form>
+</div>
          
          
                 
         
  
 
-      
+ 
 
-
-              
-          
-    </div> 
- <button type="submit" class="submit_button button_login">Register</button>
-  </form>
-</div>

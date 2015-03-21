@@ -15,12 +15,19 @@ angular.module('mean.businesses').config(['$stateProvider',
 
         console.log('User business_id');
         console.log(user.business_id);        
-      
+     
         // Authenticated  
-        if((user !== '0') && (user.business_id === null)) {
-        /*if((user !== '0') && (typeof user.business_id === 'undefined')) {*/
+        if(user !== '0') {
           console.log('User logged in............');   
-          $timeout(deferred.resolve);
+            console.log(user); 
+          if(user.business_id === null) {
+            console.log('User hasn\'t associated with any business yet');   
+            $timeout(deferred.resolve);  
+          } else {
+            console.log('Redirecting to dashboard');
+            $timeout(deferred.reject);
+            $location.url('/dashboard');  
+          }
         } 
         // Not Authenticated
         else {
