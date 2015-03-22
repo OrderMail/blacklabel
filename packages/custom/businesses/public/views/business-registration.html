@@ -1,4 +1,4 @@
-<div ng-controller="BusinessRegistrationCtrl">
+<div ng-controller="BusinessRegistrationCtrl" ng-init="BusinessRegistrationCtrl">
    <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">{{errorMessage}}
    </div>    
     <div class="alert alert-danger animated fadeIn" ng-show="successRegistrationMessage">{{successRegistrationMessage}}</div>
@@ -61,20 +61,32 @@
         </div>
 
       </div>
-       <div  ng-controller="ContactsController" class="container">
-        <div class="row" ng-repeat="contact in contacts">
-            <span class="glyphicon glyphicon-user col-sm-4"> <strong> {{contact.title}} </strong></span>
+       <div  ng-controller="ContactsController" class="container-fluid">
+       <div class="row">
+       <label name="bizontacts" type="text">Business Contacts</label>
+       </div>
+        <div class="row contacts" ng-repeat="contact in contacts" ng-class="{marked: contact.primary}" ng-click="setPrimary(contact)"  ng-switch on ="contact.primary">
+            <span class="glyphicon glyphicon-user col-sm-3"> <strong> {{contact.title}} </strong></span>
             <span class="glyphicon glyphicon-envelope col-sm-4">  {{contact.email}}</span>
-            <span class="glyphicon glyphicon-phone-alt col-sm-4"> {{contact.phone}}</span>
+            <span class="glyphicon glyphicon-phone-alt col-sm-2"> {{contact.phone}}</span>
+            <!-- <span class="col-sm-2" ng-show={{contact.primary}}> Primary</span>
+            <span class="col-sm-2" ng-hide={{contact.primary}}>
+              <button type="button" ng-click="setPrimary(contact.email)" value="set Primary">Primary?</button> 
+            </span> -->
+            
+            <button type="button" class="button_login" value="Delete" ng-click="deleteContact()">-</button>
+            <span class="glyphicon glyphicon-ok" ng-switch-when="true">Primary</span>
+            </br>
         </div>
         <div class="row">
-          <input type="text" ng-model="contact.title" class="col-sm-4" size="30"
+          <input type="text" ng-model="contact.title" class="col-sm-2" 
              placeholder="Contact Title">
-          <input type="email" ng-model="contact.email" class="col-sm-4" size="30"
+          <input type="email" ng-model="contact.email" class="col-sm-4"
              placeholder="Email Address">
-          <input type="text" ng-model="contact.phone" class="col-sm-4" size="30"
+          <input type="text" ng-model="contact.phone" class="col-sm-2" 
              placeholder="Phone Number">                               
-          <input class="btn-primary" type="button" class="col-sm-4" value="Add" ng-click="addContact()">
+          
+          <button type="button" class="button_login" value="Add" ng-click="addContact()">+</button>
         </div> 
 
       </div>

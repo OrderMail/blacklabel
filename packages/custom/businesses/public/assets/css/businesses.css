@@ -65,4 +65,7 @@ html {
     color: #e32;
     content: ' *';
     display:inline;
+
+.row div.marked {background: #b4dfa6;}
+
 }

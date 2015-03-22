@@ -53,6 +53,7 @@ angular.module('mean.users')
           .success(function(response) {
             // authentication OK
             $scope.loginError = 0;
+            console.log('Added User to the Root Scope**************');
             $rootScope.user = response.user;
             $rootScope.$emit('loggedin');
             /*if (response.redirect) {
