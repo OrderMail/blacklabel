@@ -65,7 +65,7 @@ html {
     color: #e32;
     content: ' *';
     display:inline;
-
-.row div.marked {background: #b4dfa6;}
-
 }
+.contacts div.marked {background: #b4dfa6;}
+.contacts {background: #d7e3f0; padding: 10px;  margin-bottom: 3px; cursor: pointer;}
+

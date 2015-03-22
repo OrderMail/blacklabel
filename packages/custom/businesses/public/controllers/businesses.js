@@ -115,6 +115,22 @@ $scope.setPrimary = function(contact)
     contact.primary = !contact.primary;
   };
 
+  $scope.deleteContact = function(contact){        
+    var index = -1;   
+    var comArr = eval( $scope.contacts );
+    for( var i = 0; i < comArr.length; i++ ) {
+
+      if( comArr[i].title === contact.title ) {
+        index = i;
+        break;
+      }
+    }
+    if( index === -1 ) {
+      alert( "Something gone wrong" );
+    }
+    $scope.contacts.splice( index, 1 );    
+  };
+
     $scope.addContact = function() {
         $rootScope.contacts.push({title:$scope.contact.title, email:$scope.contact.email, phone: $scope.contact.phone});
       $scope.contact = '';

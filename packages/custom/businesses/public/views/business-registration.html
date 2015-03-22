@@ -74,16 +74,16 @@
               <button type="button" ng-click="setPrimary(contact.email)" value="set Primary">Primary?</button> 
             </span> -->
             
-            <button type="button" class="button_login" value="Delete" ng-click="deleteContact()">-</button>
+            <button type="button" class="button_login" value="Delete" ng-click="deleteContact(contact)"> X </button>
             <span class="glyphicon glyphicon-ok" ng-switch-when="true">Primary</span>
             </br>
         </div>
         <div class="row">
           <input type="text" ng-model="contact.title" class="col-sm-2" 
-             placeholder="Contact Title">
+             placeholder="Contact Title" required>
           <input type="email" ng-model="contact.email" class="col-sm-4"
-             placeholder="Email Address">
-          <input type="text" ng-model="contact.phone" class="col-sm-2" 
+             placeholder="Email Address" required>
+          <input type="tel" ng-model="contact.phone" class="col-sm-2" 
              placeholder="Phone Number">                               
           
           <button type="button" class="button_login" value="Add" ng-click="addContact()">+</button>
