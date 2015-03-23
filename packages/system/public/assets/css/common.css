@@ -54,7 +54,59 @@ footer p {
     margin-left:40%;
     margin-right:200px;
 }
+.label_sm  {border-bottom: none !important;
+  padding-top: 1px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-right: 6px;
+  font-size: smaller;
+  font-weight: bold;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px #888;
+  background-color: rgb(74, 19, 234);
+  }
+  
+.btnclose
+{
+    float: right;
+    margin-top: -12px;
+    margin-right: -13px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #050505;
+    border-radius: 20px;
+    background: #ce1616;
+    font-size: 29;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 6px 2px;
+}
+.btnclose:before {
+    content: "x";
+}
 
+.btnAdd
+{
+float: right;
+margin-top: 0;
+margin-right: -5px;
+cursor: pointer;
+color: #fff;
+border: 1px solid #AEAEAE;
+border-radius: 14px;
+background: #47db67;
+font-size: 32px !important;
+font-weight: bold;
+display: inline-block;
+line-height: 0px;
+padding: 12px 3px;
+}
+
+.btnAdd:before {
+    content: "+";
+}
 
 /*.ng-invalid.ng-dirty{*/
     /*border-color:#FA787E;*/

@@ -65,6 +65,7 @@
        <div class="row">
        <label name="bizontacts" type="text">Business Contacts</label>
        </div>
+       <div class="row error_message" ng-show="{{contactError}}">{{contactErrorMsg}}</div>
         <div class="row contacts" ng-repeat="contact in contacts" ng-class="{marked: contact.primary}" ng-click="setPrimary(contact)"  ng-switch on ="contact.primary">
             <span class="glyphicon glyphicon-user col-sm-3"> <strong> {{contact.title}} </strong></span>
             <span class="glyphicon glyphicon-envelope col-sm-4">  {{contact.email}}</span>
@@ -74,19 +75,22 @@
               <button type="button" ng-click="setPrimary(contact.email)" value="set Primary">Primary?</button> 
             </span> -->
             
-            <button type="button" class="button_login" value="Delete" ng-click="deleteContact(contact)"> X </button>
-            <span class="glyphicon glyphicon-ok" ng-switch-when="true">Primary</span>
+            <button type="button" class="btnclose" value="Delete" ng-click="deleteContact(contact)">    
+            </button>
+            <span class="label_sm" ng-switch-when="true"><span class="glyphicon glyphicon-star"><strong>PRIMARY</strong></span></span>
             </br>
         </div>
         <div class="row">
-          <input type="text" ng-model="contact.title" class="col-sm-2" 
-             placeholder="Contact Title" required>
+          <input type="text" ng-model="contact.title" class="col-sm-3" 
+             placeholder="Contact Title">
           <input type="email" ng-model="contact.email" class="col-sm-4"
-             placeholder="Email Address" required>
+             placeholder="Email Address">
           <input type="tel" ng-model="contact.phone" class="col-sm-2" 
              placeholder="Phone Number">                               
           
-          <button type="button" class="button_login" value="Add" ng-click="addContact()">+</button>
+          <button type="button" class="btnAdd" value="Add" ng-click="addContact()"></button>
+
+
         </div> 
 
       </div>

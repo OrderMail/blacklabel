@@ -112,10 +112,20 @@ $scope.setPrimary = function(contact)
   {
       contactToSetFalse.primary=false;
   });
-    contact.primary = !contact.primary;
-  };
+  contact.primary = !contact.primary;
+};
 
-  $scope.deleteContact = function(contact){        
+$scope.deleteContact = function(contact)
+{   
+  if(contact.primary)     
+      
+    {
+      $scope.contactError=true;
+      $scope.contactErrorMsg='Cannot delete a primary contact, please change the primary contact before you delete this contact.';
+
+    }
+  else
+  {
     var index = -1;   
     var comArr = eval( $scope.contacts );
     for( var i = 0; i < comArr.length; i++ ) {
@@ -128,14 +138,26 @@ $scope.setPrimary = function(contact)
     if( index === -1 ) {
       alert( "Something gone wrong" );
     }
-    $scope.contacts.splice( index, 1 );    
-  };
+    $scope.contacts.splice( index, 1 );   
+  } 
+};
 
-    $scope.addContact = function() {
-        $rootScope.contacts.push({title:$scope.contact.title, email:$scope.contact.email, phone: $scope.contact.phone});
-      $scope.contact = '';
-    };
-    }]);
+$scope.addContact = function() 
+{
+  alert($scope.contact.title+'   '+ $scope.contact.email);
+  if($scope.contact.title===undefined || $scope.contact.email===undefined)
+  {
+    $scope.contactError=true;
+    $scope.contactErrorMsg='Please enter a title and an email address for this contact';
+  }
+  else
+  {
+    $rootScope.contacts.push({title:$scope.contact.title, email:$scope.contact.email, phone: $scope.contact.phone});
+  
+  $scope.contact = '';
+  }
+};
+}]);
 
 
 
