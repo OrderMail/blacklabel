@@ -1,6 +1,46 @@
 'use strict';
 
-angular.module('mean.rfi').controller('RfiController', ['$scope', 'Global', 'Rfi',
+angular.module('mean.rfi')
+
+.controller('createrfiController', ['$scope', 'Global', 'rfi',
+    function($scope, Global, Rfi) {
+      $scope.global = Global;
+      alert('i am in controller 22');
+      $scope.createNewRfi = function() {
+          var rfi = new Rfi({
+          to: this.emailAddresses,
+          mailingaddress: this.MailingAddress,
+          shipTo: this.shipTo,
+          rfiDate: this.rfiDate,
+          rfiDueDate: this.rfiDueDate,
+          shipingAddress: this.shipingAddress,
+          shipVia: this.shipVia,
+          body: this.body,
+          message: this.message,
+          approvedBy: this.approvedBy,
+        });
+        alert(rfi);
+        this.shipingAddress = rfi.mailingaddress;
+      };
+      
+    },alert('i am in controller')
+
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.controller('RfiController', ['$scope', 'Global', 'Rfi',
   
     function($scope, Global, Rfi) {
 	    $scope.global = Global;
@@ -17,7 +57,7 @@ angular.module('mean.rfi').controller('RfiController', ['$scope', 'Global', 'Rfi
   /*$scope.createrfi = function() {
     $scope.subject = 'First time-  Hello ';
     console.log('sgsdgsaz');
-  };*/
+  };
 
 
  $scope.createrfi = function() {
@@ -55,5 +95,5 @@ rfi.$save(function(response) {
 
 }
 ]);
-
+*/
 
