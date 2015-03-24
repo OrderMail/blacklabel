@@ -19,9 +19,14 @@
 	            	<span class="input-group-addon">Ship To
 	                <input required id="shipTo" class="form-control" type="text" name="shipTo" placeholder="Ship To" ng-model="shipTo" /></span>
 	            </div>
-	    		<div class="form-group" >
+	    		<div class="form-group" id='datetimepicker1'>
 	    			<span class="input-group-addon">RFI Date
-				    <input align="right" class="form-control" id="rfiDate" placeholder="Rfi Date"  ng-model="rfiDate" style= "width:67%;"/></span>
+				    <input align="right" class="form-control" id="rfiDate"   ng-model="rfiDate" style= "width:67%;"/></span>
+					<script type="text/javascript">
+						$(function () {
+						$('#datetimepicker1').datetimepicker();
+						});
+					</script>
 				</div>
 				<div class="form-group" >
 					<span class="input-group-addon">RFI Due Date
@@ -43,7 +48,31 @@
 				    <input align="right" class="form-control" id="shipVia" placeholder="Ship via"  ng-model="shipVia" style= "width:67%;"/></span>
 				</div>
     		</div>
-
+    		<div class="form-inline">
+    			<div class="form-group" align="left" >
+					 <textarea class="form-control" rows="3" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
+				</div>
+				<div class="form-group" align="right">
+	    			<span  class="input-group-addon">Approved By
+				    <input  class="form-control" id="approved" placeholder="Approved"  ng-model="approved" style= "width:40%;"/></span>
+				</div>
+    		</div>
+    		
+	    	<div class="form-group" style= "width:20%;">
+		    	<span class="input-group-addon">Memo
+			    <input class="form-control" id="memo" placeholder="Memo"  ng-model="memo" /></span>
+			</div>
+			<div>
+				Attachments
+			</div>
+    		
     	</div>
+    	<div class="button_register">
+            <button type="submit" class="submit_button button_login" rendered="false">Send</button>  
+            <span>
+               	<button type="submit" class="submit_button button_login">Draft</button>  
+            </span>        
+        </div> 
+
 	</form>
 </div>
