@@ -113,10 +113,10 @@ angular.module('mean.users').config(['$stateProvider',
           loggedin: checkLoggedOut
         }
       })
-      .state('auth.businessregistration', {
+    /*  .state('auth.businessregistration', {
         url: '/businessregistration',
         templateUrl: 'users/views/business-registration.html',        
-      })
+      })*/
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'users/views/dashboard.html',    

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mean.businesses')
-
+/*
 	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
 	  function($scope, Global, Businesses) {
 	    $scope.global = Global;
@@ -14,51 +14,23 @@ angular.module('mean.businesses')
         });
           
 
-        };*/
+        };
 	  }
 	])
-
+*/
  /*Controller to handle new business registration #7*/
-  .controller('BusinessRegistrationCtrl', ['$scope', 'Global', 'Businesses',
-    function($scope, Global, Businesses) {
-      $scope.user = {};
+  .controller('BusinessRegistrationCtrl', ['$scope', 'Global', '$rootScope', 'Businesses',/*'isUserloggedin'*//*,'promise'*/
+    function($scope, Global, $rootScope, Businesses/*isUserloggedin,promise*/) {
+      $scope.user = $rootScope.user;
+
       $scope.global = Global;
       $scope.global.registerForm = false;      
       $scope.businessnameError = null;
       $scope.registerError = null;   
       $scope.successRegistrationMessage = 0;   
       $scope.existingBusinessFlag = false;           
-
-      $scope.businessList = function() {
-        console.log($scope.existingBusinessSelected);
-
-        if($scope.existingBusinessSelected) {
-          console.log('Selected ---------------------');
-          
-          console.log('fetching businesses');
-          var businesses = Businesses.query(function() {
-            $scope.businesses=businesses;
-            console.log(businesses);
-          }); //query() returns all the entries
-     
-          $scope.formatLabel=function(model) {
-            console.log('###In formatLabel');
-            for (var count=0; count< $scope.businesses.length; count=count+1) {
-              if (model === $scope.businesses[count]._id) {
-                return $scope.businesses[count].businessname;
-                }
-              }
-            };
-
-            // Set the existing business selected flag
-           $scope.existingBusinessFlag = true; 
-          } else {
-            console.log('Unselected ---------------------');
-            // Disable the existing business selected flag
-            $scope.existingBusinessFlag = false;
-          }
-        };  
-
+      console.log('User is: ++++'+ $rootScope.user);
+  
       $scope.businessregistration = function() {  
         $scope.global.registerForm = false;
         $scope.businessnameError = null;
@@ -66,6 +38,7 @@ angular.module('mean.businesses')
         $scope.businessError = null;
         $scope.successRegistrationMessage = 0;           
 
+        console.log('Contacts: '+ $scope.contacts[0]);
         var business = new Businesses({   
           category: $scope.business.category,
           website: $scope.business.website,
@@ -77,8 +50,14 @@ angular.module('mean.businesses')
             city: $scope.business.city,
             state: $scope.business.state,
             country: $scope.business.country
-           }]          
-          });         
+
+           }],
+           
+           contacts: $rootScope.contacts    
+          });
+        alert($rootScope.contacts);
+           /*}]          
+          });*/         
 
          business.$save(function(response) {
             $scope.successRegistrationMessage = 0;
@@ -94,3 +73,93 @@ angular.module('mean.businesses')
         };     
       }
   ]);
+angular.module('mean.businesses').controller('ContactsController', ['$scope','$rootScope'/*,'isUserloggedin'*/, 
+  function($scope,$rootScope/*, isUserloggedin*/) {
+    $scope.contacts = [
+        {title:$rootScope.user.firstname, email:$rootScope.user.email, phone: '', primary:true}];
+    $rootScope.contacts=$scope.contacts;
+
+    /*$scope.setPrimary= function(email) {
+      var index = -1;  
+  //  var existingContacts=$scope.contacts;
+   // var contactsCount = eval( $scope.contacts );
+    for( var i = 0; i < $scope.contacts.length; i++ ) {
+      if( $scope.contacts[i].email === email ) {
+        alert('setting the contact primary '+email);
+        console.log('email is '+email);
+        index = i;     
+      }
+      $scope.contacts[i].primary=false;
+      console.log('$scope.contacts[i].email'+ $scope.contacts[i].email + '$scope.contacts[i].primary'+$scope.contacts[i].primary);
+    }
+    if( index === -1 ) {
+      alert( "Something gone wrong" );
+    }
+    console.log('index = '+index);
+
+    $scope.contacts[index].primary=true;
+    $rootScope.contacts[index].primary=true;    
+    console.log($scope.contacts[index].primary);  
+      alert(  $scope.contacts);
+
+
+
+
+    };*/
+$scope.setPrimary = function(contact)
+{
+  angular.forEach($scope.contacts, function (contactToSetFalse)
+  {
+      contactToSetFalse.primary=false;
+  });
+  contact.primary = !contact.primary;
+};
+
+$scope.deleteContact = function(contact)
+{   
+  if(contact.primary)     
+      
+    {
+      $scope.contactError=true;
+      $scope.contactErrorMsg='Cannot delete a primary contact, please change the primary contact before you delete this contact.';
+
+    }
+  else
+  {
+    var index = -1;   
+    var comArr = eval( $scope.contacts );
+    for( var i = 0; i < comArr.length; i++ ) {
+
+      if( comArr[i].title === contact.title ) {
+        index = i;
+        break;
+      }
+    }
+    if( index === -1 ) {
+      alert( "Something gone wrong" );
+    }
+    $scope.contacts.splice( index, 1 );   
+  } 
+};
+
+$scope.addContact = function() 
+{
+  alert($scope.contact.title+'   '+ $scope.contact.email);
+  if($scope.contact.title===undefined || $scope.contact.email===undefined)
+  {
+    $scope.contactError=true;
+    $scope.contactErrorMsg='Please enter a title and an email address for this contact';
+  }
+  else
+  {
+    $rootScope.contacts.push({title:$scope.contact.title, email:$scope.contact.email, phone: $scope.contact.phone});
+  
+  $scope.contact = '';
+  }
+};
+}]);
+
+
+
+
+

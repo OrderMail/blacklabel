@@ -53,6 +53,7 @@ angular.module('mean.users')
           .success(function(response) {
             // authentication OK
             $scope.loginError = 0;
+            console.log('Added User to the Root Scope**************');
             $rootScope.user = response.user;
             $rootScope.$emit('loggedin');
             /*if (response.redirect) {
@@ -192,12 +193,13 @@ angular.module('mean.users')
   ])
 
   /*Controller to handle new business registration #7*/
-  .controller('BusinessRegistrationCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
+  /*.controller('BusinessRegistrationCtrl', ['$scope', '$rootScope', '$http', '$location', 'Global',
     function($scope, $rootScope, $http, $location, Global) {
       $scope.user = {};
       $scope.global = Global;
       $scope.global.registerForm = false;
       $scope.businessregistration = function() {
+        console.log('in the MEANUSER.JS&&&&&&&&&&&&');
        $http.post('/businessregistration', {
           text: $scope.user.email
         })
@@ -209,7 +211,7 @@ angular.module('mean.users')
           });
       };
     }
-  ])
+  ])*/
   .controller('ResetPasswordCtrl', ['$scope', '$rootScope', '$http', '$location', '$stateParams', 'Global',
     function($scope, $rootScope, $http, $location, $stateParams, Global) {
       $scope.user = {};
