@@ -1,5 +1,5 @@
-<div class="" data-ng-controller="" >
-	<form id="register_form" ng-submit="">
+<div data-ng-controller="createrfiController" >
+	<form id="register_form" ng-submit="createNewRfi">
 		<div ng-show="done">
             <div class="form-inline">
 	            <div class="form-group" >
@@ -22,11 +22,6 @@
 	    		<div class="form-group" id='datetimepicker1'>
 	    			<span class="input-group-addon">RFI Date
 				    <input align="right" class="form-control" id="rfiDate"   ng-model="rfiDate" style= "width:67%;"/></span>
-					<script type="text/javascript">
-						$(function () {
-						$('#datetimepicker1').datetimepicker();
-						});
-					</script>
 				</div>
 				<div class="form-group" >
 					<span class="input-group-addon">RFI Due Date
@@ -54,7 +49,7 @@
 				</div>
 				<div class="form-group" align="right">
 	    			<span  class="input-group-addon">Approved By
-				    <input  class="form-control" id="approved" placeholder="Approved"  ng-model="approved" style= "width:40%;"/></span>
+				    <input  class="form-control" id="approvedBy" placeholder="Approved"  ng-model="approvedBy" style= "width:40%;"/></span>
 				</div>
     		</div>
     		
