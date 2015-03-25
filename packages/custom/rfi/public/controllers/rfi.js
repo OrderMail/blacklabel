@@ -23,8 +23,7 @@ angular.module('mean.rfi')
         this.shipingAddress = rfi.mailingaddress;
       };
       
-    },alert('i am in controller')
-
+    }
 ]);
 
 

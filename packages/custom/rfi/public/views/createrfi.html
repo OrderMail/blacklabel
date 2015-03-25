@@ -1,55 +1,87 @@
+
+<style>
+	.container {
+		padding-top: 2%;
+	}
+</style>
+
 <div data-ng-controller="createrfiController" >
 	<form id="register_form" ng-submit="createNewRfi">
 		<div ng-show="done">
-            <div class="form-inline">
-	            <div class="form-group" >
-	                <input required id="chooseBussiness" class="form-control" type="text" name="chooseBussiness" placeholder="Choose A Bussiness" ng-model="chooseBussiness" />
-	            </div>
-	    		<div class="form-group" >
-				    <input type="email" class="form-control" id="emailAddresses" placeholder="Enter Email Addresses"  ng-model="emailAddresses" />
+			<div class="container">
+                <div class="row">
+                    <div class= "col-md-3">
+                    	<input required id="chooseBussiness" class="form-control" type="text" name="chooseBussiness" placeholder="Choose A Bussiness" ng-model="chooseBussiness" />
+	            	</div>
+	            	<div class="col-md-1"></div>
+	    			<div class="col-md-8" >
+				    	<input type="email" class="form-control" id="emailAddresses" placeholder="Enter Email Addresses"  ng-model="emailAddresses" />
+					</div>
 				</div>
-    		</div>
+    		
     		<br/>
-    		<div class="form-inline">
-	    		<div class="form-group" >
-	    			<span class="input-group-addon" style= "width:67%;">Mailing Address</span>
-					 <textarea class="form-control" rows="3" id="MailingAddress" placeholder="Enter Your Mailing Address"  ng-model="MailingAddress" style= "width:90%;"></textarea>
-				</div>			
-	            <div class="form-group" align="top">
-	            	<span class="input-group-addon">Ship To
-	                <input required id="shipTo" class="form-control" type="text" name="shipTo" placeholder="Ship To" ng-model="shipTo" /></span>
+    		
+    		<div class="row">
+	    		<div class="col-md-3" >	
+	    			<span class="">Mailing Address</span>
+					 <textarea class="form-control" rows="3" id="MailingAddress" placeholder="Enter Your Mailing Address"  ng-model="MailingAddress"></textarea>
+					
+				    	<span class="">Same as Mailing Address
+				        	<input type="checkbox" id="mailAndShip" ng-model="mailAndShip"> 
+				    	</span>				
+				</div>
+	            <div class="col-md-3" >
+		            <div class="row">
+		            	<span class="">Ship To</span>
+		                <input required id="shipTo" class="form-control" type="text" name="shipTo" placeholder="Ship To" ng-model="shipTo" />
+		            </div>
+		            <div class="row " style="padding-top: 3%;">
+	    				<span class="">Shiping Address</span>
+					 	<textarea class="form-control" rows="3" id="shipingAddress" placeholder="Enter Your Shiping Address"  ng-model="shipingAddress"></textarea>
+					</div>
 	            </div>
-	    		<div class="form-group" id='datetimepicker1'>
-	    			<span class="input-group-addon">RFI Date
-				    <input align="right" class="form-control" id="rfiDate"   ng-model="rfiDate" style= "width:67%;"/></span>
-				</div>
-				<div class="form-group" >
-					<span class="input-group-addon">RFI Due Date
-				    <input align="right" class="form-control" id="rfiDueDate" placeholder="Rfi Due Date"  ng-model="rfiDueDate" style= "width:67%;"/></span>
-				</div>
-    		</div>
-    		<div class="form-inline">
-    			<div class="checkbox">
-				    <span class="input-group-addon">Same as Mailing Address
-				      <input type="checkbox" id="mailAndShip" ng-model="mailAndShip"> 
-				    </span>
-				</div>
-    			<div class="form-group" align="right" >
-	    			<span class="input-group-addon" style= "width:67%;">Shiping Address</span>
-					 <textarea class="form-control" rows="3" id="shipingAddress" placeholder="Enter Your Shiping Address"  ng-model="shipingAddress" style= "width:90%;"></textarea>
-				</div>
-				<div class="form-group" >
-	    			<span class="input-group-addon">Ship Via
-				    <input align="right" class="form-control" id="shipVia" placeholder="Ship via"  ng-model="shipVia" style= "width:67%;"/></span>
+	            <div class="col-md-4">
+		    		<div class="col-md-6" id='datetimepicker1'>
+		    			<span class="">RFI Date
+					    	<input  class="form-control" id="rfiDate"   ng-model="rfiDate"/>
+					    </span>
+					</div>
+					<div class="col-md-6" >
+						<span class="">RFI Due Date
+					    	<input class="form-control" id="rfiDueDate" placeholder="Rfi Due Date"  ng-model="rfiDueDate"/>
+					    </span>    
+					</div>
+					
+					<div class="col-md-6" style="padding-top: 3%;">
+						<div class="form-group" >
+			    			<span class="">Ship Via
+						    <input align="right" class="form-control" id="shipVia" placeholder="Ship via"  ng-model="shipVia"/></span>
+						</div>
+					</div>
 				</div>
     		</div>
+
+    		<div class="row">
+    		<!-- Add Item details here -->
+    		</div>
+    		
+    		<div class="row">
+    			<div class="col-md-3">
+    				<div class="form-group" align="left" >
+						 <textarea class="form-control" rows="3" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
+					</div>
+    			</div>
+    			<div class="col-md-5"></div>
+    			<div class="col-md-4">
+    				<div class="form-inline  pull-right">
+	    				<span>Approved By &nbsp</span><input  class="form-control" id="approvedBy" placeholder="Approved"  ng-model="approvedBy"/>
+					</div>
+    			</div>
+    		</div>
     		<div class="form-inline">
-    			<div class="form-group" align="left" >
-					 <textarea class="form-control" rows="3" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
-				</div>
-				<div class="form-group" align="right">
-	    			<span  class="input-group-addon">Approved By
-				    <input  class="form-control" id="approvedBy" placeholder="Approved"  ng-model="approvedBy" style= "width:40%;"/></span>
+    			
+				<div class="form-group">
+	    			<span>Approved By<input  class="form-control" id="approvedBy" placeholder="Approved"  ng-model="approvedBy"/></span>
 				</div>
     		</div>
     		
@@ -61,13 +93,14 @@
 				Attachments
 			</div>
     		
-    	</div>
-    	<div class="button_register">
-            <button type="submit" class="submit_button button_login" rendered="false">Send</button>  
-            <span>
-               	<button type="submit" class="submit_button button_login">Draft</button>  
-            </span>        
-        </div> 
+    		</div>
+	    	<div class="button_register">
+	            <button type="submit" class="submit_button button_login" rendered="false">Send</button>  
+	            <span>
+	               	<button type="submit" class="submit_button button_login">Draft</button>  
+	            </span>        
+	        </div> 
+    	</div><!-- container end -->
 
 	</form>
 </div>

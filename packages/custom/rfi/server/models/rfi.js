@@ -26,9 +26,40 @@ var RfiSchema = new Schema({
     default: 'Request For Info',
     trim: true
   },
+  message: {
+    type: String,
+    trim: true
+  },
+  mailingaddress: {
+    type: String,
+    trim: true
+  },
+  shipTo: {
+    type: String,
+    trim: true
+  },
+  rfiDate: {
+    type: String,
+    trim: true
+  },
+  rfiDueDate: {
+    type: String,
+    trim: true
+  },
+  shipingAddress: {
+    type: String,
+    trim: true
+  },
+  shipVia: {
+    type: String,
+    trim: true
+  },
   body: {
     type: String,
-    required: true,
+    trim: true
+  },
+  approvedBy: {
+    type: String,
     trim: true
   },
   user: {
