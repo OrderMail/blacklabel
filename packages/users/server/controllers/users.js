@@ -128,27 +128,28 @@ exports.create = function(req, res, next) {
       return res.status(400);
     }
     console.log('checkpoint 2');
-    req.logIn(user, function(err) {
+   /* req.logIn(user, function(err) {
       if (err) return next(err);
       return res.redirect('/');        
     });
     
-    
+    */
 
-                // Naveen code for email, 16/12/2014
-          //var createActivationLink = function (user) {
-                console.log('checkpoint 3');
-                var mailOptions={
-                to : user.email
-                };
-                mailOptions = templates.signup_email(user,mailOptions);
-                sendMail(req, res, mailOptions);
-           //   }
+    // Naveen code for email, 16/12/2014
+  //var createActivationLink = function (user) {
+  //  console.log('checkpoint 3');
+    var mailOptions={
+    to : user.email
+    };
+    mailOptions = templates.signup_email(user,mailOptions);
+    sendMail(req, res, mailOptions);
+  //   }
 
                 
 
 
     res.status(200);
+    return res.redirect('/'); 
   });
 };
 
