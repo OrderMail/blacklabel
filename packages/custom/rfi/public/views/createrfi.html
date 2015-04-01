@@ -62,11 +62,33 @@
     		</div>
 
     		<div class="row">
-    		<!-- Add Item details here -->
+    		<!-- Item details -->
+    			<div  ng-controller="ItemsController" class="container-fluid">
+			         <div class="row">
+			          <label name="bizontacts" type="text">Items</label>
+			         </div>
+			        <div class="row error_message" ng-show="{{contactError}}">{{contactErrorMsg}}</div>
+			        <div class="row contacts" ng-repeat="item in items" >
+			            <span class="glyphicon glyphicon-user col-sm-3"> <strong> title </strong></span>
+			            <span class="glyphicon glyphicon-envelope col-sm-4"> email</span>
+			            <span class="glyphicon glyphicon-phone-alt col-sm-2"> phone</span>
+			            
+			        </div>
+			        <div class="row">
+			          <input type="text" ng-model="item.number" class="col-sm-3" 
+			             placeholder="Item Number">
+			          <input type="email" ng-model="item.detail" class="col-sm-4"
+			             placeholder="Item Details">
+			          <input type="tel" ng-model="item.quantity" class="col-sm-2" 
+			             placeholder="Quantity">
+
+			          <button type="button" class="btnAdd" value="Add" ng-click="addContact()"></button>                               
+			        </div> 
+			    </div>
     		</div>
     		
     		<div class="row">
-    			<div class="col-md-3">
+    			<div class="col-md-3" style="padding-top: 3%;">
     				<div class="form-group" align="left" >
 						 <textarea class="form-control" rows="3" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
 					</div>
@@ -89,8 +111,8 @@
     		</div>
     		    		
 	    	<div class="form-group" style= "width:20%;">
-		    	<span class="input-group-addon">Memo
-			    <input class="form-control" id="memo" placeholder="Memo"  ng-model="memo" /></span>
+		    	<span>Memo</span>
+			    <input class="form-control" id="memo" placeholder="Memo"  ng-model="memo" />
 			</div>
 			<div>
 				Attachments

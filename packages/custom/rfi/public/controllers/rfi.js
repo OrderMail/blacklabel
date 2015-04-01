@@ -6,6 +6,7 @@ angular.module('mean.rfi')
     function($scope, Global, Rfi) {
       $scope.global = Global;
       alert('i am in controller 22');
+
       $scope.createNewRfi = function() {
           var rfi = new Rfi({
           to: this.emailAddresses,
@@ -26,13 +27,56 @@ angular.module('mean.rfi')
     }
 ]);
 
+angular.module('mean.rfi').controller('ItemsController', ['$scope','$rootScope', 
+  function($scope,$rootScope/*, isUserloggedin*/) {
+    $scope.items = [
+        {itemNumber:$rootScope.item.number, itemDetail:$rootScope.item.detail, itemQuantity: $rootScope.item.quantity, primary:true}];
+    $rootScope.contacts=$scope.contacts;
 
 
+/*$scope.deleteContact = function(contact)
+{   
+  if(contact.primary)     
+      
+    {
+      $scope.contactError=true;
+      $scope.contactErrorMsg='Cannot delete a primary contact, please change the primary contact before you delete this contact.';
 
+    }
+  else
+  {
+    var index = -1;   
+    var comArr = eval( $scope.contacts );
+    for( var i = 0; i < comArr.length; i++ ) {
 
+      if( comArr[i].title === contact.title ) {
+        index = i;
+        break;
+      }
+    }
+    if( index === -1 ) {
+      alert( "Something gone wrong" );
+    }
+    $scope.contacts.splice( index, 1 );   
+  } 
+};*/
 
-
-
+$scope.addItem = function() 
+{
+  alert($scope.item.number+'   '+ $scope.item.detail);
+  if($scope.item.number===undefined || $scope.item.detail===undefined)
+  {
+    $scope.contactError=true;
+    $scope.contactErrorMsg='Please enter a title and an email address for this contact';
+  }
+  else
+  {
+    $rootScope.items.push({itemNumber:$scope.item.number, itemDetail:$scope.item.detail, itemQuantity: $scope.item.quantity});
+  
+  $scope.item = '';
+  }
+};
+}]);
 
 
 
