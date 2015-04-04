@@ -5,11 +5,10 @@
 	}
 </style>
 
-<div data-ng-controller="createrfiController" >
-	<form id="register_form" ng-submit="createNewRfi">
-		<div ng-show="done">
-			<div class="container">
-                <div class="row">
+<div ng-controller="createrfiController">
+	<form id="register_form" >
+		<div class="container">
+            <div class="row">
                     <div class= "col-md-3">
                     	<input required id="chooseBussiness" class="form-control" type="text" name="chooseBussiness" placeholder="Choose A Bussiness" ng-model="chooseBussiness" />
 	            	</div>
@@ -17,8 +16,7 @@
 	    			<div class="col-md-8" >
 				    	<input type="email" class="form-control" id="emailAddresses" placeholder="Enter Email Addresses"  ng-model="emailAddresses" />
 					</div>
-				</div>
-    		
+			</div>
     		<br/>
     		
     		<div class="row">
@@ -40,6 +38,7 @@
 					 	<textarea class="form-control" rows="3" id="shipingAddress" placeholder="Enter Your Shiping Address"  ng-model="shipingAddress"></textarea>
 					</div>
 	            </div>
+
 	            <div class="col-md-4">
 		    		<div class="col-md-6" id='datetimepicker1'>
 		    			<span class="">RFI Date
@@ -61,31 +60,34 @@
 				</div>
     		</div>
 
+    		<!-- Item Details -->
+
     		<div class="row">
-    		<!-- Item details -->
-    			<div  ng-controller="ItemsController" class="container-fluid">
+    			 <div  ng-controller="ItemsController" class="container-fluid">
 			         <div class="row">
 			          <label name="bizontacts" type="text">Items</label>
 			         </div>
 			        <div class="row error_message" ng-show="{{contactError}}">{{contactErrorMsg}}</div>
-			        <div class="row contacts" ng-repeat="item in items" >
-			            <span class="glyphicon glyphicon-user col-sm-3"> <strong> title </strong></span>
-			            <span class="glyphicon glyphicon-envelope col-sm-4"> email</span>
-			            <span class="glyphicon glyphicon-phone-alt col-sm-2"> phone</span>
-			            
-			        </div>
+			        <ul>
+			        <li ng-repeat="item in items" >
+				         <span>{{item.number}}</span>
+				         <span>{{item.detail}}</span>
+				         <span>{{item.quantity}}</span>
+			        </li>
+			        </ul>
 			        <div class="row">
 			          <input type="text" ng-model="item.number" class="col-sm-3" 
 			             placeholder="Item Number">
-			          <input type="email" ng-model="item.detail" class="col-sm-4"
+			          <input type="text" ng-model="item.detail" class="col-sm-4"
 			             placeholder="Item Details">
-			          <input type="tel" ng-model="item.quantity" class="col-sm-2" 
+			          <input type="text" ng-model="item.quantity" class="col-sm-2" 
 			             placeholder="Quantity">
 
-			          <button type="button" class="btnAdd" value="Add" ng-click="addItems()"></button>                               
+			          <button type="button" class="btnAdd" value="Add" ng-click= "addItem()"></button>                               
 			        </div> 
 			    </div>
-    		</div>
+    		</div> 
+
     		
     		<div class="row">
     			<div class="col-md-3" style="padding-top: 3%;">
@@ -106,26 +108,21 @@
 		    				<span>Date &nbsp</span><input  class="form-control" id="todayDate" placeholder="Date"  ng-model="todayDate"/>
 						</div>
 					</div>
-		    	</div>
-	    			
+		    	</div>			
     		</div>
     		    		
-	    	<div class="form-group" style= "width:20%;">
-		    	<span>Memo</span>
-			    <input class="form-control" id="memo" placeholder="Memo"  ng-model="memo" />
-			</div>
+	    	
 			<div>
 				Attachments
 			</div>
     		
     		</div>
 	    	<div class="button_register">
-	            <button type="submit" class="submit_button button_login" rendered="false">Send</button>  
-	            <span>
-	               	<button type="submit" class="submit_button button_login">Draft</button>  
-	            </span>        
+	            <button type="submit" class="submit_button button_login" ng-click="createNewRfi()">Send</button> 
 	        </div> 
-    	</div><!-- container end -->
 
-	</form>
+    	</div><!-- container end --></form></div>
+    </form>
 </div>
+
+

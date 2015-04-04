@@ -28,6 +28,28 @@ angular.module('mean.rfi')
     } 
 ]);
 
+angular.module('mean.rfi')
+.controller('ItemsController',['$scope',
+    function($scope) {
+
+      $scope.items = [];
+
+      $scope.addItem = function (){
+      if(this.item.number===undefined || this.item.detail===undefined)
+      {
+       
+      }
+      else
+      {
+        $scope.items.push({number:this.item.number, detail:this.item.detail, quantity: this.item.quantity});
+        $scope.item = '';
+      }
+    };
+      
+    } 
+]);
+
+/*
 angular.module('mean.rfi').controller('ItemsController', ['$scope','$rootScope', 
   function($scope,$rootScope) {
 
@@ -55,7 +77,7 @@ angular.module('mean.rfi').controller('ItemsController', ['$scope','$rootScope',
     };
   }
 ]);
-
+*/
 
 /*$scope.deleteContact = function(contact)
 {   
