@@ -3,8 +3,19 @@
 	.container {
 		padding-top: 2%;
 	}
-</style>
+    
+    span {
+		font-family:"Times New Roman", Times, serif;
+	    font-size: 15px; 
+    }
 
+</style>
+ 
+ <script type="text/javascript">
+    $(function () {
+        $('#rfiDate').datetimepicker();
+    });
+</script>
 <div ng-controller="createrfiController">
 	<form id="register_form" >
 		<div class="container">
@@ -42,9 +53,10 @@
 	            <div class="col-md-4">
 		    		<div class="col-md-6" id='datetimepicker1'>
 		    			<span class="">RFI Date
-					    	<input  class="form-control" id="rfiDate"   ng-model="rfiDate"/>
+					    	<input  class="form-control" id="rfiDate" ng-model="rfiDate"/>
 					    </span>
 					</div>
+
 					<div class="col-md-6" >
 						<span class="">RFI Due Date
 					    	<input class="form-control" id="rfiDueDate" placeholder="Rfi Due Date"  ng-model="rfiDueDate"/>
@@ -63,66 +75,66 @@
     		<!-- Item Details -->
 
     		<div class="row">
-    			 <div  ng-controller="ItemsController" class="container-fluid">
-			         <div class="row">
-			          <label name="bizontacts" type="text">Items</label>
-			         </div>
+    			<div  ng-controller="ItemsController" class="container-fluid">
+			        <div class="row">
+			    	    <label name="bizontacts" type="text">Items</label>
+			        </div>
 			        <div class="row error_message" ng-show="{{contactError}}">{{contactErrorMsg}}</div>
 			        <ul>
-			        <li ng-repeat="item in items" >
-				         <span>{{item.number}}</span>
-				         <span>{{item.detail}}</span>
-				         <span>{{item.quantity}}</span>
-			        </li>
+				        <li ng-repeat="item in items" >
+					         <span>{{item.number}}</span>
+					         <span>{{item.detail}}</span>
+					         <span>{{item.quantity}}</span>
+				        </li>
 			        </ul>
 			        <div class="row">
-			          <input type="text" ng-model="item.number" class="col-sm-3" 
+			          <input type="text" ng-model="item.number" class="col-md-3" 
 			             placeholder="Item Number">
-			          <input type="text" ng-model="item.detail" class="col-sm-4"
+			          <input type="text" ng-model="item.detail" class="col-md-6"
 			             placeholder="Item Details">
-			          <input type="text" ng-model="item.quantity" class="col-sm-2" 
-			             placeholder="Quantity">
-
-			          <button type="button" class="btnAdd" value="Add" ng-click= "addItem()"></button>                               
-			        </div> 
+			          <div class= "col-md-3"> 
+				            <input type="text" ng-model="item.quantity"  
+				             placeholder="Quantity" class="col-md-10" />
+							<button type="button" class="btnAdd" value="Add" ng-click= "addItem()"/>
+			          </div> 
+			    	</div>
 			    </div>
     		</div> 
-
     		
     		<div class="row">
-    			<div class="col-md-3" style="padding-top: 3%;">
+    			<div class="col-md-12" style="padding-top: 3%;">
     				<div class="form-group" align="left" >
-						 <textarea class="form-control" rows="3" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
+						 <textarea class="form-control" rows="5" id="message" placeholder="Write your message"  ng-model="message" ></textarea>
 					</div>
-    			</div>
-    			<div class="col-md-5"></div>
-    			<div class="col-md-4">
-    				<div class="col-md-12">
-	    				<div class="form-inline  pull-right">
-		    				<span>Approved By &nbsp</span><input  class="form-control" id="approvedBy" placeholder="Approved"  ng-model="approvedBy"/>
-						</div>
-    				</div>
-
-	    			<div class="col-md-12">
-	    				<div class="form-inline  pull-right">
-		    				<span>Date &nbsp</span><input  class="form-control" id="todayDate" placeholder="Date"  ng-model="todayDate"/>
-						</div>
-					</div>
-		    	</div>			
+    			</div>		
     		</div>
-    		    		
+    		 
+    		<div class="row">
+				<div class="col-md-2">
+					<span>Memo &nbsp</span><input class="form-control" id="approvedBy" placeholder="Memo" ng-model="approvedBy"/>
+				</div>
+				<div class="col-md-6"> </div>
+				<div class="col-md-4">
+					<div class="form-inline pull-right">
+						<span>Approved By &nbsp</span><input class="form-control" id="approvedBy" placeholder="Approved" ng-model="approvedBy"/>
+					</div>
+					
+					<div class="form-inline pull-right" style="padding-top: 2%;">
+						<span>Date &nbsp</span><input class="form-control" id="todayDate" placeholder="Date" ng-model="todayDate"/>
+					</div>
+				</div>
+			</div>		
 	    	
+
 			<div>
 				Attachments
 			</div>
     		
-    		</div>
+    		
 	    	<div class="button_register">
 	            <button type="submit" class="submit_button button_login" ng-click="createNewRfi()">Send</button> 
 	        </div> 
 
-    	</div><!-- container end --></form></div>
+    	</div><!-- container end -->
     </form>
 </div>
-
-
