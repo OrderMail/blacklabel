@@ -26,7 +26,7 @@ angular.module('mean.businesses').config(['$stateProvider',
         else {
           console.log('Redirecting to home page (/)');
           $timeout(deferred.reject);
-          $location.url('/');
+          $location.url('/dashboard');
         }
       });
 
