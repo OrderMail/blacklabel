@@ -25,7 +25,7 @@ function ($http,$q,$timeout)
             else
             	{
             		var deferred = $q.defer();
-            		console.log('Else block, going to get the user')
+            		console.log('Else block, going to get the user');
             		$http.get('/loggedin').success(function(retrievedUser){
 							$timeout(deferred.resolve); 
 							user=deferred.promise;
