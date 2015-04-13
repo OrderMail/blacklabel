@@ -27,7 +27,7 @@ var mongoose = require('mongoose'),
           case 11000:
           case 11001:
           {
-            response.msg= 'Business name has already registered.';
+            response.msg= 'Business name has been already registered.';
             response.status= 'failure';
           }
           break;
@@ -60,10 +60,7 @@ var mongoose = require('mongoose'),
 
 
 exports.all = function(req, res) {
-  /*var currentuser = {
-     user: req.user
-  };*/
- // res.json('It is wrong');
+
   Business.find().exec(function(err, businesses) {
     if (err) {
       return res.json(500, {

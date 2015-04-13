@@ -1,23 +1,7 @@
 'use strict';
 
 angular.module('mean.businesses')
-/*
-	.controller('BusinessesController', ['$scope', 'Global', 'Businesses',
-	  function($scope, Global, Businesses) {
-	    $scope.global = Global;
-	    $scope.package = {
-	      name: 'businesses'      };
-  /*    $scope.findBusinesses= function() {
-        $http.get('/businesses')
-        .success(function(result){
-          $scope.businesses=result;
-        });
-          
 
-        };
-	  }
-	])
-*/
  /*Controller to handle new business registration #7*/
   .controller('BusinessRegistrationCtrl', ['$scope', 'Global', '$rootScope', 'Businesses', '$location',/*'isUserloggedin'*//*,'promise'*/
     function($scope, Global, $rootScope, Businesses, $location/*isUserloggedin,promise*/) {
@@ -158,8 +142,3 @@ $scope.addContact = function()
   }
 };
 }]);
-
-
-
-
-

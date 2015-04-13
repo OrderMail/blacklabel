@@ -6,8 +6,6 @@ angular.module('mean.businesses').config(['$stateProvider',
 // Check if the user is connected
     var checkLoggedin = function($q, $timeout, $http, $location) {
 
-    	console.log('checkLoggedin ');
-
       // Initialize a new promise
       var deferred = $q.defer();
       // Make an AJAX call to check if the user is logged in
