@@ -99,13 +99,17 @@ angular.module('mean.users')
     console.log(businesses);
       }); //query() returns all the entries
  
-      $scope.formatLabel=function(model) {
-        console.log('###In formatLabel');
-        for (var count=0; count< $scope.businesses.length; count=count+1) {
-      if (model === $scope.businesses[count]._id) {
-        return $scope.businesses[count].businessname;
-      }
-    }
+      $scope.formatLabel=function(model) {       
+        if($scope.businesses !== undefined) {
+          console.log('###In formatLabel');      
+          for (var count=0; count< $scope.businesses.length; count=count+1) {
+            if (model === $scope.businesses[count]._id) {
+              return $scope.businesses[count].businessname;
+            } else {
+                return null;
+            }
+          }
+        }
       };
 
       $scope.togglePasswordVisible = function() {

@@ -60,9 +60,9 @@
         </span>
         </div>   
         <div class ="input-wrapper">
-        <input type="text" name="business_id" id="business_id" ng-model="user.business_id" placeholder="Type Business Name" typeahead="business._id as business.businessname for business in businesses | filter:{businessname:$viewValue}" typeahead-loading="loadingLocations" class="form-control"    typeahead-input-formatter="formatLabel($model)">
+        <input type="text" name="business_id" id="business_id" ng-model="user.business_id" placeholder="Business Name" typeahead="business._id as business.businessname for business in businesses | filter:{businessname:$viewValue}" typeahead-loading="loadingBusinesses" class="form-control" typeahead-input-formatter="formatLabel($model)" typeahead-editable="false">
 
-    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <i ng-show="loadingBusinesses" class="glyphicon glyphicon-refresh"></i>
 
 
       <!--   <select id="business_id" name="business_id" data-ng-model="user.business_id">

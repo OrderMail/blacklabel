@@ -22,14 +22,14 @@ var mongoose = require('mongoose'),
  */
 function sendMail(req, res, mailOptions) {
   smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                console.log('mail not sent : '+error);
-                res.end('error');
-                }else{
-                console.log('Message sent: ' + response.message);
-                res.end('sent');
-                }
-                });
+      if(error) {
+        console.log('mail not sent : '+error);
+        res.end('error');
+      }else {
+        console.log('Message sent: ' + response.message);
+        res.end('sent');
+      }
+  });
 }
 
 
@@ -64,8 +64,6 @@ exports.signout = function(req, res) {
 exports.session = function(req, res) {
   res.redirect('/');
 };
-
-
 
 /**
  * Create user
@@ -128,27 +126,21 @@ exports.create = function(req, res, next) {
       return res.status(400);
     }
     console.log('checkpoint 2');
+    /*
     req.logIn(user, function(err) {
       if (err) return next(err);
-      return res.redirect('/');        
-    });
-    
-    
+        return res.redirect('/');        
+    });*/
 
-                // Naveen code for email, 16/12/2014
-          //var createActivationLink = function (user) {
-                console.log('checkpoint 3');
-                var mailOptions={
-                to : user.email
-                };
-                mailOptions = templates.signup_email(user,mailOptions);
-                sendMail(req, res, mailOptions);
-           //   }
-
-                
-
+    // Naveen code for email, 16/12/2014     
+    var mailOptions={
+    to : user.email
+    };
+    mailOptions = templates.signup_email(user,mailOptions);
+    sendMail(req, res, mailOptions);
 
     res.status(200);
+    return res.redirect('/'); 
   });
 };
 
@@ -156,23 +148,18 @@ exports.activate = function(req,res) {
   var token=req.params.activationtoken;
   console.log('----------ActivationToken is: '+token);
   User.findOne ( {activationtoken: token}, 
-    function(err,user){ 
-    console.log('User is:'+user);
-    if(!user||err)     
-    res.send('There was an error, User has not been activated');
-    else if (user.isactive === true)
-      res.send ('User was already active, cannot re-activate this user');
-  else 
-    { user.isactive=true;
-      user.save();
-      res.send ('User has been activated');
-    }
-
+    function(err,user) { 
+      console.log('User is:'+user);
+      if(!user||err)     
+      res.send('There was an error, User has not been activated');
+      else if (user.isactive === true)
+        res.send ('User was already active, cannot re-activate this user');
+      else {
+        user.isactive=true;
+        user.save();
+        res.send ('User has been activated');
+      }
     });
-  
-    /*if(user.activated) return (new Error ('This user is already activated'));
-    user.activated = true;
-*/
   };
 
 /**
@@ -207,44 +194,44 @@ exports.resetpassword = function(req, res, next) {
     email: req.params.token,
     resetPasswordRequested : true
   }, function(err, user) {
-              var response = {
-                  message: 'Invalid Request',
-                  status: 'danger'
-                };
+      var response = {
+          message: 'Invalid Request',
+          status: 'danger'
+        };
 
-              if (err) {
-                console.log('error resetpassword 1');
-                return res.json(response);
-              }
-              if (!user) {
-                console.log('error resetpassword 2');
-                return res.json(response);
-              }
-              req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);
-              req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-              var errors = req.validationErrors();
-              if (errors) {
-                console.log(errors);
-                response.status = 'danger';
-                response.message = 'Password must be between 8-20 characters long';
+      if (err) {
+        console.log('error resetpassword 1');
+        return res.json(response);
+      }
+      if (!user) {
+        console.log('error resetpassword 2');
+        return res.json(response);
+      }
+      req.assert('password', 'Password must be between 8-20 characters long').len(8, 20);
+      req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+      var errors = req.validationErrors();
+      if (errors) {
+        console.log(errors);
+        response.status = 'danger';
+        response.message = 'Password must be between 8-20 characters long';
 
-                return res.json(response);
-              }
-              user.password = req.body.password;
-              user.resetPasswordToken = undefined;
-              user.resetPasswordExpires = undefined;
-              user.resetPasswordRequested = false;
-              user.save(function(err) {
-                  if (err)
-                  { 
-                    response.message = 'Password reset failed';
-                    return res.json(response);
-                  }
-                  response.status = 'success';
-                  response.message = 'Password successfully changed';
-                  return res.json(response);
-              });
-            });
+        return res.json(response);
+      }
+      user.password = req.body.password;
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpires = undefined;
+      user.resetPasswordRequested = false;
+      user.save(function(err) {
+          if (err)
+          { 
+            response.message = 'Password reset failed';
+            return res.json(response);
+          }
+          response.status = 'success';
+          response.message = 'Password successfully changed';
+          return res.json(response);
+      });
+    });
 };
 
 
