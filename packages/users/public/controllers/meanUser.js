@@ -94,12 +94,12 @@ angular.module('mean.users')
         tooltipTextConfirmPass: 'Show password'
       };
       console.log ('#################');
-    var businesses = Businesses.query(function() {
-    $scope.businesses=businesses;
-    console.log(businesses);
+      var businesses = Businesses.query(function() {
+        $scope.businesses=businesses;
+        console.log(businesses);
       }); //query() returns all the entries
  
-      $scope.formatLabel=function(model) {       
+      $scope.formatLabel=function(model) { 
         if($scope.businesses !== undefined) {
           console.log('###In formatLabel');      
           for (var count=0; count< $scope.businesses.length; count=count+1) {
@@ -118,6 +118,7 @@ angular.module('mean.users')
         $scope.input.iconClass = $scope.input.iconClass === 'icon_hide_password' ? '' : 'icon_hide_password';
         $scope.input.tooltipText = $scope.input.tooltipText === 'Show password' ? 'Hide password' : 'Show password';
       };
+
       $scope.togglePasswordConfirmVisible = function() {
         $scope.input.type = $scope.input.type === 'text' ? 'password' : 'text';
         $scope.input.placeholderConfirmPass = $scope.input.placeholderConfirmPass === 'Repeat Password' ? 'Visible Password' : 'Repeat Password';
@@ -148,13 +149,20 @@ angular.module('mean.users')
 
       $scope.register = function() {        
         console.log('@@@@@@@@@@@@@@@ Business id selected is: '+$scope.user.business_id);
+        
+        if($scope.user.business_id === undefined) {
+          alert('This business name does not exist in blacklabel, kindly create this later');
+          //TODO: it requires to reset business field on UI
+          //  $scope.user.business_id= '';
+        }
+
         $http.post('/register', {
           email: $scope.user.email,
           password: $scope.user.password,
           confirmPassword: $scope.user.confirmPassword,
           firstname: $scope.user.firstname,
           lastname: $scope.user.lastname,
-          business_id: $scope.user.business_id
+          business_id: $scope.user.business_id          
         })
 
         .success(function() {
