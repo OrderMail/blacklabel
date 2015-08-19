@@ -128,7 +128,7 @@ $scope.deleteContact = function(contact)
   {
     var index = -1;   
     var comArr = eval( $scope.contacts );
-    for( var i = 0; i < comArr.length; i++ ) {
+    for( var i = 0; i < comArr.length; i++) {
 
       if( comArr[i].title === contact.title ) {
         index = i;
@@ -136,7 +136,7 @@ $scope.deleteContact = function(contact)
       }
     }
     if( index === -1 ) {
-      alert( "Something gone wrong" );
+      alert('Something gone wrong');
     }
     $scope.contacts.splice( index, 1 );   
   } 

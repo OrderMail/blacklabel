@@ -37,7 +37,7 @@ angular.module('mean.rfi')
       $scope.addItem = function (){
       if(this.item.number===undefined || this.item.detail===undefined)
       {
-       
+       console.log('heeeee');
       }
       else
       {
