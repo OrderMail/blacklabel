@@ -73,6 +73,11 @@
 .admin-modules .panel-default > .panel-heading {
     cursor: pointer;
 }
+
+
+.admin-modules .settings-pane{
+  border-left: 1px solid #ddd;
+}
 tr.disabled {
     pointer-events: none;
     opacity: 0.4;

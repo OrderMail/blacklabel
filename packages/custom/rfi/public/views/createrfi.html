@@ -1,4 +1,3 @@
-
 <style>
 	.container {
 		padding-top: 2%;
@@ -8,14 +7,32 @@
 	    font-size: 15px; 
     }
 
+    .ui-datepicker {
+    	position: relative;
+    	z-index: 9999;
+    }
+
+    ul{
+	    list-style:none;
+	}
+
+	div.ui-datepicker{
+        padding: .2em .2em 0; display: none;
+        font-size:13px;
+    }
+    .ui-datepicker-trigger{
+    	display: none;
+    }
 </style>
- 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js" ></script>
+
 <div ng-controller="createrfiController">
 	<form id="register_form" >
 		<div class="container">
             <div class="row">
                     <div class= "col-md-3">
-                    	<input required id="chooseBussiness" class="form-control" type="text" name="chooseBussiness" placeholder="Choose A Bussiness" ng-model="chooseBussiness" />
+                    	<input  id="chooseBussiness" class="form-control" type="text" name="chooseBussiness" placeholder="Choose A Bussiness" ng-model="chooseBussiness" />
 	            	</div>
 	            	<div class="col-md-1"></div>
 	    			<div class="col-md-8" >
@@ -36,7 +53,7 @@
 	            <div class="col-md-3" >
 		            <div class="row">
 		            	<span class="">Ship To</span>
-		                <input required id="shipTo" class="form-control" type="text" name="shipTo" placeholder="Ship To" ng-model="shipTo" />
+		                <input  id="shipTo" class="form-control" type="text" name="shipTo" placeholder="Ship To" ng-model="shipTo" />
 		            </div>
 		            <div class="row " style="padding-top: 3%;">
 	    				<span class="">Shiping Address</span>
@@ -44,16 +61,16 @@
 					</div>
 	            </div>
 
-	            <div class="col-md-4">
-		    		<div class="col-md-6" id='datetimepicker1'>
-		    			<span class="">RFI Date
-					    	<input  class="form-control" id="rfiDate" ng-model="rfiDate"/>
+	            <div class="col-md-6" ng-controller="rfiDateController" >
+		    		<div class="col-md-6" >
+		    			<span >RFI Date			    	
 					    </span>
+					    <input readonly="true" id="" type="text" class="form-control" ng-model="rfi.date" name="mDate" jqdatepicker/>
 					</div>
 
-					<div class="col-md-6" >
+					<div class="col-md-6" ng-controller="dueDateController">
 						<span class="">RFI Due Date
-					    	<input class="form-control" id="rfiDueDate" placeholder="Rfi Due Date"  ng-model="rfiDueDate"/>
+					    	<input id="" readonly="true" type="text" class="form-control" ng-model="rfi.dueDate" name="mDate" jqdatepicker/>
 					    </span>    
 					</div>
 					
@@ -69,28 +86,29 @@
     		<!-- Item Details -->
 
     		<div class="row">
-    			<div  ng-controller="ItemsController" class="container-fluid">
-			        <div class="row">
-			    	    <label name="bizontacts" type="text">Items</label>
+    			<div class="container-fluid">
+			        <div class="row">  
+				    	<label >{{count}}</label>
+
+				    	<!-- Added to pluralize item -->
+				    	<ng-pluralize count="count"
+			                when="{'one': 'Item',
+			                       'other': 'Items'}">
+						</ng-pluralize>
 			        </div>
 			        <div class="row error_message" ng-show="{{contactError}}">{{contactErrorMsg}}</div>
-			        <ul>
-				        <li ng-repeat="item in items" >
-					         <span>{{item.number}}</span>
-					         <span>{{item.detail}}</span>
-					         <span>{{item.quantity}}</span>
-				        </li>
-			        </ul>
-			        <div class="row">
-			          <input type="text" ng-model="item.number" class="col-md-3" 
-			             placeholder="Item Number">
-			          <input type="text" ng-model="item.detail" class="col-md-6"
-			             placeholder="Item Details">
-			          <div class= "col-md-3"> 
-				            <input type="text" ng-model="item.quantity"  
-				             placeholder="Quantity" class="col-md-10" />
-							<button type="button" class="btnAdd" value="Add" ng-click= "addItem()"/>
-			          </div> 
+			        
+			    	<div class="row">
+			          <div class="container">
+				          <input type="text" ng-model="item1.number"  class="col-md-2"
+				             placeholder="Item Number"/> 
+				          <input type="text" ng-model="item1.detail" class="col-md-6"
+				             placeholder="Item Details"/>
+			              <input type="text" ng-model="item1.quantity"
+			               placeholder="Quantity" class="col-md-3" />
+						  <additem></additem>
+						  <button type="button"  class="btnAdd" value="Add" ng-click= "addItem(); addRow()"/>
+			          </div>
 			    	</div>
 			    </div>
     		</div> 
@@ -132,3 +150,4 @@
     	</div><!-- container end -->
     </form>
 </div>
+</br>

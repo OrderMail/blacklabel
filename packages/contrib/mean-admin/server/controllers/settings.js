@@ -3,7 +3,11 @@
 var mean = require('meanio');
 
 exports.get = function(req, res) {
-    res.jsonp(mean.config.flat.diff);
+    if ( !req.query.name ) return res.jsonp(mean.config.flat.diff);
+    // We have called it query.name by packageName
+    mean.config.getSettings(req.query.name, function(error, doc) {
+      return res.json(doc);
+    });
 };
 
 exports.save = function(req, res) {

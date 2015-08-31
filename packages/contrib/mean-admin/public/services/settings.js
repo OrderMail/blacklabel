@@ -3,6 +3,7 @@
 angular.module('mean.mean-admin').factory('Settings', ['$http',
     function($http) {
         var get = function(callback) {
+        // Temporary - probably it should to be resource based.
             $http.get('/admin/settings').success(function(data, status, headers, config) {
                 callback({
                     success: true,

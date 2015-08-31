@@ -1,15 +1,46 @@
 'use strict';
 
+//returns count and increments count variable
 angular.module('mean.rfi')
+.factory('countFactory', function(){
+    var countF = 1;
+    return {
+        getCount : function () {
+            return countF;
+        },
+        incrementCount:function(){
+           countF++;
+            return countF;
+        }
+    }
+});
 
-.controller('createrfiController',['$scope', 'Global', 'Rfi',
-    function($scope, Global, Rfi) {
+angular.module('mean.rfi')
+.controller('createrfiController',['$scope', 'countFactory', 'Global', 'Rfi',
+    function($scope, countFactory, Global, Rfi) {
+      $scope.count = countFactory.getCount();
       $scope.global = Global;
-    //  alert('i am in controller 22');
-    console.log('Inside createrfiController');
-      $scope.createNewRfi = function() {
-        console.log('Inside createrNewRFI 11111');
-          var rfi = new Rfi({
+
+      $scope.createNewRfi = function(){
+        //push all item into items[]
+        $scope.items = [];
+        for(var i =1; i <= $scope.count; i++){
+        
+          //console.log($scope["item"+i]);
+          if($scope["item"+i].number === undefined || $scope["item"+i].detail === undefined ){
+            //add logic if value is undefined........to be done
+            console.log('inside if');
+          }
+          else{
+            $scope.items.push({
+              number  : $scope["item"+i].number,
+              detail  : $scope["item"+i].detail,
+              quantity: $scope["item"+i].quantity
+            });
+          }
+        }
+        console.log($scope.items);
+        var rfi = new Rfi({
           to: this.emailAddresses,
           mailingaddress: this.MailingAddress,
           shipTo: this.shipTo,
@@ -21,13 +52,18 @@ angular.module('mean.rfi')
           message: this.message,
           approvedBy: this.approvedBy
         });
-        console.log('Inside createrNewRFI');
+    
         this.shipingAddress = rfi.mailingaddress;
-      };
-      
-    } 
-]);
+    };
 
+    //increment count when row is added
+    $scope.addItem = function (){
+      $scope.count = countFactory.incrementCount();
+    };
+    
+  }
+]);
+/*
 angular.module('mean.rfi')
 .controller('ItemsController',['$scope',
     function($scope) {
@@ -46,7 +82,25 @@ angular.module('mean.rfi')
       }
     };
       
-    } 
+    }
+]);*/
+
+angular.module('mean.rfi')
+.controller('rfiDateController',['$scope',
+  function($scope) {
+    $scope.rfi = {
+      date: new Date()
+    };
+  }
+]);
+
+angular.module('mean.rfi')
+.controller('dueDateController',['$scope',
+  function($scope) {
+    $scope.rfi = {
+      dueDate: new Date()
+    };
+  }
 ]);
 
 /*

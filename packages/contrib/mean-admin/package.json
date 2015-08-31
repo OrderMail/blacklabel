@@ -1,6 +1,6 @@
 {
   "name": "mean-admin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Admin module for MEAN applications",
   "author": {
     "name": "Linnovate",
@@ -16,7 +16,6 @@
     "npm": "1.4.x"
   },
   "dependencies": {
-    "gridfs-stream": "^0.5.1",
     "request": "^2.36.0",
     "mean-health": "~0.1.2"
   },
