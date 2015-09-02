@@ -53,6 +53,10 @@ var UserSchema = new Schema({
     unique: true,
   
   },
+  resetPasswordToken: {
+    type: String,
+    default: 'local'
+  },
   email: {
     type: String,
     required: true,
@@ -87,7 +91,6 @@ var UserSchema = new Schema({
     default : false
   },
   salt: String,
-  resetPasswordToken: String,
   resetPasswordExpires: Date,
   facebook: {},
   twitter: {},
