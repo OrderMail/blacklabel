@@ -39,11 +39,11 @@ var RfiSchema = new Schema({
     trim: true
   },
   rfiDate: {
-    type: String,
+    type: Date,
     trim: true
   },
   rfiDueDate: {
-    type: String,
+    type: Date,
     trim: true
   },
   shipingAddress: {
@@ -54,10 +54,6 @@ var RfiSchema = new Schema({
     type: String,
     trim: true
   },
-  body: {
-    type: String,
-    trim: true
-  },
   approvedBy: {
     type: String,
     trim: true
@@ -65,7 +61,20 @@ var RfiSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  }
+  },
+  chooseBussiness: {
+    type: String,
+    trim: true
+  },
+  memo: {
+    type: String,
+    trim: true
+  },
+  date: {
+    type: Date,
+    trim: true,
+    default: Date.now()
+  },
 });
 
 /**

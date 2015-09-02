@@ -16,8 +16,8 @@ angular.module('mean.rfi')
 });
 
 angular.module('mean.rfi')
-.controller('createrfiController',['$scope', 'countFactory', 'Global', 'Rfi',
-    function($scope, countFactory, Global, Rfi) {
+.controller('createrfiController',['$scope', 'countFactory', 'Global', 'Rfi', '$http',
+    function($scope, countFactory, Global, Rfi, $http) {
       $scope.count = countFactory.getCount();
       $scope.global = Global;
 
@@ -39,22 +39,49 @@ angular.module('mean.rfi')
             });
           }
         }
-        console.log($scope.items);
+        console.log("rfi");
         var rfi = new Rfi({
+          chooseBussiness: this.chooseBussiness,
           to: this.emailAddresses,
-          mailingaddress: this.MailingAddress,
+          mailingAddress: this.mailingAddress,
           shipTo: this.shipTo,
-          rfiDate: this.rfiDate,
-          rfiDueDate: this.rfiDueDate,
           shipingAddress: this.shipingAddress,
+          rfiDate: this.rfi.date,
+          rfiDueDate: this.rfi.dueDate,
           shipVia: this.shipVia,
-          body: this.body,
+          items: $scope.items,
+          memo: this.memo,
           message: this.message,
-          approvedBy: this.approvedBy
+          approvedBy: this.approvedBy,
+          todayDate: this.todayDate
         });
     
-        this.shipingAddress = rfi.mailingaddress;
+        console.log(rfi);
+        //this.shipingAddress = rfi.mailingaddress;
+      
+        $http.post("/rfi", rfi)
+          .success(function (data, status, headers)
+          {
+            console.log("inside success");
+            console.log(data);
+          })
+          .error(function (data, status, headers)
+          {
+            console.log("inside error");
+          });
+
+        /*$http.get("/test")
+          .success(function (data, status, headers, config)
+          {
+            console.log("inside get success");
+          })
+          .error(function (data, status, headers, config)
+          {
+            console.log("inside get error");
+        });*/
+
     };
+
 
     //increment count when row is added
     $scope.addItem = function (){

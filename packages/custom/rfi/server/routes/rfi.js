@@ -12,9 +12,9 @@ var rfi = require('../controllers/rfi');
 
 module.exports = function(Articles, app, auth) {
 
-  app.route('/rfi')
-    /*.get(articles.all)*/
-    .post(rfi.create);
+  app.route('/rfi').post(rfi.create);
+
+
   /*app.route('/articles/:articleId')
     .get(articles.show)
     .put(auth.requiresLogin, hasAuthorization, articles.update)
