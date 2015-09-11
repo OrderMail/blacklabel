@@ -12,7 +12,7 @@ angular.module('mean.rfi')
            countF++;
             return countF;
         }
-    }
+    };
 });
 
 angular.module('mean.rfi')
